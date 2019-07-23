@@ -10,6 +10,7 @@
 #define UI_CHOOSECLASSWIN_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -30,11 +31,11 @@ public:
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_4;
+    QPushButton *backBtn;
     QSpacerItem *horizontalSpacer_5;
     QLabel *label_2;
     QSpacerItem *horizontalSpacer_6;
     QTableWidget *CoursesList;
-    QPushButton *backBtn;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
@@ -45,7 +46,7 @@ public:
     QSpacerItem *horizontalSpacer_4;
     QLabel *label_3;
     QSpacerItem *horizontalSpacer_3;
-    QTableWidget *tableWidget;
+    QTableWidget *ChooseList;
 
     void setupUi(QWidget *ChooseClassWin)
     {
@@ -60,6 +61,16 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        backBtn = new QPushButton(ChooseClassWin);
+        backBtn->setObjectName(QString::fromUtf8("backBtn"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("icon/bcak.png"), QSize(), QIcon::Normal, QIcon::Off);
+        backBtn->setIcon(icon);
+        backBtn->setAutoDefault(false);
+        backBtn->setFlat(false);
+
+        horizontalLayout_4->addWidget(backBtn);
+
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_4->addItem(horizontalSpacer_5);
@@ -83,11 +94,6 @@ public:
 
 
         gridLayout->addLayout(verticalLayout_2, 0, 2, 1, 1);
-
-        backBtn = new QPushButton(ChooseClassWin);
-        backBtn->setObjectName(QString::fromUtf8("backBtn"));
-
-        gridLayout->addWidget(backBtn, 0, 0, 1, 1);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -177,10 +183,10 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
-        tableWidget = new QTableWidget(ChooseClassWin);
-        tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
+        ChooseList = new QTableWidget(ChooseClassWin);
+        ChooseList->setObjectName(QString::fromUtf8("ChooseList"));
 
-        verticalLayout->addWidget(tableWidget);
+        verticalLayout->addWidget(ChooseList);
 
 
         gridLayout->addLayout(verticalLayout, 0, 4, 1, 1);
@@ -191,14 +197,17 @@ public:
 
         retranslateUi(ChooseClassWin);
 
+        backBtn->setDefault(false);
+
+
         QMetaObject::connectSlotsByName(ChooseClassWin);
     } // setupUi
 
     void retranslateUi(QWidget *ChooseClassWin)
     {
         ChooseClassWin->setWindowTitle(QApplication::translate("ChooseClassWin", "Form", nullptr));
+        backBtn->setText(QString());
         label_2->setText(QApplication::translate("ChooseClassWin", "\351\200\211\350\257\276\345\210\227\350\241\250", nullptr));
-        backBtn->setText(QApplication::translate("ChooseClassWin", "Bcak", nullptr));
         label->setText(QApplication::translate("ChooseClassWin", "\351\242\204\346\265\213\350\257\276\350\241\250", nullptr));
         QTableWidgetItem *___qtablewidgetitem = chooseCoursesTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("ChooseClassWin", "\344\270\200", nullptr));

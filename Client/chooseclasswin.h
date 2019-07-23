@@ -16,6 +16,7 @@ public:
     ~ChooseClassWin();
 
     void addLine();
+    void addChooseLine();
 private:
     Ui::ChooseClassWin *ui;
 };
