@@ -26,10 +26,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        sqlite/sqlitedatabase.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        sqlite/sqlitedatabase.h
 
 FORMS += \
         mainwindow.ui
