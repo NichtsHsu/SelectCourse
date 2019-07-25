@@ -3,10 +3,13 @@
 #include <QScrollBar>
 #include <QTextCodec>
 #include <QLabel>
+#include <QTextCodec>
 ChooseClassWin::ChooseClassWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChooseClassWin)
 {
+
+
     ui->setupUi(this);
     this->showMaximized();
 
@@ -81,8 +84,10 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     "QScrollBar::sub-line{background:transparent;}"
     "QScrollBar::add-line{background:transparent;}");
 
-
-    addLine();
+    QString cname=u8"数据库系统";
+    QString teacher=u8"li";
+    QString dtime=u8"周一 5-6";
+    addLine(cname,123,teacher,0,456,dtime);
 
     addChooseLine();
 
@@ -102,7 +107,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QWidget *widget_1=new QWidget;
 
     QHBoxLayout *layout_1 = new QHBoxLayout();
-    layout_1->addWidget((new QLabel(u8"数据库系统")));
+    layout_1->addWidget((new QLabel(itemName)));
     widget_1->setLayout(layout_1);
 
     ui->CoursesList->setCellWidget(row-1,0,widget_1);
@@ -111,7 +116,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QWidget *widget_2=new QWidget;
 
     QHBoxLayout *layout_2 = new QHBoxLayout();
-    layout_2->addWidget((new QLabel("123")));
+    layout_2->addWidget((new QLabel(QString::number(itemNumber))));
     widget_2->setLayout(layout_2);
 
     ui->CoursesList->setCellWidget(row-1,1,widget_2);
@@ -120,7 +125,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QWidget *widget_3=new QWidget;
 
     QHBoxLayout *layout_3 = new QHBoxLayout();
-    layout_3->addWidget((new QLabel(u8"lin")));
+    layout_3->addWidget((new QLabel(nameOfTeacher)));
     widget_3->setLayout(layout_3);
 
     ui->CoursesList->setCellWidget(row-1,2,widget_3);
@@ -138,7 +143,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QWidget *widget_5=new QWidget;
 
     QHBoxLayout *layout_5 = new QHBoxLayout();
-    layout_5->addWidget((new QLabel("2.5")));
+    layout_5->addWidget((new QLabel(QString::number(creditNum))));
     widget_5->setLayout(layout_5);
 
     ui->CoursesList->setCellWidget(row-1,4,widget_5);
@@ -147,7 +152,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QWidget *widget_6=new QWidget;
 
     QHBoxLayout *layout_6 = new QHBoxLayout();
-    layout_6->addWidget((new QLabel(u8"周一 5-6节")));
+    layout_6->addWidget((new QLabel(duringTime)));
     widget_6->setLayout(layout_6);
 
     ui->CoursesList->setCellWidget(row-1,5,widget_6);
@@ -171,7 +176,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
     QWidget *widget_1=new QWidget;
 
     QHBoxLayout *layout_1 = new QHBoxLayout();
-    layout_1->addWidget((new QLabel(u8"数据库系统")));
+    layout_1->addWidget((new QLabel(itemName)));
     widget_1->setLayout(layout_1);
 
     ui->ChooseList->setCellWidget(row-1,0,widget_1);
@@ -180,7 +185,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
     QWidget *widget_2=new QWidget;
 
     QHBoxLayout *layout_2 = new QHBoxLayout();
-    layout_2->addWidget((new QLabel("123")));
+    layout_2->addWidget((new QLabel(QString::number(itemNumber))));
     widget_2->setLayout(layout_2);
 
     ui->ChooseList->setCellWidget(row-1,1,widget_2);
@@ -189,7 +194,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
     QWidget *widget_3=new QWidget;
 
     QHBoxLayout *layout_3 = new QHBoxLayout();
-    layout_3->addWidget((new QLabel(u8"lin")));
+    layout_3->addWidget((new QLabel(nameOfTeacher)));
     widget_3->setLayout(layout_3);
 
     ui->ChooseList->setCellWidget(row-1,2,widget_3);
@@ -199,7 +204,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
     QWidget *widget_5=new QWidget;
 
     QHBoxLayout *layout_5 = new QHBoxLayout();
-    layout_5->addWidget((new QLabel("2.5")));
+    layout_5->addWidget((new QLabel(QString::number(creditNum))));
     widget_5->setLayout(layout_5);
 
     ui->ChooseList->setCellWidget(row-1,3,widget_5);
@@ -208,7 +213,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
     QWidget *widget_6=new QWidget;
 
     QHBoxLayout *layout_6 = new QHBoxLayout();
-    layout_6->addWidget((new QLabel(u8"周一 5-6节")));
+    layout_6->addWidget((new QLabel(duringTime)));
     widget_6->setLayout(layout_6);
 
     ui->ChooseList->setCellWidget(row-1,4,widget_6);
