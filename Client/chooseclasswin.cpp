@@ -94,7 +94,7 @@ ChooseClassWin::~ChooseClassWin()
     delete ui;
 }
 
-void ChooseClassWin::addLine()
+void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTeacher, int connectNum, double creditNum, QString duringTime)
 {
     ui->CoursesList->setRowCount(ui->CoursesList->rowCount()+1);
     int row=ui->CoursesList->rowCount();
@@ -163,7 +163,7 @@ void ChooseClassWin::addLine()
 
 }
 
-void ChooseClassWin::addChooseLine()
+void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nameOfTeacher, int connectNum, double creditNum, QString duringTime)
 {
     ui->ChooseList->setRowCount(ui->CoursesList->rowCount()+1);
     int row=ui->CoursesList->rowCount();
