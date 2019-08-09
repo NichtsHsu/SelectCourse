@@ -18,6 +18,7 @@ public:
     void addChooseLine(QString itemName="", int itemNumber=0, QString nameOfTeacher="", int connectNum=0, double creditNum=0, QString duringTime="");
     void addLine(QString itemName="", int itemNumber=0, QString nameOfTeacher="", int connectNum=0, double creditNum=0, QString duringTime="");
 
+    void addClassToTable(QString str, int x, int y, int len);
 private slots:
     void clickChooseCourse();
 

@@ -64,10 +64,10 @@ public:
         backBtn = new QPushButton(ChooseClassWin);
         backBtn->setObjectName(QString::fromUtf8("backBtn"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8("icon/bcak.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/icons/icon/bcak.png"), QSize(), QIcon::Normal, QIcon::Off);
         backBtn->setIcon(icon);
         backBtn->setAutoDefault(false);
-        backBtn->setFlat(false);
+        backBtn->setFlat(true);
 
         horizontalLayout_4->addWidget(backBtn);
 

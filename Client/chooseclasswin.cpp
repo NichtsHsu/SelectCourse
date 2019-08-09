@@ -15,6 +15,9 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     this->showMaximized();
 
     ui->chooseCoursesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->chooseCoursesTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+//设置CoursesList
     ui->CoursesList->setColumnCount(7); //设置列数
     ui->CoursesList->horizontalHeader()->setSectionsClickable(false); //设置表头不可点击（默认点击后进行排序）
 
@@ -85,6 +88,8 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     "QScrollBar::sub-line{background:transparent;}"
     "QScrollBar::add-line{background:transparent;}");
 
+
+    //调试代码
     QString cname=u8"数据库系统";
     QString teacher=u8"li";
     QString dtime=u8"周一 5-6";
@@ -95,6 +100,8 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     QString dtime1=u8"周一 5-6";
     addChooseLine(cname1,123,teacher1,0,456,dtime1);
 
+
+    addClassToTable(u8"数据库系统",0,4,2);
 }
 
 
@@ -173,6 +180,15 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
     ui->CoursesList->setCellWidget(row-1,6,widget_7);
 
+}
+
+void ChooseClassWin::addClassToTable(QString str,int x,int y,int len)
+{
+    ui->chooseCoursesTable->setSpan(y,x,len,1);
+    QTableWidgetItem *item=new QTableWidgetItem();
+    item->setText(str);
+    item->setTextAlignment(Qt::AlignCenter);
+    ui->chooseCoursesTable->setItem(y,x,item);
 }
 
 void ChooseClassWin::clickChooseCourse()

@@ -1,14 +1,16 @@
 ﻿#include "mainwindow.h"
 #include <QApplication>
-#include <chooseclasswin.h>
 #include <QTextCodec>
+#include <login.h>
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
     MainWindow w;
     //w.show();
-    ChooseClassWin x;
-    x.show();
+
+
+    Login y;
+    y.show();
     return a.exec();
 }

@@ -230,6 +230,7 @@ Makefile: ..\Client\Client.pro D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\win32-m
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\qt_config.prf \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\win32-msvc\qmake.conf \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\exclusive_builds.prf \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\common\msvc-version.conf \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\toolchain.prf \
@@ -412,6 +413,7 @@ D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\qt_functions.prf:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\qt_config.prf:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\win32-msvc\qmake.conf:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\exclusive_builds.prf:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\common\msvc-version.conf:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\toolchain.prf:

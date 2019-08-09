@@ -26,15 +26,18 @@ CONFIG += c++11
 
 SOURCES += \
         chooseclasswin.cpp \
+        login.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
         chooseclasswin.h \
+        login.h \
         mainwindow.h
 
 FORMS += \
         chooseclasswin.ui \
+        login.ui \
         mainwindow.ui
 
 # Default rules for deployment.
