@@ -4,6 +4,7 @@
 #include <QTextCodec>
 #include <QLabel>
 #include <QTextCodec>
+#include <QDebug>
 ChooseClassWin::ChooseClassWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChooseClassWin)
@@ -89,7 +90,10 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     QString dtime=u8"周一 5-6";
     addLine(cname,123,teacher,0,456,dtime);
 
-    addChooseLine();
+    QString cname1=u8"数据库系统";
+    QString teacher1=u8"li";
+    QString dtime1=u8"周一 5-6";
+    addChooseLine(cname1,123,teacher1,0,456,dtime1);
 
 }
 
@@ -134,8 +138,10 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QWidget *x=new QWidget;
 
     QHBoxLayout *l = new QHBoxLayout();
-    l->addWidget((new QPushButton(u8"查看课程简介")));
+    QPushButton * btn=new QPushButton(u8"查看课程简介");
+    l->addWidget(btn);
     x->setLayout(l);
+    connect(btn,SIGNAL(clicked()),this,SLOT(clickChooseCourse()));
 
     ui->CoursesList->setCellWidget(row-1,3,x);
 
@@ -159,13 +165,25 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
 //7
     QWidget *widget_7=new QWidget;
-
+    QPushButton *ptn=new QPushButton(u8"选课");
     QHBoxLayout *layout_7 = new QHBoxLayout();
-    layout_7->addWidget((new QPushButton(u8"选课")));
+    layout_7->addWidget(ptn);
     widget_7->setLayout(layout_7);
+    connect(ptn,SIGNAL(clicked()),this,SLOT(clickChooseCourse()));
 
     ui->CoursesList->setCellWidget(row-1,6,widget_7);
 
+}
+
+void ChooseClassWin::clickChooseCourse()
+{
+    qDebug()<<"hh";
+    QPoint cur=mapToParent( cursor().pos());
+    qDebug()<<cur;
+
+    qDebug()<< ui->ChooseList->indexAt(cur);
+    //qDebug()<<ui->ChooseList->row(item);
+    //qDebug()<<ui->ChooseList->column(item);
 }
 
 void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nameOfTeacher, int connectNum, double creditNum, QString duringTime)
