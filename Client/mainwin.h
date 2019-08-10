@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "login.h"
+#include "chooseclasswin.h"
+
 namespace Ui {
 class mainwin;
 }
@@ -15,9 +17,11 @@ public:
     explicit mainwin(QWidget *parent = nullptr);
     ~mainwin();
 
+    void addClassToTable(QString str,int x,int y,int len);
+
 private:
     Ui::mainwin *ui;
-    Login* login;
+    ChooseClassWin *cWin;
 };
 
 #endif // MAINWIN_H

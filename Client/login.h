@@ -1,4 +1,4 @@
-#ifndef LOGIN_H
+﻿#ifndef LOGIN_H
 #define LOGIN_H
 
 #include <QWidget>
@@ -19,9 +19,29 @@ public:
 signals:
     void choosedLogin();
 
+protected:
+
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+
+
+
+private slots:
+
+    void loginPush();
+
+    void on_minimumBtn_clicked();
+
+    void on_closeBtn_clicked();
+
 private:
 //    QPushButton* login;
 //    QPushButton* find_psw;
+
+    QPoint m_Press;
+    QPoint m_Move;
+    bool leftBtnClk;
 };
 
 #endif // LOGIN_H

@@ -74,7 +74,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="chooseClassButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -162,12 +162,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QTableWidget" name="tableWidget">
-        <row>
-         <property name="text">
-          <string/>
-         </property>
-        </row>
+       <widget class="QTableWidget" name="classTable">
         <row>
          <property name="text">
           <string>1</string>
@@ -259,6 +254,9 @@
          </property>
         </column>
         <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
          <property name="font">
           <font>
            <stylestrategy>NoAntialias</stylestrategy>
