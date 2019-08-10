@@ -1,11 +1,30 @@
-﻿#ifndef SQLITEDATABASE_H
-#define SQLITEDATABASE_H
+﻿#ifndef MAP_SQL_SQLITE_H
+#define MAP_SQL_SQLITE_H
 
 #include <QtSql/QtSql>
 #include <QTime>
 #include <QRandomGenerator>
-
 #include "message/message.h"
+
+enum class SQLiteDataType
+{
+    INTEGER, TEXT, REAL
+};
+
+/**
+ * @brief The DataTable struct
+ * Structure of a data table.
+ * The column of auto increment index will named with the first column and must be integer.
+ * If hasAutoIncrementIndex is true, the primaryKey must be the auto increment index.
+ */
+struct SQLiteTable
+{
+    QString tableName;
+    QList<QPair<QString, SQLiteDataType>> columns;
+    bool hasAutoIncrementIndex;
+    QStringList primaryKeys;
+};
+
 
 class SQLiteDatabase : public QObject
 {
@@ -14,25 +33,6 @@ class SQLiteDatabase : public QObject
 public:
     SQLiteDatabase(const QString &databasePath);
     ~SQLiteDatabase();
-
-    enum class DataType
-    {
-        INTEGER, TEXT, REAL
-    };
-
-    /**
-     * @brief The DataTable struct
-     * Structure of a data table.
-     * The column of auto increment index will named with the first column and must be integer.
-     * If hasAutoIncrementIndex is true, the primaryKey must be the auto increment index.
-     */
-    struct DataTable
-    {
-        QString tableName;
-        QList<QPair<QString, SQLiteDatabase::DataType>> columns;
-        bool hasAutoIncrementIndex;
-        QString primaryKey;
-    };
 
     /**
      * @brief isValid
@@ -56,19 +56,19 @@ public:
      * Return whether create table successfully.
      * If this table already exists, it will return false too.
      */
-    bool createTable(const DataTable &table);
+    bool createTable(const SQLiteTable &table);
 
     /**
      * @brief insert
      * Insert a new record or replace existed record into a table.
      * @param table
      * Table which used.
-     * @param record
-     * All values of this record.
+     * @param recordWithoutAutoIncrementIndex
+     * All values of this record without auto increment index.
      * @return
      * return whether successfully executed.
      */
-    bool insert(const DataTable &table, const QVariantList &record);
+    bool insert(const SQLiteTable &table, const QVariantList &recordWithoutAutoIncrementIndex);
 
     /**
      * @brief update
@@ -84,7 +84,18 @@ public:
      * @return
      * return whether successfully executed.
      */
-    bool update(const DataTable &table, const QString &primaryKeyValue, const QString &columnName, const QVariant &value);
+    bool update(const SQLiteTable &table, const QStringList &primaryKeyValues, const QString &columnName, const QVariant &value);
+
+    /**
+     * @brief replace
+     * Replace a record.
+     * @param table
+     * Table which used.
+     * @param record
+     * All values of this record.
+     * @return
+     */
+    bool replace(const SQLiteTable &table, const QVariantList &record);
 
     /**
      * @brief read
@@ -98,7 +109,7 @@ public:
      * @return
      * Return the specified value by primary key and column.
      */
-    QVariant read(const DataTable &table, const QString &primaryKeyValue, const QString &columnName);
+    QVariant read(const SQLiteTable &table, const QStringList &primaryKeyValues, const QString &columnName);
 
     /**
      * @brief read
@@ -110,7 +121,7 @@ public:
      * @return
      * Return all values in a specified record.
      */
-    QVariantList read(const DataTable &table, const QString &primaryKeyValue);
+    QVariantList read(const SQLiteTable &table, const QStringList &primaryKeyValues);
 
     /**
      * @brief readColumn
@@ -123,7 +134,7 @@ public:
      * Optional condition.
      * @return
      */
-    QVariantList readColumn(const DataTable &table, const QString &columnName, const QString &condition = QString());
+    QVariantList readColumn(const SQLiteTable &table, const QString &columnName, const QString &condition = QString());
 
     /**
      * @brief remove
@@ -136,7 +147,7 @@ public:
      * return whether successfully executed.
      */
     bool remove(const QString &tableName, const QString &condition);
-    bool remove(const DataTable &table, const QString &condition);
+    bool remove(const SQLiteTable &table, const QString &condition);
 
     /**
      * @brief exists
@@ -145,7 +156,7 @@ public:
      * Table name.
      */
     bool exists(const QString &tableName);
-    bool exists(const DataTable &table);
+    bool exists(const SQLiteTable &table);
 
     /**
      * @brief drop
@@ -156,7 +167,7 @@ public:
      * return whether successfully executed.
      */
     bool drop(const QString &tableName);
-    bool drop(const DataTable &table);
+    bool drop(const SQLiteTable &table);
 
     /**
      * @brief exec
@@ -167,6 +178,13 @@ public:
      * Return whether successfully executed.
      */
     bool exec(const QString &sentence);
+
+    /**
+     * @brief getRecordNumber
+     * Get Record Number.
+     * @return
+     */
+    size_t getRecordNumber(const SQLiteTable &table);
 
     /**
      * @brief close
