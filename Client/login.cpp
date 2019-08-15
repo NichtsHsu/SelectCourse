@@ -1,6 +1,7 @@
 ﻿#include "login.h"
 #include "ui_login.h"
 #include "chooseclasswin.h"
+#include "mainwin.h"
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
 Login::Login(QWidget *parent) :
@@ -73,8 +74,8 @@ void Login::mouseMoveEvent(QMouseEvent *event)
 void Login::loginPush()
 {
     this->close();
-    ChooseClassWin *cWin=new ChooseClassWin();
-    cWin->show();
+    mainwin *mWin=new mainwin();
+    mWin->show();
 }
 
 void Login::on_minimumBtn_clicked()

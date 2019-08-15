@@ -5,6 +5,10 @@
 #include <QLabel>
 #include <QTextCodec>
 #include <QDebug>
+#include <QDialog>
+#include <QPlainTextEdit>
+#include <QVBoxLayout>
+
 ChooseClassWin::ChooseClassWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChooseClassWin)
@@ -13,6 +17,7 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
 
     ui->setupUi(this);
     this->showMaximized();
+
 
     ui->chooseCoursesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->chooseCoursesTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -53,13 +58,13 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     "QScrollBar::add-line{background:transparent;}");
 
 
-//设置ChooseList
-    ui->ChooseList->setColumnCount(5); //设置列数
+    //设置ChooseList
+    ui->ChooseList->setColumnCount(6); //设置列数
     ui->ChooseList->horizontalHeader()->setSectionsClickable(false); //设置表头不可点击（默认点击后进行排序）
 
     //设置表头内容
     QStringList header2;
-    header2<<tr(u8"课程名称")<<tr(u8"课程代码")<<tr(u8"讲师")<<tr(u8"学分")<<tr(u8"时间段");
+    header2<<tr(u8"课程名称")<<tr(u8"课程代码")<<tr(u8"讲师")<<tr(u8"学分")<<tr(u8"时间段")<<tr(u8"退选");
     ui->ChooseList->setHorizontalHeaderLabels(header2);
 
     //设置表头字体加粗
@@ -88,18 +93,53 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     "QScrollBar::sub-line{background:transparent;}"
     "QScrollBar::add-line{background:transparent;}");
 
+    connect(ui->backBtn, &QPushButton::clicked, [this](){
+        emit backBtnClicked();
+    });
+
+    // 预选课程表
+    ui->chooseCoursesTable->setEditTriggers(QAbstractItemView::NoEditTriggers); // 设置不可编辑
+
+    connect(this, &ChooseClassWin::courseDetailsClicked, this, &ChooseClassWin::clickCourseDetail);
+
+
 
     //调试代码
     QString cname=u8"数据库系统";
     QString teacher=u8"li";
     QString dtime=u8"周一 5-6";
     addLine(cname,123,teacher,0,456,dtime);
+    addChooseLine(cname, 123, teacher, 0, 4, dtime);
+    addClassToTable(u8"数据库系统",0,4,2);
 
-    QString cname1=u8"数据库系统";
-    QString teacher1=u8"li";
-    QString dtime1=u8"周一 5-6";
-    addChooseLine(cname1,123,teacher1,0,456,dtime1);
+    QString cname1=u8"计算机网络";
+    QString teacher1=u8"wang";
+    QString dtime1=u8"周二 3-4 && 周五 5-6";
+    addLine(cname1,007,teacher1,0,456,dtime1);
+    addChooseLine(cname1,007,teacher1,0,4,dtime1);
+    addClassToTable(u8"计算机网络",4,4,2);
+    addClassToTable(u8"计算机网络",1,2,2);
 
+    QString cname2=u8"编译原理";
+    QString teacher2=u8"xu";
+    QString dtime2=u8"周二 5-7";
+    addLine(cname2, 117, teacher2, 0, 3.5, dtime2);
+    addChooseLine(cname2, 117, teacher2, 0, 3.5, dtime2);
+    addClassToTable(u8"编译原理",1,4,3);
+
+    QString cname3 = u8"操作系统";
+    QString teacher3 = u8"chen";
+    QString dtime3 = u8"周四 1-4";
+    addLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
+    addChooseLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
+    addClassToTable(u8"操作系统", 3, 0, 4);
+
+    QString cname4 = u8"大学英语";
+    QString teacher4 = u8"yu";
+    QString dtime4 = u8"周三 1-2";
+    addLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
+    addChooseLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
+    addClassToTable(u8"大学英语", 2, 0, 2);
 
     addClassToTable(u8"数据库系统",0,4,2);
 }
@@ -148,7 +188,9 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QPushButton * btn=new QPushButton(u8"查看课程简介");
     l->addWidget(btn);
     x->setLayout(l);
-    connect(btn,SIGNAL(clicked()),this,SLOT(clickChooseCourse()));
+    connect(btn,&QPushButton::clicked,[this,itemName,itemNumber](){
+        emit courseDetailsClicked(itemName,itemNumber);
+    });
 
     ui->CoursesList->setCellWidget(row-1,3,x);
 
@@ -202,6 +244,30 @@ void ChooseClassWin::clickChooseCourse()
     //qDebug()<<ui->ChooseList->column(item);
 }
 
+void ChooseClassWin::clickCourseDetail(QString itemName,int itemNumber)
+{
+    qDebug()<<itemName<<endl;
+    QDialog* description = new QDialog(this);                   // 对话框
+    description->setWindowTitle(itemName);
+    description->setAttribute(Qt::WA_DeleteOnClose);
+
+    QPlainTextEdit * detail = new QPlainTextEdit();             // 显示课程详情
+    detail->setLineWrapMode(QPlainTextEdit::WidgetWidth);       // 软换行
+    detail->setReadOnly(true);                                  // 只读
+
+    auto cursor = detail->textCursor();
+    cursor.movePosition(QTextCursor::End);
+    cursor.insertText(u8"课程名字：" + itemName + "\n");
+    cursor.insertText(u8"课程代码：" +QString::number(itemNumber) + "\n");
+
+    QVBoxLayout* vbox = new QVBoxLayout();
+    vbox->addWidget(detail);
+
+    description->setLayout(vbox);
+
+    description->show();
+}
+
 void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nameOfTeacher, int connectNum, double creditNum, QString duringTime)
 {
     ui->ChooseList->setRowCount(ui->CoursesList->rowCount()+1);
@@ -252,6 +318,17 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 
     ui->ChooseList->setCellWidget(row-1,4,widget_6);
 
+//7
+    QWidget *widget_7=new QWidget;
+    QPushButton *ptn=new QPushButton(u8"退选");
+    QHBoxLayout *layout_7 = new QHBoxLayout();
+    layout_7->addWidget(ptn);
+    widget_7->setLayout(layout_7);
+    connect(ptn, &QPushButton::clicked, [itemName](){
+        qDebug()<<"tui"<< itemName;
+    });
+
+    ui->ChooseList->setCellWidget(row-1,5,widget_7);
 
 
 }

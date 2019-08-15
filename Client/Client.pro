@@ -28,17 +28,20 @@ SOURCES += \
         chooseclasswin.cpp \
         login.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    mainwin.cpp
 
 HEADERS += \
         chooseclasswin.h \
         login.h \
-        mainwindow.h
+        mainwindow.h \
+    mainwin.h
 
 FORMS += \
         chooseclasswin.ui \
         login.ui \
-        mainwindow.ui
+        mainwindow.ui \
+    mainwin.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

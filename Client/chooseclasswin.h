@@ -21,7 +21,11 @@ public:
     void addClassToTable(QString str, int x, int y, int len);
 private slots:
     void clickChooseCourse();
+    void clickCourseDetail(QString itemName, int itemNumber);
 
+signals:
+    void backBtnClicked();
+    void courseDetailsClicked(QString, int);
 
 private:
 
