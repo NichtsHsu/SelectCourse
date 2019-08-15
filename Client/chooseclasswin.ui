@@ -26,8 +26,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>icon/bcak.png</normaloff>icon/bcak.png</iconset>
+            <iconset resource="src.qrc">
+             <normaloff>:/icons/icon/bcak.png</normaloff>:/icons/icon/bcak.png</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -36,7 +36,7 @@
             <bool>false</bool>
            </property>
            <property name="flat">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -272,6 +272,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="src.qrc"/>
+ </resources>
  <connections/>
 </ui>

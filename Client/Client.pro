@@ -26,16 +26,22 @@ CONFIG += c++11
 
 SOURCES += \
         chooseclasswin.cpp \
+        login.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    mainwin.cpp
 
 HEADERS += \
         chooseclasswin.h \
-        mainwindow.h
+        login.h \
+        mainwindow.h \
+    mainwin.h
 
 FORMS += \
         chooseclasswin.ui \
-        mainwindow.ui
+        login.ui \
+        mainwindow.ui \
+    mainwin.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

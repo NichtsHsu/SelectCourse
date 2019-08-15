@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/icons">
         <file>icon/bcak.png</file>
+        <file>icon/close.png</file>
+        <file>icon/minimum.png</file>
+    </qresource>
+    <qresource prefix="/background">
+        <file>background/background.jpg</file>
+        <file>background/background_2.jpg</file>
     </qresource>
 </RCC>
