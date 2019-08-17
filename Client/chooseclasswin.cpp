@@ -15,6 +15,7 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
 {
 
 
+
     ui->setupUi(this);
     this->showMaximized();
 
@@ -339,3 +340,5 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 
 
 }
+
+

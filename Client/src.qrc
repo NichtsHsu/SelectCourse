@@ -9,5 +9,7 @@
     <qresource prefix="/background">
         <file>background/background.jpg</file>
         <file>background/background_2.jpg</file>
+        <file>background/background_4.jpg</file>
+        <file>background/background_3.png</file>
     </qresource>
 </RCC>

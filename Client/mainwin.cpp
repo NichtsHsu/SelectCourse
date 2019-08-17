@@ -2,17 +2,36 @@
 #include "ui_mainwin.h"
 #include <QDebug>
 #include <QPushButton>
+#include <QMouseEvent>
+#include <QGraphicsDropShadowEffect>
 
 mainwin::mainwin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::mainwin)
 {
 
+    this->setWindowFlags(Qt::FramelessWindowHint);
+
 
     ui->setupUi(this);
 
+    this->setAttribute(Qt::WA_TranslucentBackground, true);
+        //设置无边框
+        this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        //实例阴影shadow
+        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
+        //设置阴影距离
+        shadow->setOffset(0, 0);
+        //设置阴影颜色
+        shadow->setColor(QColor("#444444"));
+        //设置阴影圆角
+        shadow->setBlurRadius(10);
+        //给嵌套QWidget设置阴影
+        ui->frame->setGraphicsEffect(shadow);
+        //给垂直布局器设置边距(此步很重要, 设置宽度为阴影的宽度)
+        //ui->Login->setMargin(24);
 
-    this->showMaximized();
+
 
     //设置icon和标题
     QIcon *icon=new QIcon(":/icons/icon/school.png");
@@ -30,7 +49,7 @@ mainwin::mainwin(QWidget *parent) :
     ui->classTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     connect(ui->chooseClassButton, &QPushButton::clicked, [this](){
-        this->close();
+        this->hide();
         cWin->show();
     });
 
@@ -83,4 +102,49 @@ void mainwin::addClassToTable(QString str,int x,int y,int len)
     item->setText(str);
     item->setTextAlignment(Qt::AlignCenter);
     ui->classTable->setItem(y,x,item);
+}
+
+
+
+void mainwin::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button()== Qt::LeftButton&& ui->topBar->frameRect().contains(event->globalPos() - this->frameGeometry().topLeft()))
+    {
+
+        m_Press = event->globalPos();
+        leftBtnClk = true;
+    }
+    event->ignore();
+}
+
+void mainwin::mouseReleaseEvent(QMouseEvent *event)
+{
+    if( event->button() == Qt::LeftButton ){
+            leftBtnClk = false;
+        }
+        event->ignore();
+}
+
+void mainwin::mouseMoveEvent(QMouseEvent *event)
+{
+    if( leftBtnClk ){
+           m_Move = event->globalPos();
+           this->move( this->pos() + m_Move - m_Press );
+           m_Press = m_Move;
+     }
+       event->ignore();
+
+}
+
+
+
+void mainwin::on_closeBtn_clicked()
+{
+    exit(0);
+}
+
+void mainwin::on_minimumBtn_clicked()
+{
+    this->showMinimized();
+
 }

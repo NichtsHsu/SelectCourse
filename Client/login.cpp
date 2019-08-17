@@ -4,11 +4,16 @@
 #include "mainwin.h"
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
+
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
 {
     ui->setupUi(this);
+
+    QIcon *icon=new QIcon(":/icons/icon/school.png");
+
+    this->setWindowIcon(*icon);
 
     this->setWindowFlags(Qt::SplashScreen);
 

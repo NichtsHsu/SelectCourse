@@ -190,6 +190,8 @@ debug\qrc_src.cpp: ..\Client\src.qrc \
 		..\Client\icon\bcak.png \
 		..\Client\icon\close.png \
 		..\Client\icon\minimum.png \
+		..\Client\icon\choose.png \
+		..\Client\icon\school.png \
 		..\Client\background\background_2.jpg \
 		..\Client\background\background.jpg
 	D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\bin\rcc.exe -name src ..\Client\src.qrc -o debug\qrc_src.cpp
@@ -1374,6 +1376,7 @@ debug\mainwin.obj: ..\Client\mainwin.cpp ..\Client\mainwin.h \
 		..\Client\chooseclasswin.h \
 		ui_mainwin.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\QVariant \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\QIcon \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QApplication \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qapplication.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qcoreapplication.h \
@@ -1396,6 +1399,7 @@ debug\mainwin.obj: ..\Client\mainwin.cpp ..\Client\mainwin.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qrubberband.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QFrame \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QGridLayout \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qlayout.h \
@@ -1413,6 +1417,8 @@ debug\mainwin.obj: ..\Client\mainwin.cpp ..\Client\mainwin.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QTableWidget \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtablewidget.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtableview.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QToolButton \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtoolbutton.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\QDebug
 

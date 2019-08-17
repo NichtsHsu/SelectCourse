@@ -23,6 +23,7 @@ private slots:
     void clickChooseCourse();
     void clickCourseDetail(QString itemName, int itemNumber);
 
+
 signals:
     void backBtnClicked();
     void courseDetailsClicked(QString, int);
