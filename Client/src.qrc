@@ -3,6 +3,8 @@
         <file>icon/bcak.png</file>
         <file>icon/close.png</file>
         <file>icon/minimum.png</file>
+        <file>icon/school.png</file>
+        <file>icon/choose.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>background/background.jpg</file>

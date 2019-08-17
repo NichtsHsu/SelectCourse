@@ -7,7 +7,20 @@ mainwin::mainwin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::mainwin)
 {
+
+
     ui->setupUi(this);
+
+
+    this->showMaximized();
+
+    //设置icon和标题
+    QIcon *icon=new QIcon(":/icons/icon/school.png");
+
+    this->setWindowIcon(*icon);
+
+    this->setWindowTitle(u8"华南理工大学选课系统--选课界面");
+
 
     cWin = new ChooseClassWin();
     cWin->hide();

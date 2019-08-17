@@ -76,12 +76,6 @@ static const uint qt_meta_data_ChooseClassWin[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    6,    7,
 
- // slots: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x08 /* Private */,
-
- // slots: parameters
-    QMetaType::Void,
-
        0        // eod
 };
 
