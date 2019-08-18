@@ -108,7 +108,7 @@ void mainwin::addClassToTable(QString str,int x,int y,int len)
 
 void mainwin::mousePressEvent(QMouseEvent *event)
 {
-    if(event->button()== Qt::LeftButton&& ui->topBar->frameRect().contains(event->globalPos() - this->frameGeometry().topLeft()))
+    if(event->button()== Qt::LeftButton&& ui->topBar_3->frameRect().contains(event->globalPos() - this->frameGeometry().topLeft()))
     {
 
         m_Press = event->globalPos();
@@ -120,6 +120,7 @@ void mainwin::mousePressEvent(QMouseEvent *event)
 void mainwin::mouseReleaseEvent(QMouseEvent *event)
 {
     if( event->button() == Qt::LeftButton ){
+
             leftBtnClk = false;
         }
         event->ignore();
@@ -128,6 +129,7 @@ void mainwin::mouseReleaseEvent(QMouseEvent *event)
 void mainwin::mouseMoveEvent(QMouseEvent *event)
 {
     if( leftBtnClk ){
+
            m_Move = event->globalPos();
            this->move( this->pos() + m_Move - m_Press );
            m_Press = m_Move;

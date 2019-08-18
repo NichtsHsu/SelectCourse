@@ -37,7 +37,7 @@ private:
 
     QPoint m_Press;
     QPoint m_Move;
-    bool leftBtnClk;
+    bool leftBtnClk=false;
 
 
 };

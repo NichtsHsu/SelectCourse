@@ -5,6 +5,8 @@
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
 
+#include <QDebug>
+
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
@@ -59,7 +61,8 @@ void Login::mousePressEvent(QMouseEvent *event)
 void Login::mouseReleaseEvent(QMouseEvent *event)
 {
     if( event->button() == Qt::LeftButton ){
-            leftBtnClk = false;
+
+        leftBtnClk = false;
         }
         event->ignore();
 }
@@ -67,6 +70,7 @@ void Login::mouseReleaseEvent(QMouseEvent *event)
 void Login::mouseMoveEvent(QMouseEvent *event)
 {
     if( leftBtnClk ){
+
            m_Move = event->globalPos();
            this->move( this->pos() + m_Move - m_Press );
            m_Press = m_Move;

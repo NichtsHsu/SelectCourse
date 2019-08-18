@@ -190,9 +190,13 @@ debug\qrc_src.cpp: ..\Client\src.qrc \
 		..\Client\icon\bcak.png \
 		..\Client\icon\close.png \
 		..\Client\icon\minimum.png \
+		..\Client\icon\Account.png \
 		..\Client\icon\choose.png \
+		..\Client\icon\lock.png \
 		..\Client\icon\school.png \
 		..\Client\background\background_2.jpg \
+		..\Client\background\background_3.png \
+		..\Client\background\background_4.jpg \
 		..\Client\background\background.jpg
 	D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\bin\rcc.exe -name src ..\Client\src.qrc -o debug\qrc_src.cpp
 
@@ -807,6 +811,8 @@ debug\chooseclasswin.obj: ..\Client\chooseclasswin.cpp ..\Client\chooseclasswin.
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qguiapplication.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QFrame \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QGridLayout \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qlayout.h \
@@ -817,7 +823,6 @@ debug\chooseclasswin.obj: ..\Client\chooseclasswin.cpp ..\Client\chooseclasswin.
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qheaderview.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractitemview.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
@@ -857,7 +862,9 @@ debug\chooseclasswin.obj: ..\Client\chooseclasswin.cpp ..\Client\chooseclasswin.
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qtextlayout.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qglyphrun.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qrawfont.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qfontdatabase.h
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QGraphicsDropShadowEffect \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qgraphicseffect.h
 
 debug\login.obj: ..\Client\login.cpp ..\Client\login.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
@@ -977,22 +984,8 @@ debug\login.obj: ..\Client\login.cpp ..\Client\login.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qguiapplication.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QComboBox \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qcombobox.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qregularexpression.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtabwidget.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QFrame \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QGridLayout \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qlayout.h \
@@ -1008,6 +1001,8 @@ debug\login.obj: ..\Client\login.cpp ..\Client\login.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qpen.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QSpacerItem \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QToolButton \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtoolbutton.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QVBoxLayout \
 		..\Client\chooseclasswin.h \
 		..\Client\mainwin.h \
@@ -1246,6 +1241,7 @@ debug\mainwindow.obj: ..\Client\mainwindow.cpp ..\Client\mainwindow.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qicon.h \
 		ui_mainwindow.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\QVariant \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\QIcon \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QApplication \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qapplication.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qcoreapplication.h \
@@ -1253,16 +1249,47 @@ debug\mainwindow.obj: ..\Client\mainwindow.cpp ..\Client\mainwindow.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qguiapplication.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QMenuBar \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qmenubar.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qmenu.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qaction.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qactiongroup.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QStatusBar \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qstatusbar.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QToolBar \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtoolbar.h \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QWidget
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QComboBox \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qcombobox.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\qvalidator.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qregularexpression.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QFrame \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QGridLayout \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qgridlayout.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QHBoxLayout \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QHeaderView \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qheaderview.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\qitemselectionmodel.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QLabel \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qlabel.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QPushButton \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qpushbutton.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QSpacerItem \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QTableWidget \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtablewidget.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtableview.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QToolButton \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtoolbutton.h \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QVBoxLayout \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\QDebug \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\QMouseEvent
 
 debug\mainwin.obj: ..\Client\mainwin.cpp ..\Client\mainwin.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
@@ -1420,7 +1447,10 @@ debug\mainwin.obj: ..\Client\mainwin.cpp ..\Client\mainwin.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QToolButton \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qtoolbutton.h \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\QDebug
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtCore\QDebug \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtGui\QMouseEvent \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\QGraphicsDropShadowEffect \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\include\QtWidgets\qgraphicseffect.h
 
 debug\qrc_src.obj: debug\qrc_src.cpp 
 
