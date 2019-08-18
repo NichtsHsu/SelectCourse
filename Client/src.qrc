@@ -5,6 +5,8 @@
         <file>icon/minimum.png</file>
         <file>icon/school.png</file>
         <file>icon/choose.png</file>
+        <file>icon/lock.png</file>
+        <file>icon/Account.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>background/background.jpg</file>

@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -20,6 +19,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -33,14 +33,24 @@ public:
     QGridLayout *gridLayout_3;
     QVBoxLayout *verticalLayout;
     QLabel *label_3;
+    QFrame *frame_2;
+    QGridLayout *gridLayout_4;
     QGridLayout *gridLayout;
-    QLabel *label;
+    QSpacerItem *horizontalSpacer_3;
+    QFrame *line;
+    QFrame *line_2;
+    QSpacerItem *horizontalSpacer_2;
     QSpacerItem *verticalSpacer;
-    QLineEdit *lineEdit;
-    QComboBox *comboBox;
-    QLabel *label_2;
+    QSpacerItem *verticalSpacer_3;
     QSpacerItem *verticalSpacer_2;
     QPushButton *login_button;
+    QHBoxLayout *horizontalLayout_2;
+    QToolButton *toolButton_2;
+    QLineEdit *lineEdit;
+    QHBoxLayout *horizontalLayout;
+    QToolButton *toolButton;
+    QLineEdit *comboBox;
+    QSpacerItem *verticalSpacer_4;
     QFrame *topBar;
     QHBoxLayout *topLine;
     QSpacerItem *horizontalSpacer;
@@ -66,7 +76,7 @@ public:
         frame = new QFrame(Login);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setStyleSheet(QString::fromUtf8("QFrame#frame {\n"
-"border-image: url(:/background/background/background_2.jpg);\n"
+"	border-image: url(:/background/background/background_3.png);\n"
 "\n"
 "};\n"
 ""));
@@ -99,50 +109,60 @@ public:
 
         verticalLayout->addWidget(label_3);
 
+        frame_2 = new QFrame(frame);
+        frame_2->setObjectName(QString::fromUtf8("frame_2"));
+        frame_2->setMinimumSize(QSize(0, 40));
+        frame_2->setMaximumSize(QSize(16777215, 16777215));
+        frame_2->setStyleSheet(QString::fromUtf8("QFrame#frame_2 {\n"
+"background-color: rgb(255, 255, 255);\n"
+"}\n"
+""));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
+        gridLayout_4 = new QGridLayout(frame_2);
+        gridLayout_4->setSpacing(0);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        gridLayout_4->setContentsMargins(0, 0, 0, 0);
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(9, -1, 9, 9);
-        label = new QLabel(frame);
-        label->setObjectName(QString::fromUtf8("label"));
+        horizontalSpacer_3 = new QSpacerItem(60, 30, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        gridLayout->addWidget(label, 0, 0, 1, 1);
+        gridLayout->addItem(horizontalSpacer_3, 8, 0, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 25, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        line = new QFrame(frame_2);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setLineWidth(1);
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
 
-        gridLayout->addItem(verticalSpacer, 1, 1, 1, 1);
+        gridLayout->addWidget(line, 6, 1, 1, 1);
 
-        lineEdit = new QLineEdit(frame);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setFocusPolicy(Qt::StrongFocus);
-        lineEdit->setEchoMode(QLineEdit::Password);
+        line_2 = new QFrame(frame_2);
+        line_2->setObjectName(QString::fromUtf8("line_2"));
+        line_2->setLineWidth(1);
+        line_2->setFrameShape(QFrame::HLine);
+        line_2->setFrameShadow(QFrame::Sunken);
 
-        gridLayout->addWidget(lineEdit, 2, 1, 1, 2);
+        gridLayout->addWidget(line_2, 9, 1, 1, 1);
 
-        comboBox = new QComboBox(frame);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy1);
-        QFont font1;
-        font1.setStyleStrategy(QFont::NoAntialias);
-        comboBox->setFont(font1);
-        comboBox->setCursor(QCursor(Qt::IBeamCursor));
-        comboBox->setEditable(true);
+        horizontalSpacer_2 = new QSpacerItem(60, 30, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        gridLayout->addWidget(comboBox, 0, 1, 1, 2);
+        gridLayout->addItem(horizontalSpacer_2, 8, 2, 1, 1);
 
-        label_2 = new QLabel(frame);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-        gridLayout->addWidget(label_2, 2, 0, 1, 1);
+        gridLayout->addItem(verticalSpacer, 10, 1, 1, 1);
 
-        verticalSpacer_2 = new QSpacerItem(20, 25, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_3, 7, 1, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer_2, 3, 1, 1, 1);
 
-        login_button = new QPushButton(frame);
+        login_button = new QPushButton(frame_2);
         login_button->setObjectName(QString::fromUtf8("login_button"));
         login_button->setStyleSheet(QString::fromUtf8("QPushButton#login_button{\n"
 "	width:200px;\n"
@@ -163,10 +183,67 @@ public:
 ""));
         login_button->setFlat(true);
 
-        gridLayout->addWidget(login_button, 4, 1, 1, 1);
+        gridLayout->addWidget(login_button, 11, 1, 1, 1);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        toolButton_2 = new QToolButton(frame_2);
+        toolButton_2->setObjectName(QString::fromUtf8("toolButton_2"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons/icon/lock.png"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_2->setIcon(icon);
+        toolButton_2->setIconSize(QSize(18, 18));
+        toolButton_2->setAutoRaise(true);
+
+        horizontalLayout_2->addWidget(toolButton_2);
+
+        lineEdit = new QLineEdit(frame_2);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setMinimumSize(QSize(0, 25));
+        QFont font1;
+        font1.setPointSize(14);
+        lineEdit->setFont(font1);
+        lineEdit->setFocusPolicy(Qt::StrongFocus);
+        lineEdit->setStyleSheet(QString::fromUtf8("border:none;"));
+        lineEdit->setEchoMode(QLineEdit::Password);
+
+        horizontalLayout_2->addWidget(lineEdit);
 
 
-        verticalLayout->addLayout(gridLayout);
+        gridLayout->addLayout(horizontalLayout_2, 8, 1, 1, 1);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        toolButton = new QToolButton(frame_2);
+        toolButton->setObjectName(QString::fromUtf8("toolButton"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icons/icon/Account.png"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton->setIcon(icon1);
+        toolButton->setIconSize(QSize(18, 18));
+        toolButton->setAutoRaise(true);
+
+        horizontalLayout->addWidget(toolButton);
+
+        comboBox = new QLineEdit(frame_2);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setMinimumSize(QSize(0, 25));
+        comboBox->setFont(font1);
+        comboBox->setStyleSheet(QString::fromUtf8("border:none;"));
+
+        horizontalLayout->addWidget(comboBox);
+
+
+        gridLayout->addLayout(horizontalLayout, 5, 1, 1, 1);
+
+        verticalSpacer_4 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_4, 12, 1, 1, 1);
+
+
+        gridLayout_4->addLayout(gridLayout, 1, 0, 1, 1);
+
+
+        verticalLayout->addWidget(frame_2);
 
 
         gridLayout_3->addLayout(verticalLayout, 1, 0, 1, 1);
@@ -191,9 +268,9 @@ public:
 "    border-style:inset;  \n"
 "}  \n"
 ""));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icons/icon/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
-        minimumBtn->setIcon(icon);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icons/icon/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
+        minimumBtn->setIcon(icon2);
         minimumBtn->setIconSize(QSize(20, 20));
         minimumBtn->setFlat(true);
 
@@ -210,9 +287,9 @@ public:
 "    border-style:inset;  \n"
 "}  \n"
 ""));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/icons/icon/close.png"), QSize(), QIcon::Normal, QIcon::Off);
-        closeBtn->setIcon(icon1);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons/icon/close.png"), QSize(), QIcon::Normal, QIcon::Off);
+        closeBtn->setIcon(icon3);
         closeBtn->setIconSize(QSize(20, 20));
         closeBtn->setFlat(true);
 
@@ -237,9 +314,9 @@ public:
     {
         Login->setWindowTitle(QApplication::translate("Login", "\347\231\273\345\275\225", nullptr));
         label_3->setText(QApplication::translate("Login", "\351\200\211\350\257\276\347\263\273\347\273\237", nullptr));
-        label->setText(QApplication::translate("Login", "\345\255\246\345\217\267\357\274\232", nullptr));
-        label_2->setText(QApplication::translate("Login", "\345\257\206\347\240\201\357\274\232", nullptr));
         login_button->setText(QApplication::translate("Login", "\347\231\273\345\275\225", nullptr));
+        toolButton_2->setText(QApplication::translate("Login", "...", nullptr));
+        toolButton->setText(QString());
         minimumBtn->setText(QString());
         closeBtn->setText(QString());
     } // retranslateUi
