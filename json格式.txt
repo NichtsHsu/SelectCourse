@@ -31,6 +31,7 @@
 		student：[ID：integer]（自增）
 		数据库student下的所有数据表的主键为：
 		accounts：[code：integer]
+		学生学号：[course_id：integer]
 	],
 	values:[
 		当"type"为"write"或者"return"时包含此条。
