@@ -42,7 +42,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>院系：</string>
+         <string>院系�?</string>
         </property>
        </widget>
       </item>
@@ -82,7 +82,7 @@
       <item row="2" column="3">
        <widget class="QLabel" name="label_17">
         <property name="text">
-         <string>任课老师：</string>
+         <string>任课老师�?</string>
         </property>
        </widget>
       </item>
@@ -105,14 +105,14 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>课程名称：</string>
+         <string>课程名称�?</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_19">
         <property name="text">
-         <string>地点：</string>
+         <string>地点�?</string>
         </property>
        </widget>
       </item>
@@ -122,21 +122,21 @@
       <item row="0" column="3">
        <widget class="QLabel" name="label_14">
         <property name="text">
-         <string>开设课程</string>
+         <string>开设课�?</string>
         </property>
        </widget>
       </item>
       <item row="3" column="6">
        <widget class="QPushButton" name="class_btn">
         <property name="text">
-         <string>开设</string>
+         <string>开�?</string>
         </property>
        </widget>
       </item>
       <item row="1" column="3">
        <widget class="QLabel" name="label_27">
         <property name="text">
-         <string>课程ID：</string>
+         <string>课程ID�?</string>
         </property>
        </widget>
       </item>
@@ -149,7 +149,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>时间：</string>
+         <string>时间�?</string>
         </property>
        </widget>
       </item>
@@ -224,7 +224,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label_7">
         <property name="text">
-         <string>描述：</string>
+         <string>描述�?</string>
         </property>
        </widget>
       </item>
@@ -244,7 +244,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>学分：</string>
+         <string>学分�?</string>
         </property>
        </widget>
       </item>
@@ -254,7 +254,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_6">
         <property name="text">
-         <string>院系：</string>
+         <string>院系�?</string>
         </property>
        </widget>
       </item>
@@ -267,7 +267,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>课程名称：</string>
+         <string>课程名称�?</string>
         </property>
        </widget>
       </item>
@@ -324,14 +324,14 @@
         <item>
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>讲师名字：</string>
+           <string>讲师名字�?</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_10">
           <property name="text">
-           <string>院系：</string>
+           <string>院系�?</string>
           </property>
          </widget>
         </item>
@@ -365,14 +365,14 @@
         <item>
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>ID：</string>
+           <string>ID�?</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_29">
           <property name="text">
-           <string>描述：</string>
+           <string>描述�?</string>
           </property>
          </widget>
         </item>
@@ -432,7 +432,7 @@
       <item row="1" column="3">
        <widget class="QLabel" name="label_22">
         <property name="text">
-         <string>院系ID：</string>
+         <string>院系ID�?</string>
         </property>
        </widget>
       </item>
@@ -465,7 +465,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_21">
         <property name="text">
-         <string>院系名称：</string>
+         <string>院系名称�?</string>
         </property>
        </widget>
       </item>
@@ -506,7 +506,7 @@
         <item>
          <widget class="QLabel" name="label_23">
           <property name="text">
-           <string>新增教学楼</string>
+           <string>新增教学�?</string>
           </property>
          </widget>
         </item>
@@ -538,7 +538,7 @@
       <item row="1" column="6">
        <widget class="QLabel" name="label_26">
         <property name="text">
-         <string>容量：</string>
+         <string>容量�?</string>
         </property>
        </widget>
       </item>
@@ -611,14 +611,14 @@
         <item>
          <widget class="QLabel" name="label_11">
           <property name="text">
-           <string>学生姓名：</string>
+           <string>学生姓名�?</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_13">
           <property name="text">
-           <string>院系：</string>
+           <string>院系�?</string>
           </property>
          </widget>
         </item>
@@ -647,7 +647,7 @@
       <item row="1" column="3">
        <widget class="QLabel" name="label_12">
         <property name="text">
-         <string>学号：</string>
+         <string>学号�?</string>
         </property>
        </widget>
       </item>
