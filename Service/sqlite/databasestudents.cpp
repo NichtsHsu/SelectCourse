@@ -32,4 +32,6 @@ void DatabaseStudents::initialize()
 
     self->db_studentTemplate.hasAutoIncrementIndex = false;
     self->db_account.primaryKeys << "course_id";
+    self->db_account.columns << QPair<QString, SQLiteDataType>("course_id", SQLiteDataType::INTEGER)
+            << QPair<QString, SQLiteDataType>("sec_id", SQLiteDataType::INTEGER);
 }
