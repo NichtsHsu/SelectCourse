@@ -77,6 +77,66 @@ void DatabaseCourses::initialize()
             << QPair<QString, SQLiteDataType>("seq", SQLiteDataType::TEXT);
 }
 
+QVariantList DatabaseCourses::readClassroom(const QStringList &primaryKeyValues)
+{
+    return self->m_database->read(self->db_classroom, primaryKeyValues);
+}
+
+QVariantList DatabaseCourses::readCourse(const QStringList &primaryKeyValues)
+{
+    return self->m_database->read(self->db_course, primaryKeyValues);
+}
+
+QVariantList DatabaseCourses::readDepartment(const QStringList &primaryKeyValues)
+{
+    return self->m_database->read(self->db_department, primaryKeyValues);
+}
+
+QVariantList DatabaseCourses::readInstructor(const QStringList &primaryKeyValues)
+{
+    return self->m_database->read(self->db_instructor, primaryKeyValues);
+}
+
+QVariantList DatabaseCourses::readSection(const QStringList &primaryKeyValues)
+{
+    return self->m_database->read(self->db_section, primaryKeyValues);
+}
+
+QVariantList DatabaseCourses::readStudent(const QStringList &primaryKeyValues)
+{
+    return self->m_database->read(self->db_student, primaryKeyValues);
+}
+
+QList<QVariantList> DatabaseCourses::readAllClassroom()
+{
+    return self->m_database->readAll(self->db_classroom);
+}
+
+QList<QVariantList> DatabaseCourses::readAllCourse()
+{
+    return self->m_database->readAll(self->db_course);
+}
+
+QList<QVariantList> DatabaseCourses::readAllDepartment()
+{
+    return self->m_database->readAll(self->db_department);
+}
+
+QList<QVariantList> DatabaseCourses::readAllInstructor()
+{
+    return self->m_database->readAll(self->db_instructor);
+}
+
+QList<QVariantList> DatabaseCourses::readAllSection()
+{
+    return self->m_database->readAll(self->db_section);
+}
+
+QList<QVariantList> DatabaseCourses::readAllStudent()
+{
+    return self->m_database->readAll(self->db_student);
+}
+
 void DatabaseCourses::receiveMessage(MessageType type, QString module, QString message)
 {
     emit sendMessage(type, module, message);

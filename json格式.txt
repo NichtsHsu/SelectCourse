@@ -3,7 +3,7 @@
 		这条数据的类型：
 		"read"：从云端读取数据。
 		"write"：向云端写入数据。
-		"return"：回应请求的数据。
+		"return"：回应请求的数据。当写入无误时，服务端也会返回一条return。
 		"error"：发生错误时的回应。
 	"message":
 		当"type"为"error"时包含此条。
@@ -16,8 +16,8 @@
 	"table"：
 		当"type"为"read"或"write"时包含此条。
 		请求访问的数据表。
-		数据库course下包含"classroom", "course", "department", "instructor", "section", "student"数据表。
-		数据库student下包含每个学生以其学号作为数据表名的数据表。
+		数据库courses下包含"classroom", "course", "department", "instructor", "section", "student"数据表。
+		数据库students下包含每个学生以其学号作为数据表名的数据表。
 	"primaryKeyValues":[
 		当"type"为"read"时包含此条。
 		提供读取的记录的主键值。

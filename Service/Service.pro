@@ -32,6 +32,7 @@ SOURCES += \
         message/message.cpp \
         network/jsonparser.cpp \
         sqlite/databasecourses.cpp \
+        sqlite/databasestudents.cpp \
         sqlite/sqlitedatabase.cpp
 
 HEADERS += \
@@ -39,6 +40,7 @@ HEADERS += \
         message/message.h \
         network/jsonparser.h \
         sqlite/databasecourses.h \
+        sqlite/databasestudents.h \
         sqlite/sqlitedatabase.h
 
 FORMS += \

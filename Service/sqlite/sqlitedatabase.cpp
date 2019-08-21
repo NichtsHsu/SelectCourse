@@ -317,7 +317,6 @@ QVariantList SQLiteDatabase::readColumn(const SQLiteTable &table, const QString 
 {
     QString sqlSentence = "SELECT `%1` FROM `%2` WHERE %3";
     sqlSentence = sqlSentence.arg(columnName).arg(table.tableName).arg(condition);
-    qDebug() << sqlSentence;
     QSqlQuery query(QSqlDatabase::database(m_connectionName));
     QVariantList values;
     if(!query.exec(sqlSentence))
@@ -337,6 +336,40 @@ QVariantList SQLiteDatabase::readColumn(const SQLiteTable &table, const QString 
     while(query.next());
 
     return values;
+}
+
+QList<QVariantList> SQLiteDatabase::readAll(const SQLiteTable &table, const QString &condition)
+{
+    QList<QVariantList> valueslist;
+
+    QString sqlSentence = "SELECT * FROM `%1`";
+    sqlSentence = sqlSentence.arg(table.tableName);
+    if(!condition.isEmpty())
+        sqlSentence += " WHERE " + condition;
+
+    QSqlQuery query(QSqlDatabase::database(m_connectionName));
+    if(!query.exec(sqlSentence))
+    {
+        emit sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1. Executing : %2.").arg(query.lastError().text()).arg(sqlSentence));
+        return valueslist;
+    }
+
+    if(!query.seek(0))
+    {
+        emit sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1. Executing : %2.").arg(query.lastError().text()).arg(sqlSentence));
+        return valueslist;
+    }
+
+    do
+    {
+        QVariantList values;
+        for(int i = 0; i < table.columns.size(); i++)
+            values << query.value(i);
+        valueslist << values;
+    }
+    while(query.next());
+
+    return valueslist;
 }
 
 bool SQLiteDatabase::remove(const QString &tableName, const QString &condition)

@@ -137,6 +137,14 @@ public:
     QVariantList readColumn(const SQLiteTable &table, const QString &columnName, const QString &condition = QString());
 
     /**
+     * @brief readAll
+     * Read all records by condition.
+     * @param table
+     * @return
+     */
+    QList<QVariantList> readAll(const SQLiteTable &table, const QString &condition = QString());
+
+    /**
      * @brief remove
      * Remove a record by codition.
      * @param tableName
