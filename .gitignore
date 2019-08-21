@@ -35,4 +35,4 @@
 *.user
 *.user*
 **/*.autosave
-build*
+build-*

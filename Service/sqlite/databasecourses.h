@@ -15,12 +15,19 @@ public:
 
     static void initialize();
 
-    QVariantList readClassroom(const QStringList &primaryKeyValues = QStringList());
-    QVariantList readCourse(const QStringList &primaryKeyValues = QStringList());
-    QVariantList readDepartment(const QStringList &primaryKeyValues = QStringList());
-    QVariantList readInstructor(const QStringList &primaryKeyValues = QStringList());
-    QVariantList readSection(const QStringList &primaryKeyValues = QStringList());
-    QVariantList readStudent(const QStringList &primaryKeyValues = QStringList());
+    static QVariantList readClassroom(const QStringList &primaryKeyValues = QStringList());
+    static QVariantList readCourse(const QStringList &primaryKeyValues = QStringList());
+    static QVariantList readDepartment(const QStringList &primaryKeyValues = QStringList());
+    static QVariantList readInstructor(const QStringList &primaryKeyValues = QStringList());
+    static QVariantList readSection(const QStringList &primaryKeyValues = QStringList());
+    static QVariantList readStudent(const QStringList &primaryKeyValues = QStringList());
+
+    static QList<QVariantList> readAllClassroom();
+    static QList<QVariantList> readAllCourse();
+    static QList<QVariantList> readAllDepartment();
+    static QList<QVariantList> readAllInstructor();
+    static QList<QVariantList> readAllSection();
+    static QList<QVariantList> readAllStudent();
 
 signals:
     void sendMessage(MessageType type, QString module, QString message);

@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle(u8"选课管理");
     this->setWindowIcon(QIcon(":/icon/write.png"));
 
-    information = new Info();
+    information = new Info;
 
     information->hide();
 
