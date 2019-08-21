@@ -24,7 +24,7 @@ public slots:
 private:
     static DatabaseStudents *self;
     SQLiteDatabase *m_database;
-    SQLiteTable db_studentTemplate;
+    SQLiteTable db_account, db_studentTemplate;
 };
 
 #endif // DATABASESTUDENTS_H

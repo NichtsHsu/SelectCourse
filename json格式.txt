@@ -17,7 +17,7 @@
 		当"type"为"read"或"write"时包含此条。
 		请求访问的数据表。
 		数据库courses下包含"classroom", "course", "department", "instructor", "section", "student"数据表。
-		数据库students下包含"account"数据表以及每个学生以其学号作为数据表名的数据表。
+		数据库students下包含"accounts"数据表以及每个学生以其学号作为数据表名的数据表。
 	"primaryKeyValues":[
 		当"type"为"read"时包含此条。
 		提供读取的记录的主键值。
@@ -30,7 +30,7 @@
 		section：[sec_id：integer]（自增）
 		student：[ID：integer]（自增）
 		数据库student下的所有数据表的主键为：
-		account：[code：integer]
+		accounts：[code：integer]
 	],
 	values:[
 		当"type"为"write"或者"return"时包含此条。
