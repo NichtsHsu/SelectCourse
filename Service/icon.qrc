@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/contact.png</file>
+        <file>icon/write.png</file>
+    </qresource>
+</RCC>
