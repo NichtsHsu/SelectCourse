@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     qDebug()<< "Listen succeessfully!";
 
 
-
     ui->frame->setFrameStyle( QFrame::Panel | QFrame::Sunken);
     ui->frame_2->setFrameStyle( QFrame::Panel | QFrame::Sunken);
     ui->frame_3->setFrameStyle( QFrame::Panel | QFrame::Sunken);
