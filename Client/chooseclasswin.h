@@ -23,6 +23,21 @@ private slots:
     void clickChooseCourse();
     void clickCourseDetail(QString itemName, int itemNumber);
 
+
+    void on_minimumBtn_clicked();
+
+    void on_closeBtn_clicked();
+
+    void on_sendBtn_clicked();
+
+protected:
+
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+
+
+
 signals:
     void backBtnClicked();
     void courseDetailsClicked(QString, int);
@@ -30,6 +45,11 @@ signals:
 private:
 
     Ui::ChooseClassWin *ui;
+
+
+    QPoint m_Press;
+    QPoint m_Move;
+    bool leftBtnClk=false;
 };
 
 #endif // CHOOSECLASSWIN_H

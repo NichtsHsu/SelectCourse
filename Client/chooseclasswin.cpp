@@ -9,14 +9,48 @@
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
 
+#include <QGraphicsDropShadowEffect>
+
 ChooseClassWin::ChooseClassWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChooseClassWin)
 {
 
 
+
     ui->setupUi(this);
-    this->showMaximized();
+//    this->showMaximized();
+
+    this->setWindowFlags(Qt::FramelessWindowHint);
+
+
+    this->setAttribute(Qt::WA_TranslucentBackground, true);
+        //设置无边框
+        this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        //实例阴影shadow
+        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
+        //设置阴影距离
+        shadow->setOffset(0, 0);
+        //设置阴影颜色
+        shadow->setColor(QColor("#444444"));
+        //设置阴影圆角
+        shadow->setBlurRadius(10);
+        //给嵌套QWidget设置阴影
+        ui->frame->setGraphicsEffect(shadow);
+        //给垂直布局器设置边距(此步很重要, 设置宽度为阴影的宽度)
+        //ui->Login->setMargin(24);
+
+
+
+
+
+
+    //设置icon和标题
+    QIcon *icon=new QIcon(":/icons/icon/school.png");
+
+    this->setWindowIcon(*icon);
+
+    this->setWindowTitle(u8"华南理工大学选课系统--选课界面");
 
 
     ui->chooseCoursesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -206,7 +240,13 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QWidget *widget_6=new QWidget;
 
     QHBoxLayout *layout_6 = new QHBoxLayout();
-    layout_6->addWidget((new QLabel(duringTime)));
+
+    QLabel *lab=new QLabel(duringTime);
+
+    lab->setWordWrap(true);
+    lab->setAlignment(Qt::AlignTop);
+
+    layout_6->addWidget(lab);
     widget_6->setLayout(layout_6);
 
     ui->CoursesList->setCellWidget(row-1,5,widget_6);
@@ -311,8 +351,18 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 //6
     QWidget *widget_6=new QWidget;
 
+
+
     QHBoxLayout *layout_6 = new QHBoxLayout();
-    layout_6->addWidget((new QLabel(duringTime)));
+
+
+    QLabel *lab=new QLabel(duringTime);
+
+    lab->setWordWrap(true);
+    lab->setAlignment(Qt::AlignTop);
+
+    layout_6->addWidget(lab);
+
     widget_6->setLayout(layout_6);
 
     ui->ChooseList->setCellWidget(row-1,4,widget_6);
@@ -329,5 +379,53 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 
     ui->ChooseList->setCellWidget(row-1,5,widget_7);
 
+
+}
+
+
+
+void ChooseClassWin::on_minimumBtn_clicked()
+{
+    this->showMinimized();
+}
+
+void ChooseClassWin::on_closeBtn_clicked()
+{
+    exit(0);
+}
+
+void ChooseClassWin::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button()== Qt::LeftButton&&ui->topBar->frameRect().contains(event->globalPos() - this->frameGeometry().topLeft()))
+    {
+        m_Press = event->globalPos();
+        leftBtnClk = true;
+    }
+    event->ignore();
+}
+
+void ChooseClassWin::mouseReleaseEvent(QMouseEvent *event)
+{
+    if( event->button() == Qt::LeftButton ){
+            leftBtnClk = false;
+        }
+        event->ignore();
+}
+
+void ChooseClassWin::mouseMoveEvent(QMouseEvent *event)
+{
+    if( leftBtnClk ){
+           m_Move = event->globalPos();
+           this->move( this->pos() + m_Move - m_Press );
+           m_Press = m_Move;
+     }
+       event->ignore();
+
+}
+
+void ChooseClassWin::on_sendBtn_clicked()
+{
+    //获取当前json
+    //QString data= ;
 
 }

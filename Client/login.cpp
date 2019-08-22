@@ -4,11 +4,19 @@
 #include "mainwin.h"
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
+
+#include <QDebug>
+#include <QTcpSocket>
+
 Login::Login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login)
 {
     ui->setupUi(this);
+
+    QIcon *icon=new QIcon(":/icons/icon/school.png");
+
+    this->setWindowIcon(*icon);
 
     this->setWindowFlags(Qt::SplashScreen);
 
@@ -34,6 +42,8 @@ Login::Login(QWidget *parent) :
     });
 
     connect(ui->login_button,SIGNAL(clicked()),this,SLOT(loginPush()));
+
+    connectServer();
 }
 
 Login::~Login()
@@ -54,7 +64,8 @@ void Login::mousePressEvent(QMouseEvent *event)
 void Login::mouseReleaseEvent(QMouseEvent *event)
 {
     if( event->button() == Qt::LeftButton ){
-            leftBtnClk = false;
+
+        leftBtnClk = false;
         }
         event->ignore();
 }
@@ -62,6 +73,7 @@ void Login::mouseReleaseEvent(QMouseEvent *event)
 void Login::mouseMoveEvent(QMouseEvent *event)
 {
     if( leftBtnClk ){
+
            m_Move = event->globalPos();
            this->move( this->pos() + m_Move - m_Press );
            m_Press = m_Move;
@@ -85,5 +97,52 @@ void Login::on_minimumBtn_clicked()
 
 void Login::on_closeBtn_clicked()
 {
-        exit(0);
+    exit(0);
+}
+
+void Login::connectServer()
+{
+    QFile file("ip.txt");
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug()<<"Can't open the file!"<<endl;
+    }
+    while(!file.atEnd()) {
+        QByteArray line = file.readLine();
+        QString str(line);
+        qDebug()<< str;
+
+        QString IP=str;
+
+        int port=1234;
+
+      QTcpSocket* socket = new QTcpSocket();
+
+      //取消已有的连接
+        socket->abort();
+      //连接服务器
+
+        socket->connectToHost(IP, port);
+
+
+        //等待连接成功
+
+        if(!socket->waitForConnected(30000))
+        {
+
+            qDebug() << "Connection failed!";
+
+            return;
+
+        }
+        else
+        {
+            qDebug() << "Connect successfully!";
+            socketC=socket;
+        }
+
+
+    }
+
+
+
 }

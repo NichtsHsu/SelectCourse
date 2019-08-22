@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QTcpSocket>
 namespace Ui {
 class Login;
 }
@@ -39,9 +40,13 @@ private:
 //    QPushButton* login;
 //    QPushButton* find_psw;
 
+    void connectServer();
+    QTcpSocket* socketC;
+
+
     QPoint m_Press;
     QPoint m_Move;
-    bool leftBtnClk;
+    bool leftBtnClk=false;
 };
 
 #endif // LOGIN_H

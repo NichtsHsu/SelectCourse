@@ -3,9 +3,15 @@
         <file>icon/bcak.png</file>
         <file>icon/close.png</file>
         <file>icon/minimum.png</file>
+        <file>icon/school.png</file>
+        <file>icon/choose.png</file>
+        <file>icon/lock.png</file>
+        <file>icon/Account.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>background/background.jpg</file>
         <file>background/background_2.jpg</file>
+        <file>background/background_4.jpg</file>
+        <file>background/background_3.png</file>
     </qresource>
 </RCC>
