@@ -460,6 +460,30 @@ border-image: url(:/background/background/background_3.png);
              <item>
               <widget class="QTableWidget" name="ChooseList"/>
              </item>
+             <item>
+              <widget class="QPushButton" name="sendBtn">
+               <property name="styleSheet">
+                <string notr="true">QPushButton#sendBtn{
+	width:728px;
+	height:30px;
+	background-color:rgb(85, 170, 255,200);
+	border:none;
+}
+
+QPushButton#sendBtn:pressed {  
+    /* 改变背景色 */  
+    background-color:  rgb(85, 170, 255,100);
+    /* 改变边框风格 */  
+    border-style:inset;  
+
+}  
+</string>
+               </property>
+               <property name="text">
+                <string>提交</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>

@@ -28,6 +28,8 @@ private slots:
 
     void on_closeBtn_clicked();
 
+    void on_sendBtn_clicked();
+
 protected:
 
     void mousePressEvent(QMouseEvent *event) override;

@@ -6,6 +6,7 @@
 #include <QGraphicsDropShadowEffect>
 
 #include <QDebug>
+#include <QTcpSocket>
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -41,6 +42,8 @@ Login::Login(QWidget *parent) :
     });
 
     connect(ui->login_button,SIGNAL(clicked()),this,SLOT(loginPush()));
+
+    connectServer();
 }
 
 Login::~Login()
@@ -94,5 +97,52 @@ void Login::on_minimumBtn_clicked()
 
 void Login::on_closeBtn_clicked()
 {
-        exit(0);
+    exit(0);
+}
+
+void Login::connectServer()
+{
+    QFile file("ip.txt");
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug()<<"Can't open the file!"<<endl;
+    }
+    while(!file.atEnd()) {
+        QByteArray line = file.readLine();
+        QString str(line);
+        qDebug()<< str;
+
+        QString IP=str;
+
+        int port=1234;
+
+      QTcpSocket* socket = new QTcpSocket();
+
+      //取消已有的连接
+        socket->abort();
+      //连接服务器
+
+        socket->connectToHost(IP, port);
+
+
+        //等待连接成功
+
+        if(!socket->waitForConnected(30000))
+        {
+
+            qDebug() << "Connection failed!";
+
+            return;
+
+        }
+        else
+        {
+            qDebug() << "Connect successfully!";
+            socketC=socket;
+        }
+
+
+    }
+
+
+
 }

@@ -422,3 +422,10 @@ void ChooseClassWin::mouseMoveEvent(QMouseEvent *event)
        event->ignore();
 
 }
+
+void ChooseClassWin::on_sendBtn_clicked()
+{
+    //获取当前json
+    //QString data= ;
+
+}

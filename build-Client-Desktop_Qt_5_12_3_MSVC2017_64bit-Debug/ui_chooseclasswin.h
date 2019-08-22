@@ -57,6 +57,7 @@ public:
     QLabel *label_3;
     QSpacerItem *horizontalSpacer_3;
     QTableWidget *ChooseList;
+    QPushButton *sendBtn;
 
     void setupUi(QWidget *ChooseClassWin)
     {
@@ -285,6 +286,26 @@ public:
 
         verticalLayout->addWidget(ChooseList);
 
+        sendBtn = new QPushButton(frame_2);
+        sendBtn->setObjectName(QString::fromUtf8("sendBtn"));
+        sendBtn->setStyleSheet(QString::fromUtf8("QPushButton#sendBtn{\n"
+"	width:728px;\n"
+"	height:30px;\n"
+"	background-color:rgb(85, 170, 255,200);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton#sendBtn:pressed {  \n"
+"    /* \346\224\271\345\217\230\350\203\214\346\231\257\350\211\262 */  \n"
+"    background-color:  rgb(85, 170, 255,100);\n"
+"    /* \346\224\271\345\217\230\350\276\271\346\241\206\351\243\216\346\240\274 */  \n"
+"    border-style:inset;  \n"
+"\n"
+"}  \n"
+""));
+
+        verticalLayout->addWidget(sendBtn);
+
 
         gridLayout->addLayout(verticalLayout, 0, 4, 1, 1);
 
@@ -355,6 +376,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem19 = chooseCoursesTable->verticalHeaderItem(12);
         ___qtablewidgetitem19->setText(QApplication::translate("ChooseClassWin", "13", nullptr));
         label_3->setText(QApplication::translate("ChooseClassWin", "\345\267\262\351\200\211\350\257\276\347\250\213", nullptr));
+        sendBtn->setText(QApplication::translate("ChooseClassWin", "\346\217\220\344\272\244", nullptr));
     } // retranslateUi
 
 };
