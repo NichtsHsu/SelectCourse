@@ -19,40 +19,40 @@ void DatabaseCourses::initialize()
     self->m_database = new SQLiteDatabase(qApp->applicationDirPath() + QString("/database/courses.db"));
     self->connect(self->m_database, &SQLiteDatabase::sendMessage, self, &DatabaseCourses::receiveMessage);
 
-    self->db_classroom.tableName = "classroom";
-    self->db_classroom.hasAutoIncrementIndex = false;
-    self->db_classroom.primaryKeys << "building" << "room_number";
-    self->db_classroom.columns << QPair<QString, SQLiteDataType>("building", SQLiteDataType::TEXT)
+    db_classroom.tableName = "classroom";
+    db_classroom.hasAutoIncrementIndex = false;
+    db_classroom.primaryKeys << "building" << "room_number";
+    db_classroom.columns << QPair<QString, SQLiteDataType>("building", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("room_number", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("capacity", SQLiteDataType::INTEGER);
 
-    self->db_course.tableName = "course";
-    self->db_course.hasAutoIncrementIndex = true;
-    self->db_course.primaryKeys << "course_id";
-    self->db_course.columns << QPair<QString, SQLiteDataType>("course_id", SQLiteDataType::INTEGER)
+    db_course.tableName = "course";
+    db_course.hasAutoIncrementIndex = true;
+    db_course.primaryKeys << "course_id";
+    db_course.columns << QPair<QString, SQLiteDataType>("course_id", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("title", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("description", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("credit", SQLiteDataType::REAL)
             << QPair<QString, SQLiteDataType>("dept_name", SQLiteDataType::TEXT);
 
-    self->db_department.tableName = "department";
-    self->db_department.hasAutoIncrementIndex = true;
-    self->db_department.primaryKeys << "id";
-    self->db_department.columns << QPair<QString, SQLiteDataType>("id", SQLiteDataType::INTEGER)
+    db_department.tableName = "department";
+    db_department.hasAutoIncrementIndex = true;
+    db_department.primaryKeys << "id";
+    db_department.columns << QPair<QString, SQLiteDataType>("id", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("dept_name", SQLiteDataType::TEXT);
 
-    self->db_instructor.tableName = "instructor";
-    self->db_instructor.hasAutoIncrementIndex = true;
-    self->db_instructor.primaryKeys << "ID";
-    self->db_instructor.columns << QPair<QString, SQLiteDataType>("ID", SQLiteDataType::INTEGER)
+    db_instructor.tableName = "instructor";
+    db_instructor.hasAutoIncrementIndex = true;
+    db_instructor.primaryKeys << "ID";
+    db_instructor.columns << QPair<QString, SQLiteDataType>("ID", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("name", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("dept_name", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("description", SQLiteDataType::TEXT);
 
-    self->db_section.tableName = "section";
-    self->db_section.hasAutoIncrementIndex = true;
-    self->db_section.primaryKeys << "sec_id";
-    self->db_section.columns << QPair<QString, SQLiteDataType>("sec_id", SQLiteDataType::INTEGER)
+    db_section.tableName = "section";
+    db_section.hasAutoIncrementIndex = true;
+    db_section.primaryKeys << "sec_id";
+    db_section.columns << QPair<QString, SQLiteDataType>("sec_id", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("course_id", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("instructor_id", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("semester", SQLiteDataType::TEXT)
@@ -61,80 +61,80 @@ void DatabaseCourses::initialize()
             << QPair<QString, SQLiteDataType>("building", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("room_number", SQLiteDataType::INTEGER);
 
-    self->db_student.tableName = "student";
-    self->db_student.hasAutoIncrementIndex = true;
-    self->db_student.primaryKeys << "ID";
-    self->db_student.columns << QPair<QString, SQLiteDataType>("ID", SQLiteDataType::INTEGER)
+    db_student.tableName = "student";
+    db_student.hasAutoIncrementIndex = true;
+    db_student.primaryKeys << "ID";
+    db_student.columns << QPair<QString, SQLiteDataType>("ID", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("name", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("grade", SQLiteDataType::REAL)
             << QPair<QString, SQLiteDataType>("code", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("dept_name", SQLiteDataType::TEXT);
 
-    self->db_sequence.tableName = "sqlite_sequence";
-    self->db_sequence.hasAutoIncrementIndex = false;
-    self->db_sequence.primaryKeys << "name";
-    self->db_sequence.columns << QPair<QString, SQLiteDataType>("name", SQLiteDataType::TEXT)
+    db_sequence.tableName = "sqlite_sequence";
+    db_sequence.hasAutoIncrementIndex = false;
+    db_sequence.primaryKeys << "name";
+    db_sequence.columns << QPair<QString, SQLiteDataType>("name", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("seq", SQLiteDataType::TEXT);
 }
 
 QVariantList DatabaseCourses::readClassroom(const QStringList &primaryKeyValues)
 {
-    return self->m_database->read(self->db_classroom, primaryKeyValues);
+    return self->m_database->read(db_classroom, primaryKeyValues);
 }
 
 QVariantList DatabaseCourses::readCourse(const QStringList &primaryKeyValues)
 {
-    return self->m_database->read(self->db_course, primaryKeyValues);
+    return self->m_database->read(db_course, primaryKeyValues);
 }
 
 QVariantList DatabaseCourses::readDepartment(const QStringList &primaryKeyValues)
 {
-    return self->m_database->read(self->db_department, primaryKeyValues);
+    return self->m_database->read(db_department, primaryKeyValues);
 }
 
 QVariantList DatabaseCourses::readInstructor(const QStringList &primaryKeyValues)
 {
-    return self->m_database->read(self->db_instructor, primaryKeyValues);
+    return self->m_database->read(db_instructor, primaryKeyValues);
 }
 
 QVariantList DatabaseCourses::readSection(const QStringList &primaryKeyValues)
 {
-    return self->m_database->read(self->db_section, primaryKeyValues);
+    return self->m_database->read(db_section, primaryKeyValues);
 }
 
 QVariantList DatabaseCourses::readStudent(const QStringList &primaryKeyValues)
 {
-    return self->m_database->read(self->db_student, primaryKeyValues);
+    return self->m_database->read(db_student, primaryKeyValues);
 }
 
 QList<QVariantList> DatabaseCourses::readAllClassroom()
 {
-    return self->m_database->readAll(self->db_classroom);
+    return self->m_database->readAll(db_classroom);
 }
 
 QList<QVariantList> DatabaseCourses::readAllCourse()
 {
-    return self->m_database->readAll(self->db_course);
+    return self->m_database->readAll(db_course);
 }
 
 QList<QVariantList> DatabaseCourses::readAllDepartment()
 {
-    return self->m_database->readAll(self->db_department);
+    return self->m_database->readAll(db_department);
 }
 
 QList<QVariantList> DatabaseCourses::readAllInstructor()
 {
-    return self->m_database->readAll(self->db_instructor);
+    return self->m_database->readAll(db_instructor);
 }
 
 QList<QVariantList> DatabaseCourses::readAllSection()
 {
-    return self->m_database->readAll(self->db_section);
+    return self->m_database->readAll(db_section);
 }
 
 QList<QVariantList> DatabaseCourses::readAllStudent()
 {
-    return self->m_database->readAll(self->db_student);
+    return self->m_database->readAll(db_student);
 }
 
 void DatabaseCourses::receiveMessage(MessageType type, QString module, QString message)

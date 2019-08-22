@@ -29,6 +29,9 @@ public:
     static QList<QVariantList> readAllSection();
     static QList<QVariantList> readAllStudent();
 
+    static DatabaseCourses *self;
+    static SQLiteTable db_classroom, db_course, db_department, db_instructor, db_section, db_student, db_sequence;
+
 signals:
     void sendMessage(MessageType type, QString module, QString message);
 
@@ -36,9 +39,7 @@ public slots:
     void receiveMessage(MessageType type, QString module, QString message);
 
 private:
-    static DatabaseCourses *self;
     SQLiteDatabase *m_database;
-    SQLiteTable db_classroom, db_course, db_department, db_instructor, db_section, db_student, db_sequence;
 };
 
 #endif // DATABASECOURSES_H

@@ -6,6 +6,7 @@
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/writer.h>
 #include "sqlite/databasecourses.h"
+#include "sqlite/databasestudents.h"
 
 class JsonParser
 {
