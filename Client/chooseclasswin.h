@@ -97,8 +97,9 @@ private:
     bool leftBtnClk=false;
 
     QMap<long long, Course> courses;
-    QList<Section> sections;
+    QMap<long long, Section> sections;
     QMap<long long, Instructor> instructors;
+    QList<Section> selectedSections;
 
     long long ID;
 };
