@@ -2,8 +2,8 @@
 #define MAINWIN_H
 
 #include <QWidget>
-#include "login.h"
 #include "chooseclasswin.h"
+
 
 namespace Ui {
 class mainwin;
@@ -14,7 +14,7 @@ class mainwin : public QWidget
     Q_OBJECT
 
 public:
-    explicit mainwin(QWidget *parent = nullptr);
+    explicit mainwin(QString ID, QString psw, QWidget *parent = nullptr);
     ~mainwin();
 
     void addClassToTable(QString str,int x,int y,int len);
@@ -39,6 +39,12 @@ private:
     QPoint m_Move;
     bool leftBtnClk=false;
 
+    void connectServer();
+    QTcpSocket* socketC;
+
+    QStringList classTable;
+    QString ID;
+    QString psw;
 
 };
 

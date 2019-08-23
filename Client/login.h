@@ -19,6 +19,7 @@ public:
     Ui::Login *ui;
 signals:
     void choosedLogin();
+    void mainWinConnect();
 
 protected:
 

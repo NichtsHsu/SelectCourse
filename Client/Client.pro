@@ -29,13 +29,15 @@ SOURCES += \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
-    mainwin.cpp
+    mainwin.cpp \
+    section.cpp
 
 HEADERS += \
         chooseclasswin.h \
         login.h \
         mainwindow.h \
-    mainwin.h
+    mainwin.h \
+    section.h
 
 FORMS += \
         chooseclasswin.ui \
