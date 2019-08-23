@@ -8,7 +8,6 @@
 #include <QDialog>
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
-#include "section.h"
 
 #include <QGraphicsDropShadowEffect>
 
@@ -548,6 +547,9 @@ void ChooseClassWin::getdata()
                     instructor.description = record["description"].GetString();
                     instructors[instructor.ID] = instructor;
                 }
+
+                foreach(auto i, sections)
+                    addLine(courses[i.course_id].title, i.course_id, instructors[i.instructor_id].name, 0, courses[i.course_id].credits, i.time);
             }
 
             return;

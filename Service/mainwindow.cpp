@@ -215,7 +215,6 @@ void MainWindow::socket_Read_Data()
         QString str = "";
         str+=tr(buffer);
 
-        qDebug() << str << endl;
         str = JsonParser().parseRequire(str);
         qDebug() << str;
         socket->write(str.toUtf8().data());
