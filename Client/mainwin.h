@@ -19,6 +19,7 @@ public:
 
     void addClassToTable(QString str,int x,int y,int len);
 
+    QList<PartOfTime> divideTime(QString);
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
@@ -29,6 +30,8 @@ private slots:
     void on_closeBtn_clicked();
 
     void on_minimumBtn_clicked();
+
+    void setSelectTime(QList<Section>,QMap<long long, Course>);
 
 private:
     Ui::mainwin *ui;

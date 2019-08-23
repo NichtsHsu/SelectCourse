@@ -4,7 +4,7 @@
 #include <QPushButton>
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
-
+#include "chooseclasswin.h"
 mainwin::mainwin(QString ID, QString psw, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::mainwin)
@@ -43,6 +43,7 @@ mainwin::mainwin(QString ID, QString psw, QWidget *parent) :
 
 
     cWin = new ChooseClassWin(ID.toLongLong());
+    connect(cWin,SIGNAL(selectedSectionsOk(QList<Section>,QMap<long long, Course>)),this,SLOT(setSelectTime(QList<Section>,QMap<long long, Course>)));
     cWin->hide();
 
     ui->classTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -62,34 +63,34 @@ mainwin::mainwin(QString ID, QString psw, QWidget *parent) :
     connectServer();
 
 
-    QString cname=u8"数据库系统";
-    QString teacher=u8"li";
-    QString dtime=u8"周一 5-6";
-    addClassToTable(u8"数据库系统",0,4,2);
+//    QString cname=u8"数据库系统";
+//    QString teacher=u8"li";
+//    QString dtime=u8"周一 5-6";
+//    addClassToTable(u8"数据库系统",0,4,2);
 
-    QString cname1=u8"计算机网络";
-    QString teacher1=u8"wang";
-    QString dtime1=u8"周二 3-4 && 周五 5-6";
-    addClassToTable(u8"计算机网络",4,4,2);
-    addClassToTable(u8"计算机网络",1,2,2);
+//    QString cname1=u8"计算机网络";
+//    QString teacher1=u8"wang";
+//    QString dtime1=u8"周二 3-4 && 周五 5-6";
+//    addClassToTable(u8"计算机网络",4,4,2);
+//    addClassToTable(u8"计算机网络",1,2,2);
 
-    QString cname2=u8"编译原理";
-    QString teacher2=u8"xu";
-    QString dtime2=u8"周二 5-7";
+//    QString cname2=u8"编译原理";
+//    QString teacher2=u8"xu";
+//    QString dtime2=u8"周二 5-7";
 
-    addClassToTable(u8"编译原理",1,4,3);
+//    addClassToTable(u8"编译原理",1,4,3);
 
-    QString cname3 = u8"操作系统";
-    QString teacher3 = u8"chen";
-    QString dtime3 = u8"周四 1-4";
+//    QString cname3 = u8"操作系统";
+//    QString teacher3 = u8"chen";
+//    QString dtime3 = u8"周四 1-4";
 
-    addClassToTable(u8"操作系统", 3, 0, 4);
+//    addClassToTable(u8"操作系统", 3, 0, 4);
 
-    QString cname4 = u8"大学英语";
-    QString teacher4 = u8"yu";
-    QString dtime4 = u8"周三 1-2";
+//    QString cname4 = u8"大学英语";
+//    QString teacher4 = u8"yu";
+//    QString dtime4 = u8"周三 1-2";
 
-    addClassToTable(u8"大学英语", 2, 0, 2);
+//    addClassToTable(u8"大学英语", 2, 0, 2);
 
 }
 
@@ -106,6 +107,73 @@ void mainwin::addClassToTable(QString str,int x,int y,int len)
     item->setText(str);
     item->setTextAlignment(Qt::AlignCenter);
     ui->classTable->setItem(y,x,item);
+}
+
+QList<PartOfTime> mainwin::divideTime(QString item)
+{
+
+        QList<PartOfTime> list;
+        QStringList slist=item.split("&");
+        for(int i=0;i<slist.size();i++)
+        {
+           QString f=slist.at(i).left(2);
+           QString f1=slist.at(i).mid(2);
+           QStringList f2=f1.split("-");
+
+           int x=0;
+
+           if(f==u8"周一")
+           {
+               x=0;
+           }
+           else {
+               if(f==u8"周二")
+               {
+                   x=1;
+               }
+               else {
+                   if(f==u8"周三")
+                   {
+                       x=2;
+                   }
+                   else {
+                       if(f==u8"周四")
+                       {
+                           x=3;
+                       }
+                       else {
+                           if(f==u8"周五")
+                           {
+                               x=4;
+                           }
+                           else {
+                               if(f==u8"周六")
+                               {
+                                   x=5;
+                               }
+                               else {
+                                   if(f==u8"周日")
+                                   {
+                                       x=6;
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+
+            int y=f2.at(0).toInt()-1;
+            int len=f2.at(1).toInt()-f2.at(0).toInt()+1;
+            PartOfTime p;
+            p.x=x;
+            p.y=y;
+            p.len=len;
+            list.append(p);
+        }
+        return  list;
+
+
 }
 
 
@@ -152,6 +220,26 @@ void mainwin::on_closeBtn_clicked()
 void mainwin::on_minimumBtn_clicked()
 {
     this->showMinimized();
+
+}
+
+void mainwin::setSelectTime(QList<Section> ss, QMap<long long, Course> cc)
+{
+    qDebug()<<u8"执行";
+    QList<Section> s=ss;
+    QMap<long long, Course> c=cc;
+    for(int i=0;i<s.size();i++)
+    {
+
+
+        QList<PartOfTime> dT= divideTime(s.at(i).time);
+        for(int j=0;j<dT.size();j++)
+        {
+            addClassToTable(c[s.at(i).course_id].title,dT.at(j).x,dT.at(j).y,dT.at(j).len);
+
+        }
+    }
+
 
 }
 

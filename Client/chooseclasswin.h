@@ -39,8 +39,8 @@ struct PartOfTime{
     int x;
     int y;
     int len;
-    QString name;
 };
+
 
 namespace Ui {
 class ChooseClassWin;
@@ -88,6 +88,8 @@ signals:
 
     void backBtnClicked();
     void courseDetailsClicked(QString, int);
+
+    void selectedSectionsOk(QList<Section>,QMap<long long, Course>);
 
 private:
 

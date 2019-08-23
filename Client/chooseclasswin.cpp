@@ -135,42 +135,42 @@ ChooseClassWin::ChooseClassWin(long long id, QWidget *parent) :
     connectServer();
 
 
-    //调试代码
-    QString cname=u8"数据库系统";
-    QString teacher=u8"li";
-    QString dtime=u8"周一 5-6";
-    addLine(cname,123,teacher,0,456,dtime);
-    addChooseLine(cname, 123, teacher, 0, 4, dtime);
-    addClassToTable(u8"数据库系统",0,4,2);
+//    //调试代码
+//    QString cname=u8"数据库系统";
+//    QString teacher=u8"li";
+//    QString dtime=u8"周一 5-6";
+//    addLine(cname,123,teacher,0,456,dtime);
+//    addChooseLine(cname, 123, teacher, 0, 4, dtime);
+//    addClassToTable(u8"数据库系统",0,4,2);
 
-    QString cname1=u8"计算机网络";
-    QString teacher1=u8"wang";
-    QString dtime1=u8"周二 3-4 && 周五 5-6";
-    addLine(cname1,007,teacher1,0,456,dtime1);
-    addChooseLine(cname1,007,teacher1,0,4,dtime1);
-    addClassToTable(u8"计算机网络",4,4,2);
-    addClassToTable(u8"计算机网络",1,2,2);
+//    QString cname1=u8"计算机网络";
+//    QString teacher1=u8"wang";
+//    QString dtime1=u8"周二 3-4 && 周五 5-6";
+//    addLine(cname1,007,teacher1,0,456,dtime1);
+//    addChooseLine(cname1,007,teacher1,0,4,dtime1);
+//    addClassToTable(u8"计算机网络",4,4,2);
+//    addClassToTable(u8"计算机网络",1,2,2);
 
-    QString cname2=u8"编译原理";
-    QString teacher2=u8"xu";
-    QString dtime2=u8"周二 5-7";
-    addLine(cname2, 117, teacher2, 0, 3.5, dtime2);
-    addChooseLine(cname2, 117, teacher2, 0, 3.5, dtime2);
-    addClassToTable(u8"编译原理",1,4,3);
+//    QString cname2=u8"编译原理";
+//    QString teacher2=u8"xu";
+//    QString dtime2=u8"周二 5-7";
+//    addLine(cname2, 117, teacher2, 0, 3.5, dtime2);
+//    addChooseLine(cname2, 117, teacher2, 0, 3.5, dtime2);
+//    addClassToTable(u8"编译原理",1,4,3);
 
-    QString cname3 = u8"操作系统";
-    QString teacher3 = u8"chen";
-    QString dtime3 = u8"周四 1-4";
-    addLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
-    addChooseLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
-    addClassToTable(u8"操作系统", 3, 0, 4);
+//    QString cname3 = u8"操作系统";
+//    QString teacher3 = u8"chen";
+//    QString dtime3 = u8"周四 1-4";
+//    addLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
+//    addChooseLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
+//    addClassToTable(u8"操作系统", 3, 0, 4);
 
-    QString cname4 = u8"大学英语";
-    QString teacher4 = u8"yu";
-    QString dtime4 = u8"周三 1-2";
-    addLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
-    addChooseLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
-    addClassToTable(u8"大学英语", 2, 0, 2);
+//    QString cname4 = u8"大学英语";
+//    QString teacher4 = u8"yu";
+//    QString dtime4 = u8"周三 1-2";
+//    addLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
+//    addChooseLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
+//    addClassToTable(u8"大学英语", 2, 0, 2);
 
 
     //Section item1;
@@ -183,8 +183,8 @@ ChooseClassWin::ChooseClassWin(long long id, QWidget *parent) :
 //    item1->desp="nihao";
     //sections.append(item1);
 
-    dividingTime(u8"周三1-2");
-    dividingTime(u8"周三1-2&&周四4-5");
+//    dividingTime(u8"周三1-2");
+//    dividingTime(u8"周三1-2&&周四4-5");
 
 }
 
@@ -280,6 +280,12 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
     ui->CoursesList->setCellWidget(row-1,6,widget_7);
 
+    QList<PartOfTime>list= dividingTime(duringTime);
+    for(int i=0;i<list.size();i++)
+    {
+        addClassToTable(itemName,list.at(i).x,list.at(i).y,list.at(i).len);
+    }
+
 }
 
 void ChooseClassWin::addClassToTable(QString str,int x,int y,int len)
@@ -294,12 +300,65 @@ void ChooseClassWin::addClassToTable(QString str,int x,int y,int len)
 QList<PartOfTime> ChooseClassWin::dividingTime(QString item)
 {
     QList<PartOfTime> list;
-    QStringList slist=item.split("&&");
+    QStringList slist=item.split("&");
     for(int i=0;i<slist.size();i++)
     {
-       qDebug()<<slist.at(i).left(4);
-       qDebug()<<slist.at(i).mid(4);
+       QString f=slist.at(i).left(2);
+       QString f1=slist.at(i).mid(2);
+       QStringList f2=f1.split("-");
+
+       int x=0;
+
+       if(f==u8"周一")
+       {
+           x=0;
+       }
+       else {
+           if(f==u8"周二")
+           {
+               x=1;
+           }
+           else {
+               if(f==u8"周三")
+               {
+                   x=2;
+               }
+               else {
+                   if(f==u8"周四")
+                   {
+                       x=3;
+                   }
+                   else {
+                       if(f==u8"周五")
+                       {
+                           x=4;
+                       }
+                       else {
+                           if(f==u8"周六")
+                           {
+                               x=5;
+                           }
+                           else {
+                               if(f==u8"周日")
+                               {
+                                   x=6;
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       }
+
+        int y=f2.at(0).toInt()-1;
+        int len=f2.at(1).toInt()-f2.at(0).toInt()+1;
+        PartOfTime p;
+        p.x=x;
+        p.y=y;
+        p.len=len;
+        list.append(p);
     }
+    return  list;
 }
 
 
@@ -708,6 +767,7 @@ void ChooseClassWin::getdata()
                     rapidjson::Value record = values[i].GetObject();
                     selectedSections << sections[record["sec_id"].GetInt64()];
                 }
+                emit selectedSectionsOk(selectedSections,courses);
             }
 
             return;
