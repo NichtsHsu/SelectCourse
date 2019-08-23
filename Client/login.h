@@ -29,7 +29,7 @@ protected:
 
 
 private slots:
-
+    void socket_Read_Data();
     void loginPush();
 
     void on_minimumBtn_clicked();
@@ -43,6 +43,8 @@ private:
     void connectServer();
     QTcpSocket* socketC;
 
+    QString ID;
+    QString psw;
 
     QPoint m_Press;
     QPoint m_Move;

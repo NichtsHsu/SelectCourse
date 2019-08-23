@@ -84,31 +84,10 @@ void Login::mouseMoveEvent(QMouseEvent *event)
 
 }
 
-
-void Login::loginPush()
+void Login::socket_Read_Data()
 {
-    // 获取账号密码
-    QString ID = ui->comboBox->text();
-    if(ID.isEmpty())
-    {
-        QMessageBox::critical(nullptr, "error", u8"学号不能为空", QMessageBox::Ok, QMessageBox::Ok);
-        return;
-    }
-
-    long long id = ID.toLongLong();
-
-    QString psw = ui->lineEdit->text();
-    if(psw.isEmpty())
-    {
-        QMessageBox::critical(nullptr, "error", u8"密码不能为空", QMessageBox::Ok, QMessageBox::Ok);
-        return;
-    }
-    // 生成json
-    QString json = JsonParser().generatePasswordRequirement(id);
-    // 发送登录请求
-    socketC->write(json.toUtf8());
-    socketC->flush();
-    // 获取登录结果
+    qDebug()<<u8"服务器来信息";
+     //获取登录结果
     QByteArray buffer;
     QString str = "";
     buffer = socketC->readAll();
@@ -135,6 +114,33 @@ void Login::loginPush()
     }
 }
 
+
+void Login::loginPush()
+{
+    // 获取账号密码
+     ID = ui->comboBox->text();
+    if(ID.isEmpty())
+    {
+        QMessageBox::critical(nullptr, "error", u8"学号不能为空", QMessageBox::Ok, QMessageBox::Ok);
+        return;
+    }
+
+    long long id = ID.toLongLong();
+
+     psw = ui->lineEdit->text();
+    if(psw.isEmpty())
+    {
+        QMessageBox::critical(nullptr, "error", u8"密码不能为空", QMessageBox::Ok, QMessageBox::Ok);
+        return;
+    }
+    // 生成json
+    QString json = JsonParser().generatePasswordRequirement(id);
+    // 发送登录请求
+    socketC->write(json.toUtf8());
+    socketC->flush();
+
+}
+
 void Login::on_minimumBtn_clicked()
 {
     this->showMinimized();
@@ -147,16 +153,11 @@ void Login::on_closeBtn_clicked()
 
 void Login::connectServer()
 {
-    QFile file(qApp->applicationDirPath() + "/ip.txt");
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug()<<"Can't open the file!"<<endl;
-    }
-    while(!file.atEnd()) {
-        QByteArray line = file.readLine();
-        QString str(line);
-        qDebug()<< str;
 
-        QString IP=str;
+
+
+
+        QString IP="127.0.0.1";
 
         int port=12345;
 
@@ -183,11 +184,12 @@ void Login::connectServer()
         {
             qDebug() << "Connect successfully!";
             socketC=socket;
+
+
+            connect(socket, &QTcpSocket::readyRead, this, &Login::socket_Read_Data);
+
+
+
         }
-
-
-    }
-
-
 
 }
