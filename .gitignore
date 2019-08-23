@@ -37,3 +37,4 @@
 **/*.autosave
 build-*
 *.user
+*.Debug
