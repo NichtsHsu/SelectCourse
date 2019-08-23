@@ -18,7 +18,12 @@ ChooseClassWin::ChooseClassWin(long long id, QWidget *parent) :
     ui(new Ui::ChooseClassWin)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     ID = id;
+=======
+    ID=id;
+
+>>>>>>> parent of 4b65108... ...
 =======
     ID=id;
 
