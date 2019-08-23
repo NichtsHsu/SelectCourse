@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QTcpSocket>
-#include <section.h>
 #include "jsonparser.h"
 
 struct Course
@@ -79,7 +78,6 @@ signals:
 
 private:
 
-    SectionList sectionList;
 
     Ui::ChooseClassWin *ui;
 

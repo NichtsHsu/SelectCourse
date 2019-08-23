@@ -8,7 +8,7 @@
 #include <QDialog>
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
-#include "section.h"
+
 
 #include <QGraphicsDropShadowEffect>
 
@@ -172,15 +172,15 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     addClassToTable(u8"大学英语", 2, 0, 2);
 
 
-    Section *item1=new Section;
-    item1->course_name=u8"数据库系统";
-    item1->course_id=111111;
-    item1->section_id=111111;
-    item1->teacher_id=121212;
-    item1->teacher=u8"li";
-    item1->credit=2.5;
-    item1->desp="nihao";
-    sectionList.append(item1);
+    //Section item1;
+    //item1.course_id;
+//    item1->course_id=111111;
+//    item1->section_id=111111;
+//    item1->teacher_id=121212;
+//    item1->teacher=u8"li";
+//    item1->credit=2.5;
+//    item1->desp="nihao";
+    //sections.append(item1);
 
 
 
@@ -437,16 +437,11 @@ void ChooseClassWin::mouseMoveEvent(QMouseEvent *event)
 
 void ChooseClassWin::connectServer()
 {
-    QFile file("ip.txt");
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug()<<"Can't open the file!"<<endl;
-    }
-    while(!file.atEnd()) {
-        QByteArray line = file.readLine();
-        QString str(line);
-        qDebug()<< str;
 
-        QString IP=str;
+
+
+
+        QString IP="127.0.0.1";
 
         int port=12345;
 
@@ -474,7 +469,7 @@ void ChooseClassWin::connectServer()
             QString json = "{{\"type\":\"read\",\"database\":\"courses\",\"table\":\"course\",\"primaryKeyValues\":[]}";
             socketC->write(json.toUtf8());
         }
-    }
+
 }
 
 void ChooseClassWin::on_sendBtn_clicked()

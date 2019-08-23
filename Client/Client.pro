@@ -32,16 +32,14 @@ SOURCES += \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
-    mainwin.cpp \
-    section.cpp
+    mainwin.cpp
 
 HEADERS += \
         chooseclasswin.h \
     jsonparser.h \
         login.h \
         mainwindow.h \
-    mainwin.h \
-    section.h
+    mainwin.h
 
 FORMS += \
         chooseclasswin.ui \
