@@ -86,8 +86,7 @@ void Login::mouseMoveEvent(QMouseEvent *event)
 
 void Login::socket_Read_Data()
 {
-    qDebug()<<u8"服务器来信息";
-     //获取登录结果
+    //获取登录结果
     QByteArray buffer;
     QString str = "";
     buffer = socketC->readAll();
@@ -118,7 +117,7 @@ void Login::socket_Read_Data()
 void Login::loginPush()
 {
     // 获取账号密码
-     ID = ui->comboBox->text();
+    ID = ui->comboBox->text();
     if(ID.isEmpty())
     {
         QMessageBox::critical(nullptr, "error", u8"学号不能为空", QMessageBox::Ok, QMessageBox::Ok);
@@ -127,7 +126,7 @@ void Login::loginPush()
 
     long long id = ID.toLongLong();
 
-     psw = ui->lineEdit->text();
+    psw = ui->lineEdit->text();
     if(psw.isEmpty())
     {
         QMessageBox::critical(nullptr, "error", u8"密码不能为空", QMessageBox::Ok, QMessageBox::Ok);
@@ -153,43 +152,43 @@ void Login::on_closeBtn_clicked()
 
 void Login::connectServer()
 {
+    QFile file(qApp->applicationDirPath() + "/ip.txt");
+    QTextStream qts(&file);
+
+    QString IP;
+
+    if(!file.open(QIODevice::Text | QIODevice::ReadOnly))
+    {
+        IP = "127.0.0.1";
+    }
+    else
+    {
+        IP = qts.readAll();
+    }
+    file.close();
+
+    int port=12345;
+
+    QTcpSocket* socket = new QTcpSocket();
+
+    //取消已有的连接
+    socket->abort();
+    //连接服务器
+
+    socket->connectToHost(IP, port);
 
 
+    //等待连接成功
 
+    if(!socket->waitForConnected(1000))
+    {
+        return;
+    }
+    else
+    {
+        socketC=socket;
 
-        QString IP="127.0.0.1";
-
-        int port=12345;
-
-        QTcpSocket* socket = new QTcpSocket();
-
-        //取消已有的连接
-        socket->abort();
-        //连接服务器
-
-        socket->connectToHost(IP, port);
-
-
-        //等待连接成功
-
-        if(!socket->waitForConnected(1000))
-        {
-
-            qDebug() << "Connection failed!";
-
-            return;
-
-        }
-        else
-        {
-            qDebug() << "Connect successfully!";
-            socketC=socket;
-
-
-            connect(socket, &QTcpSocket::readyRead, this, &Login::socket_Read_Data);
-
-
-
-        }
+        connect(socket, &QTcpSocket::readyRead, this, &Login::socket_Read_Data);
+    }
 
 }

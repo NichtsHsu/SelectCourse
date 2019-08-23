@@ -26,7 +26,6 @@ MainWindow::MainWindow(QWidget *parent) :
     if(!server->listen(QHostAddress::Any, 12345))
     {
         //若出错，则输出错误信息
-        qDebug()<<server->errorString();
         return;
     }
 
@@ -200,8 +199,6 @@ void MainWindow::server_New_Connect()
     // 连接QTcpSocket的信号槽，以读取新数据
     QObject::connect(socket, &QTcpSocket::readyRead, this, &MainWindow::socket_Read_Data);
     QObject::connect(socket, &QTcpSocket::disconnected, this, &MainWindow::socket_Disconnected);
-
-    qDebug() << "A Client connect!";
 }
 
 
@@ -229,7 +226,7 @@ void MainWindow::socket_Read_Data()
 
 void MainWindow::socket_Disconnected()
 {
-    qDebug() << "Disconnected!";
+
 }
 
 void MainWindow::sendError(MessageType type, QString module, QString message)

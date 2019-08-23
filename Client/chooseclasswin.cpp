@@ -365,18 +365,11 @@ QList<PartOfTime> ChooseClassWin::dividingTime(QString item)
 
 void ChooseClassWin::clickChooseCourse()
 {
-    qDebug()<<"hh";
-    QPoint cur=mapToParent( cursor().pos());
-    qDebug()<<cur;
-
-    qDebug()<< ui->ChooseList->indexAt(cur);
-    //qDebug()<<ui->ChooseList->row(item);
-    //qDebug()<<ui->ChooseList->column(item);
+    QPoint cur = mapToParent( cursor().pos());
 }
 
 void ChooseClassWin::clickCourseDetail(QString itemName,int itemNumber)
 {
-    qDebug()<<itemName<<endl;
     QDialog* description = new QDialog(this);                   // 对话框
     description->setWindowTitle(itemName);
     description->setAttribute(Qt::WA_DeleteOnClose);
@@ -479,10 +472,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
     });
 
     ui->ChooseList->setCellWidget(row-1,5,widget_7);
-
-
 }
-
 
 
 void ChooseClassWin::on_minimumBtn_clicked()
@@ -527,7 +517,21 @@ void ChooseClassWin::mouseMoveEvent(QMouseEvent *event)
 
 void ChooseClassWin::connectServer()
 {
-    QString IP="127.0.0.1";
+    QFile file(qApp->applicationDirPath() + "/ip.txt");
+    QTextStream qts(&file);
+
+    QString IP;
+
+    if(!file.open(QIODevice::Text | QIODevice::ReadOnly))
+    {
+        IP = "127.0.0.1";
+    }
+    else
+    {
+        IP = qts.readAll();
+    }
+    file.close();
+
 
     int port=12345;
 
@@ -541,13 +545,10 @@ void ChooseClassWin::connectServer()
     // 等待连接成功
     if(!socket->waitForConnected(1000))
     {
-
-        qDebug() << "mainwin Connection failed!";
         return;
     }
     else
     {
-        qDebug() << "mainwin Connect successfully!";
         socketC=socket;
         connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
 
@@ -564,7 +565,21 @@ void ChooseClassWin::on_sendBtn_clicked()
     //QString data= ;
     QString json=JsonParser().generateSelectCourseRequirement(ID,chooseC);
       qDebug()<<json;
-      QString IP="127.0.0.1";
+      QFile file(qApp->applicationDirPath() + "/ip.txt");
+      QTextStream qts(&file);
+
+      QString IP;
+
+      if(!file.open(QIODevice::Text | QIODevice::ReadOnly))
+      {
+          IP = "127.0.0.1";
+      }
+      else
+      {
+          IP = qts.readAll();
+      }
+      file.close();
+
 
       int port=12345;
 
@@ -578,13 +593,10 @@ void ChooseClassWin::on_sendBtn_clicked()
       // 等待连接成功
       if(!socket->waitForConnected(1000))
       {
-
-          qDebug() << "mainwin Connection failed!";
           return;
       }
       else
       {
-          qDebug() << "mainwin Connect successfully!";
           socketC=socket;
           connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
           socketC->write(json.toUtf8());
@@ -635,7 +647,20 @@ void ChooseClassWin::getdata()
                     courses[course.course_id] = course;
                 }
 
-                QString IP="127.0.0.1";
+                QFile file(qApp->applicationDirPath() + "/ip.txt");
+                QTextStream qts(&file);
+
+                QString IP;
+
+                if(!file.open(QIODevice::Text | QIODevice::ReadOnly))
+                {
+                    IP = "127.0.0.1";
+                }
+                else
+                {
+                    IP = qts.readAll();
+                }
+                file.close();
 
                 int port=12345;
 
@@ -649,13 +674,10 @@ void ChooseClassWin::getdata()
                 // 等待连接成功
                 if(!socket->waitForConnected(1000))
                 {
-
-                    qDebug() << "mainwin Connection failed!";
                     return;
                 }
                 else
                 {
-                    qDebug() << "mainwin Connect successfully!";
                     socketC=socket;
                     connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
                     QString send = "{\"type\":\"read\",\"database\":\"courses\",\"table\":\"section\",\"primaryKeyValues\":[]}";
@@ -682,7 +704,21 @@ void ChooseClassWin::getdata()
                     sections[section.sec_id] = section;
                 }
 
-                QString IP="127.0.0.1";
+                QFile file(qApp->applicationDirPath() + "/ip.txt");
+                QTextStream qts(&file);
+
+                QString IP;
+
+                if(!file.open(QIODevice::Text | QIODevice::ReadOnly))
+                {
+                    IP = "127.0.0.1";
+                }
+                else
+                {
+                    IP = qts.readAll();
+                }
+                file.close();
+
 
                 int port=12345;
 
@@ -696,13 +732,10 @@ void ChooseClassWin::getdata()
                 // 等待连接成功
                 if(!socket->waitForConnected(1000))
                 {
-
-                    qDebug() << "mainwin Connection failed!";
                     return;
                 }
                 else
                 {
-                    qDebug() << "mainwin Connect successfully!";
                     socketC=socket;
                     connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
                     QString send = "{\"type\":\"read\",\"database\":\"courses\",\"table\":\"instructor\",\"primaryKeyValues\":[]}";
@@ -728,8 +761,21 @@ void ChooseClassWin::getdata()
                 foreach(auto i, sections)
                      addLine(courses[i.course_id].title, i.course_id, instructors[i.instructor_id].name, i.sec_id, courses[i.course_id].credits, i.time);
 
+                QFile file(qApp->applicationDirPath() + "/ip.txt");
+                QTextStream qts(&file);
 
-                QString IP="127.0.0.1";
+                QString IP;
+
+                if(!file.open(QIODevice::Text | QIODevice::ReadOnly))
+                {
+                    IP = "127.0.0.1";
+                }
+                else
+                {
+                    IP = qts.readAll();
+                }
+                file.close();
+
 
                 int port=12345;
 
@@ -743,13 +789,10 @@ void ChooseClassWin::getdata()
                 // 等待连接成功
                 if(!socket->waitForConnected(1000))
                 {
-
-                    qDebug() << "mainwin Connection failed!";
                     return;
                 }
                 else
                 {
-                    qDebug() << "mainwin Connect successfully!";
                     socketC=socket;
                     connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
                     QString send = "{\"type\":\"read\",\"database\":\"students\",\"table\":\"%1\",\"primaryKeyValues\":[]}";
@@ -782,7 +825,6 @@ void ChooseClassWin::getdata()
 
 void ChooseClassWin::clickQuitCourse(int row)
 {
-    qDebug()<<"tui"<<row<<endl;
     chooseC.removeAt(row);
     ui->ChooseList->removeRow(row);
 }

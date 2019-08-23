@@ -62,6 +62,8 @@ mainwin::mainwin(QString ID, QString psw, QWidget *parent) :
 
     connectServer();
 
+    ui->label_4->setText(ID);
+
 
 //    QString cname=u8"数据库系统";
 //    QString teacher=u8"li";
@@ -225,7 +227,6 @@ void mainwin::on_minimumBtn_clicked()
 
 void mainwin::setSelectTime(QList<Section> ss, QMap<long long, Course> cc)
 {
-    qDebug()<<u8"执行";
     QList<Section> s=ss;
     QMap<long long, Course> c=cc;
     for(int i=0;i<s.size();i++)
@@ -246,7 +247,20 @@ void mainwin::setSelectTime(QList<Section> ss, QMap<long long, Course> cc)
 
 void mainwin::connectServer()
 {
-    QString IP="127.0.0.1";
+    QFile file(qApp->applicationDirPath() + "/ip.txt");
+    QTextStream qts(&file);
+
+    QString IP;
+
+    if(!file.open(QIODevice::Text | QIODevice::ReadOnly))
+    {
+        IP = "127.0.0.1";
+    }
+    else
+    {
+        IP = qts.readAll();
+    }
+    file.close();
 
     int port=12345;
 
@@ -260,13 +274,10 @@ void mainwin::connectServer()
     //等待连接成功
     if(!socket->waitForConnected(1000))
     {
-
-        qDebug() << "mainwin Connection failed!";
         return;
     }
     else
     {
-        qDebug() << "mainwin Connect successfully!";
         socketC=socket;
 
         // 用学号生成json获取个人选课信息

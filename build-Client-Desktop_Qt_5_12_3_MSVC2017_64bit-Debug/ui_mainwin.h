@@ -35,10 +35,6 @@ public:
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout_2;
     QSpacerItem *verticalSpacer_5;
-    QLabel *label;
-    QSpacerItem *verticalSpacer_2;
-    QLabel *label_5;
-    QSpacerItem *verticalSpacer_3;
     QLabel *label_2;
     QSpacerItem *verticalSpacer_4;
     QLabel *label_4;
@@ -95,36 +91,6 @@ public:
 
         verticalLayout_2->addItem(verticalSpacer_5);
 
-        label = new QLabel(frame);
-        label->setObjectName(QString::fromUtf8("label"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy);
-        label->setStyleSheet(QString::fromUtf8("color: rgb(205, 205, 205);"));
-        label->setFrameShape(QFrame::NoFrame);
-        label->setFrameShadow(QFrame::Plain);
-        label->setTextFormat(Qt::AutoText);
-        label->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_2->addWidget(label);
-
-        verticalSpacer_2 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_2->addItem(verticalSpacer_2);
-
-        label_5 = new QLabel(frame);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setStyleSheet(QString::fromUtf8("color: rgb(205, 205, 205);"));
-        label_5->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_2->addWidget(label_5);
-
-        verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_2->addItem(verticalSpacer_3);
-
         label_2 = new QLabel(frame);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setCursor(QCursor(Qt::ArrowCursor));
@@ -153,6 +119,9 @@ public:
 
         chooseClassButton = new QToolButton(frame);
         chooseClassButton->setObjectName(QString::fromUtf8("chooseClassButton"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(chooseClassButton->sizePolicy().hasHeightForWidth());
         chooseClassButton->setSizePolicy(sizePolicy);
         chooseClassButton->setStyleSheet(QString::fromUtf8("color: rgb(205, 205, 205);"));
@@ -372,8 +341,6 @@ public:
     void retranslateUi(QWidget *mainwin)
     {
         mainwin->setWindowTitle(QApplication::translate("mainwin", "\345\237\272\346\234\254\344\277\241\346\201\257", nullptr));
-        label->setText(QApplication::translate("mainwin", "\345\247\223\345\220\215", nullptr));
-        label_5->setText(QApplication::translate("mainwin", "\351\273\204\350\200\200\346\236\253", nullptr));
         label_2->setText(QApplication::translate("mainwin", "\345\255\246\345\217\267", nullptr));
         label_4->setText(QApplication::translate("mainwin", "201730685387", nullptr));
         chooseClassButton->setText(QApplication::translate("mainwin", "\351\200\211\350\257\276", nullptr));
