@@ -1,6 +1,8 @@
 ﻿#include "databasestudents.h"
 
 DatabaseStudents *DatabaseStudents::self = new DatabaseStudents;
+SQLiteTable DatabaseStudents::db_account;
+SQLiteTable DatabaseStudents::db_studentTemplate;
 
 DatabaseStudents::DatabaseStudents(QObject *parent) :
     QObject(parent), m_database(nullptr)
@@ -16,6 +18,7 @@ DatabaseStudents::~DatabaseStudents()
 
 void DatabaseStudents::receiveMessage(MessageType type, QString module, QString message)
 {
+    qDebug() << message;
     emit sendMessage(type, module, message);
 }
 

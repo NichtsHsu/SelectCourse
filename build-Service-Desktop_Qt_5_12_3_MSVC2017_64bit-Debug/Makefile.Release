@@ -1874,7 +1874,8 @@ release\main.obj: ..\Service\main.cpp ..\Service\mainwindow.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextcursor.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qpen.h
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qpen.h \
+		..\Service\sqlite\databasestudents.h
 
 release\mainwindow.obj: ..\Service\mainwindow.cpp ..\Service\mainwindow.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
@@ -1982,12 +1983,56 @@ release\mainwindow.obj: ..\Service\mainwindow.cpp ..\Service\mainwindow.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtouchdevice.h \
 		..\Service\info.h \
 		ui_mainwindow.h \
-		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QFrame \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\QVariant \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QApplication \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qcoreapplication.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QComboBox \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qcombobox.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qvalidator.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qregularexpression.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qicon.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qrubberband.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QFrame \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QGridLayout \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qgridlayout.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QHBoxLayout \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QLabel \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qlabel.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QLineEdit \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qlineedit.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextcursor.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextformat.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qpen.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QPushButton \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qicon.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QSpacerItem \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QTabWidget \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QVBoxLayout \
+		..\Service\message\message.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QTextEdit \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qtextedit.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QMessageBox \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qmessagebox.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qdialog.h \
@@ -2406,7 +2451,8 @@ release\jsonparser.obj: ..\Service\network\jsonparser.cpp ..\Service\network\jso
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextcursor.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qpen.h
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qpen.h \
+		..\Service\sqlite\databasestudents.h
 
 release\databasecourses.obj: ..\Service\sqlite\databasecourses.cpp ..\Service\sqlite\databasecourses.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtCore\QObject \
@@ -3337,11 +3383,48 @@ release\info.obj: ..\Service\info.cpp ..\Service\info.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qtouchdevice.h \
 		ui_info.h \
-		D:\Qt\5.12.3\msvc2017_64\include\QtGui\QIcon \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\QVariant \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QApplication \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qcoreapplication.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QGridLayout \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qgridlayout.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QHBoxLayout \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QHeaderView \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qheaderview.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qitemselectionmodel.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qvalidator.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtCore\qregularexpression.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtGui\qicon.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qrubberband.h \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QPushButton \
 		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractbutton.h
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QSpacerItem \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QTabWidget \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QTableView \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\qtableview.h \
+		D:\Qt\5.12.3\msvc2017_64\include\QtWidgets\QVBoxLayout \
+		D:\Qt\5.12.3\msvc2017_64\include\QtGui\QIcon
 
 release\moc_mainwindow.obj: release\moc_mainwindow.cpp 
 
