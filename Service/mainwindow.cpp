@@ -13,6 +13,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
    // this->showMaximized();
 
+    server = new QTcpServer();
+
+    //连接信号槽
+    connect(server,&QTcpServer::newConnection,this,&MainWindow::server_New_Connect);
+    if(!server->listen(QHostAddress::Any, 12345))
+    {
+    //若出错，则输出错误信息
+    qDebug()<<server->errorString();
+    return;
+    }
+
     ui->frame->setFrameStyle( QFrame::Panel | QFrame::Sunken);
     ui->frame_2->setFrameStyle( QFrame::Panel | QFrame::Sunken);
     ui->frame_3->setFrameStyle( QFrame::Panel | QFrame::Sunken);
@@ -119,6 +130,39 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 
+void MainWindow::server_New_Connect()
+{
+    // 获取客户端连接
+    socket = server->nextPendingConnection();
+    // 连接QTcpSocket的信号槽，以读取新数据
+    QObject::connect(socket, &QTcpSocket::readyRead, this, &MainWindow::socket_Read_Data);
+    QObject::connect(socket, &QTcpSocket::disconnected, this, &MainWindow::socket_Disconnected);
+
+    qDebug() << "A Client connect!";
+}
+
+
+void MainWindow::socket_Read_Data()
+{
+    QByteArray buffer;
+    // 读取缓冲区数据
+    buffer = socket->readAll();
+    if(!buffer.isEmpty())
+    {
+        QString str = "";
+        str+=tr(buffer);
+
+        qDebug()<<str<<endl;
+        QString str2 = tr(u8"收到了")+ str;
+        socket->write(str2.toLatin1());
+        socket->flush();
+    }
+}
+
+void MainWindow::socket_Disconnected()
+{
+    qDebug() << "Disconnected!";
+}
 
 
 MainWindow::~MainWindow()

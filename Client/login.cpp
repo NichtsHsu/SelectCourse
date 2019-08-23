@@ -7,6 +7,7 @@
 
 #include <QDebug>
 #include <QTcpSocket>
+#include <iostream>
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -113,7 +114,7 @@ void Login::connectServer()
 
         QString IP=str;
 
-        int port=1234;
+        int port=12345;
 
       QTcpSocket* socket = new QTcpSocket();
 
@@ -126,7 +127,7 @@ void Login::connectServer()
 
         //等待连接成功
 
-        if(!socket->waitForConnected(30000))
+        if(!socket->waitForConnected(1000))
         {
 
             qDebug() << "Connection failed!";
