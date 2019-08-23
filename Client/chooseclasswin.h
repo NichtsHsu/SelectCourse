@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QTcpSocket>
+#include <section.h>
 #include "jsonparser.h"
 
 struct Course
@@ -51,6 +52,8 @@ public:
     void addLine(QString itemName="", int itemNumber=0, QString nameOfTeacher="", int connectNum=0, double creditNum=0, QString duringTime="");
 
     void addClassToTable(QString str, int x, int y, int len);
+
+
 private slots:
     void clickChooseCourse();
     void clickCourseDetail(QString itemName, int itemNumber);
@@ -75,6 +78,8 @@ signals:
     void courseDetailsClicked(QString, int);
 
 private:
+
+    SectionList sectionList;
 
     Ui::ChooseClassWin *ui;
 
