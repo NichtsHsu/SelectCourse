@@ -239,6 +239,8 @@ void mainwin::setSelectTime(QList<Section> ss, QMap<long long, Course> cc)
             addClassToTable(c[s.at(i).course_id].title,dT.at(j).x,dT.at(j).y,dT.at(j).len);
 
         }
+
+        ui->chooseClassButton->setEnabled(false);
     }
 
 

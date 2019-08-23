@@ -8,7 +8,7 @@
 #include <QDialog>
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
-
+#include <QMessageBox>
 
 #include <QGraphicsDropShadowEffect>
 
@@ -601,6 +601,8 @@ void ChooseClassWin::on_sendBtn_clicked()
           connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
           socketC->write(json.toUtf8());
           socketC->flush();
+          QMessageBox::information(this,tr(u8"成功发送信息"),tr(u8"成功发送信息至服务器"));
+          ui->sendBtn->setEnabled(false);
       }
 
 }
