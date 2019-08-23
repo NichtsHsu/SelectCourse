@@ -2,7 +2,8 @@
 
 JsonParser::JsonParser()
 {
-
+    connect(DatabaseCourses::self, &DatabaseCourses::sendMessage, this, &JsonParser::receiveMessage);
+    connect(DatabaseStudents::self, &DatabaseStudents::sendMessage, this, &JsonParser::receiveMessage);
 }
 
 QString JsonParser::generateDatabaseRecord(SQLiteTable table, const QList<QMap<QString, QVariant> > &values)
@@ -404,4 +405,9 @@ QString JsonParser::parseRequire(QString json)
     }
 
     return generateErrorMessage(QString("Unexpected requirement type named \"") + type + QString("\"."));
+}
+
+void JsonParser::receiveMessage(MessageType type, QString module, QString message)
+{
+
 }

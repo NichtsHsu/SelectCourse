@@ -18,7 +18,6 @@ DatabaseStudents::~DatabaseStudents()
 
 void DatabaseStudents::receiveMessage(MessageType type, QString module, QString message)
 {
-    qDebug() << message;
     emit sendMessage(type, module, message);
 }
 
@@ -26,6 +25,7 @@ void DatabaseStudents::initialize()
 {
     self->m_database = new SQLiteDatabase(qApp->applicationDirPath() + QString("/database/students.db"));
     self->connect(self->m_database, &SQLiteDatabase::sendMessage, self, &DatabaseStudents::receiveMessage);
+    self->connect(self, &DatabaseStudents::sendMessage, gb_msgbox, &MessageBox::receiveMessage);
 
     db_account.tableName = "accounts";
     db_account.hasAutoIncrementIndex = false;

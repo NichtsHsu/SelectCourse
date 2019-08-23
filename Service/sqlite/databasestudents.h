@@ -5,6 +5,7 @@
 #include <QApplication>
 #include <QString>
 #include "sqlitedatabase.h"
+#include "message/message.h"
 
 class DatabaseStudents : public QObject
 {

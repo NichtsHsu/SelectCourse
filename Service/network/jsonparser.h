@@ -7,15 +7,20 @@
 #include <rapidjson/writer.h>
 #include "sqlite/databasecourses.h"
 #include "sqlite/databasestudents.h"
+#include <message/message.h>
 
-class JsonParser
+class JsonParser : public QObject
 {
+    Q_OBJECT
 public:
     JsonParser();
 
     QString generateDatabaseRecord(SQLiteTable table, const QList<QMap<QString ,QVariant>> &values);
     QString generateErrorMessage(const QString &message);
     QString parseRequire(QString json);
+
+public slots:
+    void receiveMessage(MessageType type, QString module, QString message);
 };
 
 #endif // JSONPARSER_H

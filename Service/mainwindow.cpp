@@ -7,11 +7,14 @@
 #include <QPushButton>
 #include <QMessageBox>
 #include <QIcon>
+
+MessageBox *gb_msgbox;
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    gb_msgbox = ui->textEdit;
 
     // this->showMaximized();
 

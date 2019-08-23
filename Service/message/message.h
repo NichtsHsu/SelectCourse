@@ -19,4 +19,6 @@ public slots:
     void receiveMessage(MessageType type, QString module, QString message);
 };
 
+extern MessageBox *gb_msgbox;
+
 #endif // MESSAGE_H

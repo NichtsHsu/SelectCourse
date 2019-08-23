@@ -8,7 +8,7 @@
 
 enum class SQLiteDataType
 {
-        INTEGER, TEXT, REAL
+    INTEGER, TEXT, REAL
 };
 
 /**

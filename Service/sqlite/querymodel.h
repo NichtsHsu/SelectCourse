@@ -111,82 +111,12 @@ public:
 signals:
     void sendMessage(MessageType type, QString module, QString message);
 
-public slots:
-
-	/**
-	 * @brief firstPage
-	 * 回到第一页。
-	 */
-	void firstPage();
-
-	/**
-	 * @brief lastPage
-	 * 跳转到最后一页。
-	 */
-	void lastPage();
-
-	/**
-	 * @brief nextPage
-	 * 上一页。
-	 */
-	void nextPage();
-
-	/**
-	 * @brief frontPage
-	 * 下一页。
-	 */
-	void frontPage();
-
-	/**
-	 * @brief setRecordNumberPerPage
-	 * 设置一页显示的记录数。
-	 */
-	void setRecordNumberPerPage(int recordNumberPerPage);
-
-	/**
-	 * @brief setCurrentPage
-	 * 跳页。
-	 */
-	void setCurrentPage(int currentPage);
-
-	/**
-	 * @brief addNewRow
-	 * 增加新行。
-	 */
-	void addNewRow();
-
-	/**
-	 * @brief removeRow
-	 * 移除一行。
-	 * @param row
-	 * 行号。
-	 */
-	void removeRow(int row);
-
 private:
 	/**
 	 * @brief m_editable
 	 * 模型是否可被修改。
 	 */
 	bool m_editable;
-
-	/**
-	 * @brief m_recordNumberPerPage
-	 * 每一页显示的记录数。
-	 */
-	int m_recordNumberPerPage;
-
-	/**
-	 * @brief m_currentPage
-	 * 当前页。
-	 */
-	int m_currentPage;
-
-	/**
-	 * @brief m_maxPage
-	 * 最大页。
-	 */
-	int m_maxPage;
 
 	/**
 	 * @brief m_connectName

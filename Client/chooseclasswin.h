@@ -36,8 +36,6 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
 
-
-
 signals:
     void backBtnClicked();
     void courseDetailsClicked(QString, int);
