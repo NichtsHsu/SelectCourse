@@ -19,7 +19,12 @@ ChooseClassWin::ChooseClassWin(long long id, QWidget *parent) :
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     ID = id;
+=======
+    ID=id;
+
+>>>>>>> parent of 4b65108... ...
 =======
     ID=id;
 
@@ -506,9 +511,15 @@ void ChooseClassWin::on_sendBtn_clicked()
     QString json=JsonParser().generateSelectCourseRequirement(ID,chooseC);
     qDebug()<<json;
     QString IP="127.0.0.1";
+<<<<<<< HEAD
 
     int port=12345;
 
+=======
+
+    int port=12345;
+
+>>>>>>> parent of 4b65108... ...
     QTcpSocket* socket = new QTcpSocket();
 
     // 取消已有的连接
