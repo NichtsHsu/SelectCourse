@@ -13,9 +13,10 @@ class JsonParser
 public:
     JsonParser();
 
-    QString generateRegisterOrChangePassword(long long code, const QString &password);
     QString generatePasswordRequirement(long long code);
     QString parsePassword(const QString &json);
+
+    QString generateSelectCourseRequirement(long long code, long long course_id, long long sec_id);
 };
 
 #endif // JSONPARSER_H

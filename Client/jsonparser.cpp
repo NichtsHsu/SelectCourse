@@ -52,3 +52,31 @@ QString JsonParser::parsePassword(const QString &json)
         return QString();
     }
 }
+
+QString JsonParser::generateSelectCourseRequirement(long long code, long long course_id, long long sec_id)
+{
+    rapidjson::Document doc;
+    doc.SetObject();
+    rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
+
+    doc.AddMember("type", "write", allocator);
+    doc.AddMember("database", "student", allocator);
+    doc.AddMember("table", rapidjson::Value(rapidjson::StringRef(QString::number(code).toUtf8().data()), allocator), allocator);
+
+    rapidjson::Value primaryKeyValue(rapidjson::kArrayType);
+    primaryKeyValue.PushBack(course_id, allocator);
+    doc.AddMember("primaryKeyValues", primaryKeyValue, allocator);
+
+    rapidjson::Value valueArray(rapidjson::kArrayType);
+    rapidjson::Value obj(rapidjson::kObjectType);
+    obj.AddMember("course_id", course_id, allocator);
+    obj.AddMember("sec_id", sec_id, allocator);
+    valueArray.PushBack(obj, allocator);
+    doc.AddMember("values", valueArray, allocator);
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+    doc.Accept(writer);
+
+    return QString(s.GetString());
+}
