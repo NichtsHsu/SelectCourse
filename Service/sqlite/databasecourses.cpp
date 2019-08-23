@@ -1,6 +1,13 @@
 ﻿#include "databasecourses.h"
 
 DatabaseCourses *DatabaseCourses::self = new DatabaseCourses;
+SQLiteTable DatabaseCourses::db_classroom;
+SQLiteTable DatabaseCourses::db_course;
+SQLiteTable DatabaseCourses::db_department;
+SQLiteTable DatabaseCourses::db_instructor;
+SQLiteTable DatabaseCourses::db_section;
+SQLiteTable DatabaseCourses::db_student;
+SQLiteTable DatabaseCourses::db_sequence;
 
 DatabaseCourses::DatabaseCourses(QObject *parent) :
     QObject(parent), m_database(nullptr)

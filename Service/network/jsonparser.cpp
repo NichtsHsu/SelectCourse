@@ -379,13 +379,15 @@ QString JsonParser::parseRequire(QString json)
                     for(unsigned i = 0; i < records.Size(); i++)
                     {
                         rapidjson::Value record = records[i].GetObject();
-                        long long course_id = record["course_id"].GetInt64();
+                        long long course_id = primaryKeyValues[0].GetInt64();
                         long long sec_id = record["sec_id"].GetInt64();
 
                         DatabaseStudents::addSelectedCourse(code, course_id, sec_id);
                     }
                 }
             }
+            else
+                return generateErrorMessage(QString("Not such database named \"") + database + QString("\", only \"courses\" and \"students\" are allowed/"));
         }
 
         rapidjson::Document doc;
@@ -401,5 +403,5 @@ QString JsonParser::parseRequire(QString json)
         return QString(s.GetString());
     }
 
-    return generateErrorMessage(QString("Unexpected Requirement named \"") + type + QString("\"."));
+    return generateErrorMessage(QString("Unexpected requirement type named \"") + type + QString("\"."));
 }
