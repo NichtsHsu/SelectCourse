@@ -51,7 +51,7 @@ class ChooseClassWin : public QWidget
     Q_OBJECT
 
 public:
-    explicit ChooseClassWin(long long id,QWidget *parent = nullptr);
+    explicit ChooseClassWin(long long id, QWidget *parent = nullptr);
     ~ChooseClassWin();
 
     void addChooseLine(QString itemName="", int itemNumber=0, QString nameOfTeacher="", int connectNum=0, double creditNum=0, QString duringTime="");
