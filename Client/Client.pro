@@ -22,10 +22,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += $$PWD/reference
+
 CONFIG += c++11
 
 SOURCES += \
         chooseclasswin.cpp \
+    jsonparser.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -33,6 +36,7 @@ SOURCES += \
 
 HEADERS += \
         chooseclasswin.h \
+    jsonparser.h \
         login.h \
         mainwindow.h \
     mainwin.h
