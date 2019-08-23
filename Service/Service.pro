@@ -34,6 +34,7 @@ SOURCES += \
         sqlite/databasecourses.cpp \
         sqlite/databasestudents.cpp \
         sqlite/sqlitedatabase.cpp \
+        sqlite/querymodel.cpp \
         info.cpp
 
 HEADERS += \
@@ -43,6 +44,7 @@ HEADERS += \
         sqlite/databasecourses.h \
         sqlite/databasestudents.h \
         sqlite/sqlitedatabase.h \
+        sqlite/querymodel.h \
         info.h
 
 FORMS += \
