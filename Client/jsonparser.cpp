@@ -1,4 +1,5 @@
 ﻿#include "jsonparser.h"
+#include <QDebug>
 
 JsonParser::JsonParser()
 {
@@ -12,11 +13,11 @@ QString JsonParser::generatePasswordRequirement(long long code)
     rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
 
     doc.AddMember("type", "read", allocator);
-    doc.AddMember("database", "student", allocator);
+    doc.AddMember("database", "students", allocator);
     doc.AddMember("table", "accounts", allocator);
 
     rapidjson::Value primaryKeyValue(rapidjson::kArrayType);
-    primaryKeyValue.PushBack(code, allocator);
+    primaryKeyValue.PushBack(rapidjson::Value(rapidjson::StringRef(QString::number(code).toUtf8().data()), allocator), allocator);
     doc.AddMember("primaryKeyValues", primaryKeyValue, allocator);
 
     rapidjson::StringBuffer s;
@@ -28,6 +29,7 @@ QString JsonParser::generatePasswordRequirement(long long code)
 
 QString JsonParser::parsePassword(const QString &json)
 {
+    qDebug() << json;
     rapidjson::Document doc;
     doc.Parse(json.toUtf8().data());
 
