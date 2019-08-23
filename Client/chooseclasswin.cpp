@@ -16,9 +16,6 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChooseClassWin)
 {
-
-
-
     ui->setupUi(this);
 //    this->showMaximized();
 
@@ -40,9 +37,6 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
         ui->frame->setGraphicsEffect(shadow);
         //给垂直布局器设置边距(此步很重要, 设置宽度为阴影的宽度)
         //ui->Login->setMargin(24);
-
-
-
 
 
 
@@ -474,29 +468,11 @@ void ChooseClassWin::connectServer()
         {
             qDebug() << "mainwin Connect successfully!";
             socketC=socket;
+            connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
 
             // 获取开课信息 header<<tr(u8"课程名称")<<tr(u8"课程代码")<<tr(u8"讲师")<<tr(u8"课程简介")<<tr(u8"学分")<<tr(u8"时间段")<<tr(u8"选课");
-            QString json = "";
+            QString json = "{{\"type\":\"read\",\"database\":\"courses\",\"table\":\"course\",\"primaryKeyValues\":[]}";
             socketC->write(json.toUtf8());
-
-
-
-            // 读取开课信息
-            QByteArray buffer;
-            QString str = "";
-            buffer = socketC->readAll();
-            if(!buffer.isEmpty())
-            {
-                str += tr(buffer);
-            }
-
-            // ... 这里不知道怎么读取到了section_id
-            // 请求课表即section中，课表名字与时间
-            // for循环读取课表与时间，然后加入课表
-            // addClassToTable(QString name, int x, int y, int len)
-            // name 课程名称 x星期几，y第几节开始，len多少节
-
-
         }
     }
 }
@@ -507,4 +483,95 @@ void ChooseClassWin::on_sendBtn_clicked()
     //QString data= ;
 
 
+}
+
+void ChooseClassWin::getdata()
+{
+    QByteArray buffer;
+    // 读取缓冲区数据
+    buffer = socketC->readAll();
+    if(!buffer.isEmpty())
+    {
+        QString json = "";
+        json += tr(buffer);
+        qDebug() << json;
+        rapidjson::Document doc;
+        doc.Parse(json.toUtf8().data());
+
+        QString type = doc["type"].GetString();
+
+        if(type == QString("error"))
+        {
+            QMessageBox::critical(nullptr, "error", doc["message"].GetString());
+            return;
+        }
+        else if(type == QString("return"))
+        {
+            QString table = doc["table"].GetString();
+
+            if(table == "course")
+            {
+                rapidjson::Value values = doc["values"].GetArray();
+                courses.clear();
+                for(unsigned i = 0; i < values.Size(); i++)
+                {
+                    rapidjson::Value record = values[i].GetObject();
+                    Course course;
+                    course.course_id = record["course_id"].GetInt64();
+                    course.title = record["title"].GetString();
+                    course.description = record["description"].GetString();
+                    course.credits = record["credits"].GetDouble();
+                    course.dept_name = record["dept_name"].GetString();
+                    courses[course.course_id] = course;
+                }
+
+                QString send = "{{\"type\":\"read\",\"database\":\"courses\",\"table\":\"section\",\"primaryKeyValues\":[]}";
+                socketC->write(send.toUtf8());
+            }
+            else if(table == "section")
+            {
+                rapidjson::Value values = doc["values"].GetArray();
+                sections.clear();
+                for(unsigned i = 0; i < values.Size(); i++)
+                {
+                    rapidjson::Value record = values[i].GetObject();
+                    Section section;
+                    section.sec_id = record["sec_id"].GetInt64();
+                    section.course_id = record["course_id"].GetInt64();
+                    section.instructor_id = record["instructor_id"].GetInt64();
+                    section.semester = record["semester"].GetString();
+                    section.year = record["year"].GetInt64();
+                    section.time = record["time"].GetString();
+                    section.building = record["building"].GetString();
+                    section.room_number = record["room_number"].GetInt64();
+                    sections << section;
+                }
+
+                QString send = "{{\"type\":\"read\",\"database\":\"courses\",\"table\":\"instructor\",\"primaryKeyValues\":[]}";
+                socketC->write(send.toUtf8());
+            }
+            else if(table == "instructor")
+            {
+                rapidjson::Value values = doc["values"].GetArray();
+                instructors.clear();
+                for(unsigned i = 0; i < values.Size(); i++)
+                {
+                    rapidjson::Value record = values[i].GetObject();
+                    Instructor instructor;
+                    instructor.ID = record["ID"].GetInt64();
+                    instructor.name = record["name"].GetString();
+                    instructor.dept_name = record["instructor_id"].GetString();
+                    instructor.description = record["description"].GetString();
+                    instructors[instructor.ID] = instructor;
+                }
+            }
+
+            return;
+        }
+        else
+        {
+            QMessageBox::critical(nullptr, "error", QString("Unknown json type : \"") + type + QString("\"."));
+            return;
+        }
+    }
 }

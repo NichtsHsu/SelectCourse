@@ -16,7 +16,7 @@ public:
     QString generatePasswordRequirement(long long code);
     QString parsePassword(const QString &json);
 
-    QString generateSelectCourseRequirement(long long code, long long course_id, long long sec_id);
+    QString generateSelectCourseRequirement(long long code, QList<QPair<long long, long long>> course_ids_and_sec_ids);
 };
 
 #endif // JSONPARSER_H

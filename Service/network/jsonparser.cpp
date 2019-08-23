@@ -349,48 +349,41 @@ QString JsonParser::parseRequire(QString json)
     }
     else if(type == "write")
     {
-        rapidjson::Value primaryKeyValues = doc["primaryKeyValues"].GetArray();
-        size_t size = primaryKeyValues.Size();
-        if(size == 0u)
-            return generateErrorMessage(QString("You must provide primary key for writing."));
-        else
+        if(database == QString("courses"))
+            return generateErrorMessage(QString("Database \"courses\" is read only."));
+        else if(database == QString("students"))
         {
-            if(database == QString("courses"))
-                return generateErrorMessage(QString("Database \"courses\" is read only."));
-            else if(database == QString("students"))
+            rapidjson::Value records = doc["values"].GetArray();
+            if(table == QString("accounts"))
             {
-                rapidjson::Value records = doc["values"].GetArray();
-                if(table == QString("accounts"))
+                for(unsigned i = 0; i < records.Size(); i++)
                 {
-                    for(unsigned i = 0; i < records.Size(); i++)
-                    {
-                        rapidjson::Value record = records[i].GetObject();
-                        long long code = record["code"].GetInt64();
-                        QString password = record["password"].GetString();
+                    rapidjson::Value record = records[i].GetObject();
+                    long long code = record["code"].GetInt64();
+                    QString password = record["password"].GetString();
 
-                        DatabaseStudents::setPassword(code, password);
-                    }
-                }
-                else
-                {
-                    bool ok;
-                    long long code = table.toLongLong(&ok);
-                    if(!ok)
-                        return generateErrorMessage(QString("Not such table named \"") + table + QString("\" in database \"") + database + QString("\"."));
-
-                    for(unsigned i = 0; i < records.Size(); i++)
-                    {
-                        rapidjson::Value record = records[i].GetObject();
-                        long long course_id = primaryKeyValues[0].GetInt64();
-                        long long sec_id = record["sec_id"].GetInt64();
-
-                        DatabaseStudents::addSelectedCourse(code, course_id, sec_id);
-                    }
+                    DatabaseStudents::setPassword(code, password);
                 }
             }
             else
-                return generateErrorMessage(QString("Not such database named \"") + database + QString("\", only \"courses\" and \"students\" are allowed/"));
+            {
+                bool ok;
+                long long code = table.toLongLong(&ok);
+                if(!ok)
+                    return generateErrorMessage(QString("Not such table named \"") + table + QString("\" in database \"") + database + QString("\"."));
+
+                for(unsigned i = 0; i < records.Size(); i++)
+                {
+                    rapidjson::Value record = records[i].GetObject();
+                    long long course_id = record["course_id"].GetInt64();
+                    long long sec_id = record["sec_id"].GetInt64();
+
+                    DatabaseStudents::addSelectedCourse(code, course_id, sec_id);
+                }
+            }
         }
+        else
+            return generateErrorMessage(QString("Not such database named \"") + database + QString("\", only \"courses\" and \"students\" are allowed/"));
 
         rapidjson::Document doc;
         doc.SetObject();
