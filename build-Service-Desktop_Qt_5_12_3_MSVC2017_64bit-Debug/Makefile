@@ -258,6 +258,7 @@ Makefile: ..\Service\Service.pro D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\win32
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Widgets.prl \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Gui.prl \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Sql.prl \
+		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Network.prl \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Core.prl \
 		D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\qtmaind.prl
 	$(QMAKE) -o Makefile ..\Service\Service.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -442,6 +443,7 @@ D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\mkspecs\features\lex.prf:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Widgets.prl:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Gui.prl:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Sql.prl:
+D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Network.prl:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\Qt5Core.prl:
 D:\Qt\Qt5.12.3\5.12.3\msvc2017_64\lib\qtmaind.prl:
 qmake: FORCE
