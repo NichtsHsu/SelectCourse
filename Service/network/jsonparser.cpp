@@ -404,5 +404,5 @@ QString JsonParser::parseRequire(QString json)
 
 void JsonParser::receiveMessage(MessageType type, QString module, QString message)
 {
-
+    emit sendMessage(type, module, message);
 }

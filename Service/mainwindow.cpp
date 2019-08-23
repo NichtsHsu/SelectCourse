@@ -212,19 +212,33 @@ void MainWindow::socket_Read_Data()
     buffer = socket->readAll();
     if(!buffer.isEmpty())
     {
+        JsonParser paser;
+        connect(&paser, &JsonParser::sendMessage, ui->textEdit, &MessageBox::receiveMessage);
         QString str = "";
         str+=tr(buffer);
-        qDebug() << str;
-        str = JsonParser().parseRequire(str);
-        qDebug() << str;
-        socket->write(str.toUtf8().data());
-        socket->flush();
+        ui->textEdit->receiveMessage(MessageType::Info, "JSON", QString("Recieve : ") + str);
+        str = paser.parseRequire(str);
+        if(!str.isEmpty())
+        {
+            ui->textEdit->receiveMessage(MessageType::Info, "JSON", QString("Send : ") + str);
+            socket->write(str.toUtf8().data());
+            socket->flush();
+        }
     }
 }
 
 void MainWindow::socket_Disconnected()
 {
     qDebug() << "Disconnected!";
+}
+
+void MainWindow::sendError(MessageType type, QString module, QString message)
+{
+    if(type == MessageType::Error)
+    {
+        socket->write(JsonParser().generateErrorMessage(message).toUtf8().data());
+        socket->flush();
+    }
 }
 
 

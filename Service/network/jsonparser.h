@@ -19,6 +19,9 @@ public:
     QString generateErrorMessage(const QString &message);
     QString parseRequire(QString json);
 
+signals:
+    void sendMessage(MessageType type, QString module, QString message);
+
 public slots:
     void receiveMessage(MessageType type, QString module, QString message);
 };

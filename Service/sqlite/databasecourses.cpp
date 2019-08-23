@@ -25,7 +25,6 @@ void DatabaseCourses::initialize()
 {
     self->m_database = new SQLiteDatabase(qApp->applicationDirPath() + QString("/database/courses.db"));
     self->connect(self->m_database, &SQLiteDatabase::sendMessage, self, &DatabaseCourses::receiveMessage);
-    self->connect(self, &DatabaseCourses::sendMessage, gb_msgbox, &MessageBox::receiveMessage);
 
     db_classroom.tableName = "classroom";
     db_classroom.hasAutoIncrementIndex = false;

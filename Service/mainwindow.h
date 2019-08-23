@@ -35,6 +35,8 @@ private slots:
 
     void socket_Disconnected();
 
+    void sendError(MessageType type, QString module, QString message);
+
 private:
     Ui::MainWindow *ui;
 
