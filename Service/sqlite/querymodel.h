@@ -102,6 +102,12 @@ public:
 	 */
 	QStringList getColumnNames() const;
 
+    /**
+     * @brief refresh
+     * 刷新显示。
+     */
+    void __refresh();
+
 signals:
     void sendMessage(MessageType type, QString module, QString message);
 
@@ -205,12 +211,6 @@ private:
 	 * 各列的项名。
 	 */
 	QStringList m_columnNames;
-
-	/**
-	 * @brief refresh
-	 * 刷新显示。
-	 */
-	void __refresh();
 
 	/**
 	 * @brief __modifyTableName

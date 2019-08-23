@@ -73,7 +73,7 @@ void DatabaseCourses::initialize()
     db_student.primaryKeys << "ID";
     db_student.columns << QPair<QString, SQLiteDataType>("ID", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("name", SQLiteDataType::TEXT)
-            << QPair<QString, SQLiteDataType>("grade", SQLiteDataType::REAL)
+            << QPair<QString, SQLiteDataType>("grade", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("code", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("dept_name", SQLiteDataType::TEXT);
 
@@ -142,6 +142,38 @@ QList<QVariantList> DatabaseCourses::readAllSection()
 QList<QVariantList> DatabaseCourses::readAllStudent()
 {
     return self->m_database->readAll(db_student);
+}
+
+void DatabaseCourses::addClassRoom(QVariantList values)
+{
+    self->m_database->insert(db_classroom, values);
+}
+
+void DatabaseCourses::addCourse(QVariantList values)
+{
+    self->m_database->insert(db_course, values);
+}
+
+void DatabaseCourses::addDepartment(QVariantList values)
+{
+    self->m_database->insert(db_department, values);
+}
+
+void DatabaseCourses::addInstructor(QVariantList values)
+{
+    self->m_database->insert(db_instructor, values);
+}
+
+void DatabaseCourses::addSection(QVariantList values)
+{
+    self->m_database->insert(db_section, values);
+}
+
+void DatabaseCourses::addStudent(QVariantList values)
+{
+    self->m_database->insert(db_student, values);
+    long long id = self->m_database->read(db_sequence, QStringList() << "student", "seq").toString().toLongLong();
+    self->m_database->update(db_student, QStringList() << QString::number(id), "code", QVariant(10000 + id));
 }
 
 void DatabaseCourses::receiveMessage(MessageType type, QString module, QString message)
