@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 4.9.0, 2019-08-23T17:24:53. -->
-=======
-<!-- Written by QtCreator 4.9.0, 2019-08-23T17:30:21. -->
->>>>>>> 3d78c4e528d85e3f96912ed1f9188db7082531b2
+<!-- Written by QtCreator 4.9.0, 2019-08-23T18:22:36. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -311,11 +307,7 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Client</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-<<<<<<< HEAD
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:F:/program/GitHub/SelectCourse/Client/Client.pro</value>
-=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:E:/work/wxWork/SelectCourse/Client/Client.pro</value>
->>>>>>> 3d78c4e528d85e3f96912ed1f9188db7082531b2
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
@@ -325,7 +317,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">F:/program/GitHub/SelectCourse/build-Client-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">E:/work/wxWork/SelectCourse/build-Client-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
