@@ -182,7 +182,8 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
 //    item1->desp="nihao";
     //sections.append(item1);
 
-
+    dividingTime(u8"周三1-2");
+    dividingTime(u8"周三1-2&&周四4-5");
 
 }
 
@@ -279,6 +280,17 @@ void ChooseClassWin::addClassToTable(QString str,int x,int y,int len)
     item->setText(str);
     item->setTextAlignment(Qt::AlignCenter);
     ui->chooseCoursesTable->setItem(y,x,item);
+}
+
+QList<PartOfTime> ChooseClassWin::dividingTime(QString item)
+{
+    QList<PartOfTime> list;
+    QStringList slist=item.split("&&");
+    for(int i=0;i<slist.size();i++)
+    {
+       qDebug()<<slist.at(i).left(4);
+       qDebug()<<slist.at(i).mid(4);
+    }
 }
 
 
