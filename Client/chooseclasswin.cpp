@@ -12,10 +12,11 @@
 
 #include <QGraphicsDropShadowEffect>
 
-ChooseClassWin::ChooseClassWin(QWidget *parent) :
+ChooseClassWin::ChooseClassWin(long long id, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChooseClassWin)
 {
+    ID = id;
     ui->setupUi(this);
     //    this->showMaximized();
 
