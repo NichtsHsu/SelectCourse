@@ -9,6 +9,7 @@
 #include "../../Client/chooseclasswin.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
+#include <QtCore/QList>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'chooseclasswin.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -21,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ChooseClassWin_t {
-    QByteArrayData data[23];
-    char stringdata0[282];
+    QByteArrayData data[26];
+    char stringdata0[339];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,25 +46,30 @@ QT_MOC_LITERAL(10, 94, 3), // "row"
 QT_MOC_LITERAL(11, 98, 6), // "column"
 QT_MOC_LITERAL(12, 105, 14), // "backBtnClicked"
 QT_MOC_LITERAL(13, 120, 20), // "courseDetailsClicked"
-QT_MOC_LITERAL(14, 141, 17), // "clickChooseCourse"
-QT_MOC_LITERAL(15, 159, 17), // "clickCourseDetail"
-QT_MOC_LITERAL(16, 177, 8), // "itemName"
-QT_MOC_LITERAL(17, 186, 10), // "itemNumber"
-QT_MOC_LITERAL(18, 197, 15), // "clickQuitCourse"
-QT_MOC_LITERAL(19, 213, 21), // "on_minimumBtn_clicked"
-QT_MOC_LITERAL(20, 235, 19), // "on_closeBtn_clicked"
-QT_MOC_LITERAL(21, 255, 18), // "on_sendBtn_clicked"
-QT_MOC_LITERAL(22, 274, 7) // "getdata"
+QT_MOC_LITERAL(14, 141, 18), // "selectedSectionsOk"
+QT_MOC_LITERAL(15, 160, 14), // "QList<Section>"
+QT_MOC_LITERAL(16, 175, 22), // "QMap<long long,Course>"
+QT_MOC_LITERAL(17, 198, 17), // "clickChooseCourse"
+QT_MOC_LITERAL(18, 216, 17), // "clickCourseDetail"
+QT_MOC_LITERAL(19, 234, 8), // "itemName"
+QT_MOC_LITERAL(20, 243, 10), // "itemNumber"
+QT_MOC_LITERAL(21, 254, 15), // "clickQuitCourse"
+QT_MOC_LITERAL(22, 270, 21), // "on_minimumBtn_clicked"
+QT_MOC_LITERAL(23, 292, 19), // "on_closeBtn_clicked"
+QT_MOC_LITERAL(24, 312, 18), // "on_sendBtn_clicked"
+QT_MOC_LITERAL(25, 331, 7) // "getdata"
 
     },
     "ChooseClassWin\0chooseClassBtnClicked\0"
     "\0name\0id\0nameofteacher\0connectNum\0"
     "creidts\0time\0enableBtn\0row\0column\0"
     "backBtnClicked\0courseDetailsClicked\0"
-    "clickChooseCourse\0clickCourseDetail\0"
-    "itemName\0itemNumber\0clickQuitCourse\0"
-    "on_minimumBtn_clicked\0on_closeBtn_clicked\0"
-    "on_sendBtn_clicked\0getdata"
+    "selectedSectionsOk\0QList<Section>\0"
+    "QMap<long long,Course>\0clickChooseCourse\0"
+    "clickCourseDetail\0itemName\0itemNumber\0"
+    "clickQuitCourse\0on_minimumBtn_clicked\0"
+    "on_closeBtn_clicked\0on_sendBtn_clicked\0"
+    "getdata"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,37 +79,39 @@ static const uint qt_meta_data_ChooseClassWin[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       4,       // signalCount
+       5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    6,   69,    2, 0x06 /* Public */,
-       9,    2,   82,    2, 0x06 /* Public */,
-      12,    0,   87,    2, 0x06 /* Public */,
-      13,    2,   88,    2, 0x06 /* Public */,
+       1,    6,   74,    2, 0x06 /* Public */,
+       9,    2,   87,    2, 0x06 /* Public */,
+      12,    0,   92,    2, 0x06 /* Public */,
+      13,    2,   93,    2, 0x06 /* Public */,
+      14,    2,   98,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      14,    0,   93,    2, 0x08 /* Private */,
-      15,    2,   94,    2, 0x08 /* Private */,
-      18,    1,   99,    2, 0x08 /* Private */,
-      19,    0,  102,    2, 0x08 /* Private */,
-      20,    0,  103,    2, 0x08 /* Private */,
-      21,    0,  104,    2, 0x08 /* Private */,
-      22,    0,  105,    2, 0x08 /* Private */,
+      17,    0,  103,    2, 0x08 /* Private */,
+      18,    2,  104,    2, 0x08 /* Private */,
+      21,    1,  109,    2, 0x08 /* Private */,
+      22,    0,  112,    2, 0x08 /* Private */,
+      23,    0,  113,    2, 0x08 /* Private */,
+      24,    0,  114,    2, 0x08 /* Private */,
+      25,    0,  115,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Int, QMetaType::Double, QMetaType::QString,    3,    4,    5,    6,    7,    8,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   10,   11,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    2,    2,
+    QMetaType::Void, 0x80000000 | 15, 0x80000000 | 16,    2,    2,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::Int,   16,   17,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,   19,   20,
     QMetaType::Void, QMetaType::Int,   10,
     QMetaType::Void,
     QMetaType::Void,
@@ -123,13 +131,14 @@ void ChooseClassWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 1: _t->enableBtn((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 2: _t->backBtnClicked(); break;
         case 3: _t->courseDetailsClicked((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 4: _t->clickChooseCourse(); break;
-        case 5: _t->clickCourseDetail((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 6: _t->clickQuitCourse((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 7: _t->on_minimumBtn_clicked(); break;
-        case 8: _t->on_closeBtn_clicked(); break;
-        case 9: _t->on_sendBtn_clicked(); break;
-        case 10: _t->getdata(); break;
+        case 4: _t->selectedSectionsOk((*reinterpret_cast< QList<Section>(*)>(_a[1])),(*reinterpret_cast< QMap<long long,Course>(*)>(_a[2]))); break;
+        case 5: _t->clickChooseCourse(); break;
+        case 6: _t->clickCourseDetail((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 7: _t->clickQuitCourse((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->on_minimumBtn_clicked(); break;
+        case 9: _t->on_closeBtn_clicked(); break;
+        case 10: _t->on_sendBtn_clicked(); break;
+        case 11: _t->getdata(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -159,6 +168,13 @@ void ChooseClassWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
             using _t = void (ChooseClassWin::*)(QString , int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ChooseClassWin::courseDetailsClicked)) {
                 *result = 3;
+                return;
+            }
+        }
+        {
+            using _t = void (ChooseClassWin::*)(QList<Section> , QMap<long long,Course> );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ChooseClassWin::selectedSectionsOk)) {
+                *result = 4;
                 return;
             }
         }
@@ -194,13 +210,13 @@ int ChooseClassWin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }
@@ -230,6 +246,13 @@ void ChooseClassWin::courseDetailsClicked(QString _t1, int _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+
+// SIGNAL 4
+void ChooseClassWin::selectedSectionsOk(QList<Section> _t1, QMap<long long,Course> _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

@@ -35,6 +35,13 @@ struct Instructor
     QString description;
 };
 
+struct PartOfTime{
+    int x;
+    int y;
+    int len;
+};
+
+
 namespace Ui {
 class ChooseClassWin;
 }
@@ -52,7 +59,7 @@ public:
 
     void addClassToTable(QString str, int x, int y, int len);
 
-
+    QList<PartOfTime> dividingTime(QString);
 private slots:
     void clickChooseCourse();
     void clickCourseDetail(QString itemName, int itemNumber);
@@ -81,6 +88,8 @@ signals:
 
     void backBtnClicked();
     void courseDetailsClicked(QString, int);
+
+    void selectedSectionsOk(QList<Section>,QMap<long long, Course>);
 
 private:
 
