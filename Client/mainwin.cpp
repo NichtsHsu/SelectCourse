@@ -42,7 +42,7 @@ mainwin::mainwin(QString ID, QString psw, QWidget *parent) :
     this->setWindowTitle(u8"华南理工大学选课系统--选课界面");
 
 
-    cWin = new ChooseClassWin();
+    cWin = new ChooseClassWin(ID.toLongLong());
     cWin->hide();
 
     ui->classTable->setEditTriggers(QAbstractItemView::NoEditTriggers);

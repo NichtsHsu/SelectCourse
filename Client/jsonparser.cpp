@@ -61,7 +61,7 @@ QString JsonParser::generateSelectCourseRequirement(long long code, QList<QPair<
     rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
 
     doc.AddMember("type", "write", allocator);
-    doc.AddMember("database", "student", allocator);
+    doc.AddMember("database", "students", allocator);
     doc.AddMember("table", rapidjson::Value(rapidjson::StringRef(QString::number(code).toUtf8().data()), allocator), allocator);
 
     rapidjson::Value valueArray(rapidjson::kArrayType);

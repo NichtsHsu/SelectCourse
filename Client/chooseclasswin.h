@@ -44,7 +44,7 @@ class ChooseClassWin : public QWidget
     Q_OBJECT
 
 public:
-    explicit ChooseClassWin(QWidget *parent = nullptr);
+    explicit ChooseClassWin(long long id,QWidget *parent = nullptr);
     ~ChooseClassWin();
 
     void addChooseLine(QString itemName="", int itemNumber=0, QString nameOfTeacher="", int connectNum=0, double creditNum=0, QString duringTime="");
@@ -56,6 +56,9 @@ public:
 private slots:
     void clickChooseCourse();
     void clickCourseDetail(QString itemName, int itemNumber);
+
+
+    void clickQuitCourse(int row);
 
 
     void on_minimumBtn_clicked();
@@ -73,6 +76,9 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
 
 signals:
+    void chooseClassBtnClicked(QString name, int id, QString nameofteacher, int connectNum, double creidts, QString time);
+    void enableBtn(int row, int column);
+
     void backBtnClicked();
     void courseDetailsClicked(QString, int);
 
@@ -80,6 +86,8 @@ private:
 
 
     Ui::ChooseClassWin *ui;
+
+    QList<QPair<long long,long long>> chooseC;
 
     void connectServer();
     QTcpSocket* socketC;
@@ -91,6 +99,8 @@ private:
     QMap<long long, Course> courses;
     QList<Section> sections;
     QMap<long long, Instructor> instructors;
+
+    long long ID;
 };
 
 #endif // CHOOSECLASSWIN_H
