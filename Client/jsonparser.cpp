@@ -29,7 +29,6 @@ QString JsonParser::generatePasswordRequirement(long long code)
 
 QString JsonParser::parsePassword(const QString &json)
 {
-    qDebug() << json;
     rapidjson::Document doc;
     doc.Parse(json.toUtf8().data());
 
@@ -55,7 +54,7 @@ QString JsonParser::parsePassword(const QString &json)
     }
 }
 
-QString JsonParser::generateSelectCourseRequirement(long long code, long long course_id, long long sec_id)
+QString JsonParser::generateSelectCourseRequirement(long long code, QList<QPair<long long, long long> > course_ids_and_sec_ids)
 {
     rapidjson::Document doc;
     doc.SetObject();
@@ -65,15 +64,14 @@ QString JsonParser::generateSelectCourseRequirement(long long code, long long co
     doc.AddMember("database", "student", allocator);
     doc.AddMember("table", rapidjson::Value(rapidjson::StringRef(QString::number(code).toUtf8().data()), allocator), allocator);
 
-    rapidjson::Value primaryKeyValue(rapidjson::kArrayType);
-    primaryKeyValue.PushBack(course_id, allocator);
-    doc.AddMember("primaryKeyValues", primaryKeyValue, allocator);
-
     rapidjson::Value valueArray(rapidjson::kArrayType);
-    rapidjson::Value obj(rapidjson::kObjectType);
-    obj.AddMember("course_id", course_id, allocator);
-    obj.AddMember("sec_id", sec_id, allocator);
-    valueArray.PushBack(obj, allocator);
+    foreach(auto i, course_ids_and_sec_ids)
+    {
+        rapidjson::Value obj(rapidjson::kObjectType);
+        obj.AddMember("course_id", i.first, allocator);
+        obj.AddMember("sec_id", i.second, allocator);
+        valueArray.PushBack(obj, allocator);
+    }
     doc.AddMember("values", valueArray, allocator);
 
     rapidjson::StringBuffer s;

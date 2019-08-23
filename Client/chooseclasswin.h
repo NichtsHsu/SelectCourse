@@ -4,7 +4,36 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QTcpSocket>
+#include "jsonparser.h"
 
+struct Course
+{
+    long long course_id;
+    QString title;
+    QString description;
+    double credits;
+    QString dept_name;
+};
+
+struct Section
+{
+    long long sec_id;
+    long long course_id;
+    long long instructor_id;
+    QString semester;
+    long long year;
+    QString time;
+    QString building;
+    long long room_number;
+};
+
+struct Instructor
+{
+    long long ID;
+    QString name;
+    QString dept_name;
+    QString description;
+};
 
 namespace Ui {
 class ChooseClassWin;
@@ -33,6 +62,8 @@ private slots:
 
     void on_sendBtn_clicked();
 
+    void getdata();
+
 protected:
 
     void mousePressEvent(QMouseEvent *event) override;
@@ -53,6 +84,10 @@ private:
     QPoint m_Press;
     QPoint m_Move;
     bool leftBtnClk=false;
+
+    QMap<long long, Course> courses;
+    QList<Section> sections;
+    QMap<long long, Instructor> instructors;
 };
 
 #endif // CHOOSECLASSWIN_H
