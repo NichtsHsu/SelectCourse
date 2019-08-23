@@ -11,14 +11,11 @@
 
 
 #include <QGraphicsDropShadowEffect>
-#include "jsonparser.h"
 
-ChooseClassWin::ChooseClassWin(long long id, QWidget *parent) :
+ChooseClassWin::ChooseClassWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChooseClassWin)
 {
-    ID=id;
-
     ui->setupUi(this);
     //    this->showMaximized();
 
@@ -133,7 +130,6 @@ ChooseClassWin::ChooseClassWin(long long id, QWidget *parent) :
     ui->chooseCoursesTable->setEditTriggers(QAbstractItemView::NoEditTriggers); // 设置不可编辑
 
     connect(this, &ChooseClassWin::courseDetailsClicked, this, &ChooseClassWin::clickCourseDetail);
-    connect(this,&ChooseClassWin::chooseClassBtnClicked, this,&ChooseClassWin::addChooseLine);
 
     connectServer();
 
@@ -142,37 +138,37 @@ ChooseClassWin::ChooseClassWin(long long id, QWidget *parent) :
     QString cname=u8"数据库系统";
     QString teacher=u8"li";
     QString dtime=u8"周一 5-6";
-//    //addLine(cname,123,teacher,0,456,dtime);
-//    addChooseLine(cname, 123, teacher, 0, 4, dtime);
+    addLine(cname,123,teacher,0,456,dtime);
+    addChooseLine(cname, 123, teacher, 0, 4, dtime);
     addClassToTable(u8"数据库系统",0,4,2);
 
     QString cname1=u8"计算机网络";
     QString teacher1=u8"wang";
     QString dtime1=u8"周二 3-4 && 周五 5-6";
-    //addLine(cname1,007,teacher1,0,456,dtime1);
-//    addChooseLine(cname1,007,teacher1,0,4,dtime1);
-//    addClassToTable(u8"计算机网络",4,4,2);
+    addLine(cname1,007,teacher1,0,456,dtime1);
+    addChooseLine(cname1,007,teacher1,0,4,dtime1);
+    addClassToTable(u8"计算机网络",4,4,2);
     addClassToTable(u8"计算机网络",1,2,2);
 
     QString cname2=u8"编译原理";
     QString teacher2=u8"xu";
     QString dtime2=u8"周二 5-7";
-//    //addLine(cname2, 117, teacher2, 0, 3.5, dtime2);
-//    addChooseLine(cname2, 117, teacher2, 0, 3.5, dtime2);
+    addLine(cname2, 117, teacher2, 0, 3.5, dtime2);
+    addChooseLine(cname2, 117, teacher2, 0, 3.5, dtime2);
     addClassToTable(u8"编译原理",1,4,3);
 
     QString cname3 = u8"操作系统";
     QString teacher3 = u8"chen";
     QString dtime3 = u8"周四 1-4";
-//    //addLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
-//    addChooseLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
+    addLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
+    addChooseLine(cname3, 9591, teacher3, 0, 3.5, dtime3);
     addClassToTable(u8"操作系统", 3, 0, 4);
 
     QString cname4 = u8"大学英语";
     QString teacher4 = u8"yu";
     QString dtime4 = u8"周三 1-2";
-//    //addLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
-//    addChooseLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
+    addLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
+    addChooseLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
     addClassToTable(u8"大学英语", 2, 0, 2);
 
 
@@ -204,13 +200,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QWidget *widget_1=new QWidget;
 
     QHBoxLayout *layout_1 = new QHBoxLayout();
-
-    QLabel *lab1=new QLabel(itemName);
-
-    lab1->setWordWrap(true);
-    lab1->setAlignment(Qt::AlignTop);
-
-    layout_1->addWidget(lab1);
+    layout_1->addWidget((new QLabel(itemName)));
     widget_1->setLayout(layout_1);
 
     ui->CoursesList->setCellWidget(row-1,0,widget_1);
@@ -276,9 +266,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
     QHBoxLayout *layout_7 = new QHBoxLayout();
     layout_7->addWidget(ptn);
     widget_7->setLayout(layout_7);
-    connect(ptn,&QPushButton::clicked,[this,itemName,itemNumber,nameOfTeacher,connectNum,creditNum, duringTime,ptn](){
-        emit chooseClassBtnClicked(itemName,itemNumber,nameOfTeacher,connectNum,creditNum,duringTime);
-    });
+    connect(ptn,SIGNAL(clicked()),this,SLOT(clickChooseCourse()));
 
     ui->CoursesList->setCellWidget(row-1,6,widget_7);
 
@@ -332,18 +320,8 @@ void ChooseClassWin::clickCourseDetail(QString itemName,int itemNumber)
 
 void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nameOfTeacher, int connectNum, double creditNum, QString duringTime)
 {
-    for(int i=0;i<chooseC.size();i++)
-    {
-        if( chooseC.at(i).second==connectNum)
-            return;
-    }
-
-    chooseC.append(QPair<long long, long long>(itemNumber,connectNum));
-
-
-    ui->ChooseList->setRowCount(ui->ChooseList->rowCount()+1);
-    qDebug()<<ui->ChooseList->rowCount();
-    int row=ui->ChooseList->rowCount();
+    ui->ChooseList->setRowCount(ui->CoursesList->rowCount()+1);
+    int row=ui->CoursesList->rowCount();
     //1
     QWidget *widget_1=new QWidget;
 
@@ -406,8 +384,8 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
     QHBoxLayout *layout_7 = new QHBoxLayout();
     layout_7->addWidget(ptn);
     widget_7->setLayout(layout_7);
-    connect(ptn, &QPushButton::clicked, [this,row](){
-       clickQuitCourse(row - 1);
+    connect(ptn, &QPushButton::clicked, [itemName](){
+        qDebug()<<"tui"<< itemName;
     });
 
     ui->ChooseList->setCellWidget(row-1,5,widget_7);
@@ -494,34 +472,7 @@ void ChooseClassWin::on_sendBtn_clicked()
 {
     //获取当前json
     //QString data= ;
-    QString json=JsonParser().generateSelectCourseRequirement(ID,chooseC);
-    qDebug()<<json;
-    QString IP="127.0.0.1";
 
-    int port=12345;
-
-    QTcpSocket* socket = new QTcpSocket();
-
-    // 取消已有的连接
-    socket->abort();
-    // 连接服务器
-    socket->connectToHost(IP, port);
-
-    // 等待连接成功
-    if(!socket->waitForConnected(1000))
-    {
-
-        qDebug() << "mainwin Connection failed!";
-        return;
-    }
-    else
-    {
-        qDebug() << "mainwin Connect successfully!";
-        socketC=socket;
-        connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
-        socketC->write(json.toUtf8());
-        socketC->flush();
-    }
 
 }
 
@@ -547,8 +498,6 @@ void ChooseClassWin::getdata()
         }
         else if(type == QString("return"))
         {
-            if(!doc.HasMember("table"))
-                return;
             QString table = doc["table"].GetString();
 
             if(table == "course")
@@ -611,7 +560,7 @@ void ChooseClassWin::getdata()
                     section.time = record["time"].GetString();
                     section.building = record["building"].GetString();
                     section.room_number = record["room_number"].GetInt64();
-                    sections << section;
+                    sections[section.sec_id] = section;
                 }
 
                 QString IP="127.0.0.1";
@@ -658,7 +607,46 @@ void ChooseClassWin::getdata()
                 }
 
                 foreach(auto i, sections)
-                    addLine(courses[i.course_id].title, i.course_id, instructors[i.instructor_id].name, i.sec_id, courses[i.course_id].credits, i.time);
+                    addLine(courses[i.course_id].title, i.course_id, instructors[i.instructor_id].name, 0, courses[i.course_id].credits, i.time);
+
+                QString IP="127.0.0.1";
+
+                int port=12345;
+
+                QTcpSocket* socket = new QTcpSocket();
+
+                // 取消已有的连接
+                socket->abort();
+                // 连接服务器
+                socket->connectToHost(IP, port);
+
+                // 等待连接成功
+                if(!socket->waitForConnected(1000))
+                {
+
+                    qDebug() << "mainwin Connection failed!";
+                    return;
+                }
+                else
+                {
+                    qDebug() << "mainwin Connect successfully!";
+                    socketC=socket;
+                    connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
+                    QString send = "{\"type\":\"read\",\"database\":\"students\",\"table\":\"%1\",\"primaryKeyValues\":[]}";
+                    send = send.arg(ID);
+                    socketC->write(send.toUtf8());
+                    socketC->flush();
+                }
+            }
+            else if(table == QString::number(ID))
+            {
+                rapidjson::Value values = doc["values"].GetArray();
+                selectedSections.clear();
+                for(unsigned i = 0; i < values.Size(); i++)
+                {
+                    rapidjson::Value record = values[i].GetObject();
+                    selectedSections << sections[record["sec_id"].GetInt64()];
+                }
             }
 
             return;
@@ -669,13 +657,4 @@ void ChooseClassWin::getdata()
             return;
         }
     }
-}
-
-
-
-void ChooseClassWin::clickQuitCourse(int row)
-{
-    qDebug()<<"tui"<<row<<endl;
-    chooseC.removeAt(row);
-    ui->ChooseList->removeRow(row);
 }
