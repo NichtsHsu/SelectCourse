@@ -78,6 +78,7 @@ signals:
 
 private:
 
+
     Ui::ChooseClassWin *ui;
 
     void connectServer();

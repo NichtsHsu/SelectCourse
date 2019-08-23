@@ -9,6 +9,7 @@
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
 
+
 #include <QGraphicsDropShadowEffect>
 
 ChooseClassWin::ChooseClassWin(QWidget *parent) :
@@ -169,6 +170,20 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     addLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
     addChooseLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
     addClassToTable(u8"大学英语", 2, 0, 2);
+
+
+    //Section item1;
+    //item1.course_id;
+//    item1->course_id=111111;
+//    item1->section_id=111111;
+//    item1->teacher_id=121212;
+//    item1->teacher=u8"li";
+//    item1->credit=2.5;
+//    item1->desp="nihao";
+    //sections.append(item1);
+
+
+
 }
 
 
