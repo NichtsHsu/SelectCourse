@@ -329,6 +329,7 @@ QString JsonParser::parseRequire(QString json)
             {
                 if(table == QString("accounts"))
                 {
+                    qDebug() << "pswd";
                     QString password = DatabaseStudents::getPassword(primaryKeyValuesQt[0].toLongLong());
 
                     QMap<QString, QVariant> rec;

@@ -147,7 +147,7 @@ void Login::on_closeBtn_clicked()
 
 void Login::connectServer()
 {
-    QFile file("ip.txt");
+    QFile file(qApp->applicationDirPath() + "/ip.txt");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug()<<"Can't open the file!"<<endl;
     }

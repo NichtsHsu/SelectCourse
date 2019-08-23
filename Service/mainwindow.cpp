@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "sqlite/databasecourses.h"
 #include "sqlite/databasestudents.h"
+#include "network/jsonparser.h"
 
 #include <QFrame>
 #include <QPushButton>
@@ -214,9 +215,10 @@ void MainWindow::socket_Read_Data()
         QString str = "";
         str+=tr(buffer);
 
-        qDebug()<<str<<endl;
-        QString str2 = tr(u8"收到了")+ str;
-        socket->write(str2.toLatin1());
+        qDebug() << str << endl;
+        str = JsonParser().parseRequire(str);
+        qDebug() << str;
+        socket->write(str.toUtf8().data());
         socket->flush();
     }
 }
