@@ -4,7 +4,7 @@
 #include "mainwin.h"
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
-
+#include <jsonparser.h>
 #include <QDebug>
 #include <QTcpSocket>
 #include <iostream>
@@ -95,6 +95,8 @@ void Login::loginPush()
         return;
     }
 
+    long long id = ID.toLongLong();
+
     QString psw = ui->lineEdit->text();
     if(psw.isEmpty())
     {
@@ -102,7 +104,7 @@ void Login::loginPush()
         return;
     }
     // 生成json
-    QString json = "aaa";
+    QString json = JsonParser().generatePasswordRequirement(id);
     // 发送登录请求
     socketC->write(json.toUtf8());
     socketC->flush();
@@ -115,7 +117,9 @@ void Login::loginPush()
         str += tr(buffer);
     }
 
-    if(str == "success")
+    str = JsonParser().parsePassword(str);
+
+    if(str == psw)
     {
         // 关闭连接后打开mainwin
         socketC->disconnectFromHost();
