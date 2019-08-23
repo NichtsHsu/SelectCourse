@@ -17,20 +17,20 @@ mainwin::mainwin(QString ID, QString psw, QWidget *parent) :
     ui->setupUi(this);
 
     this->setAttribute(Qt::WA_TranslucentBackground, true);
-        //设置无边框
-        this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-        //实例阴影shadow
-        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
-        //设置阴影距离
-        shadow->setOffset(0, 0);
-        //设置阴影颜色
-        shadow->setColor(QColor("#444444"));
-        //设置阴影圆角
-        shadow->setBlurRadius(10);
-        //给嵌套QWidget设置阴影
-        ui->frame->setGraphicsEffect(shadow);
-        //给垂直布局器设置边距(此步很重要, 设置宽度为阴影的宽度)
-        //ui->Login->setMargin(24);
+    //设置无边框
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    //实例阴影shadow
+    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
+    //设置阴影距离
+    shadow->setOffset(0, 0);
+    //设置阴影颜色
+    shadow->setColor(QColor("#444444"));
+    //设置阴影圆角
+    shadow->setBlurRadius(10);
+    //给嵌套QWidget设置阴影
+    ui->frame->setGraphicsEffect(shadow);
+    //给垂直布局器设置边距(此步很重要, 设置宽度为阴影的宽度)
+    //ui->Login->setMargin(24);
 
 
 
@@ -125,20 +125,20 @@ void mainwin::mouseReleaseEvent(QMouseEvent *event)
 {
     if( event->button() == Qt::LeftButton ){
 
-            leftBtnClk = false;
-        }
-        event->ignore();
+        leftBtnClk = false;
+    }
+    event->ignore();
 }
 
 void mainwin::mouseMoveEvent(QMouseEvent *event)
 {
     if( leftBtnClk ){
 
-           m_Move = event->globalPos();
-           this->move( this->pos() + m_Move - m_Press );
-           m_Press = m_Move;
-     }
-       event->ignore();
+        m_Move = event->globalPos();
+        this->move( this->pos() + m_Move - m_Press );
+        m_Press = m_Move;
+    }
+    event->ignore();
 
 }
 
@@ -158,58 +158,49 @@ void mainwin::on_minimumBtn_clicked()
 
 void mainwin::connectServer()
 {
-    QFile file("ip.txt");
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug()<<"Can't open the file!"<<endl;
+    QString IP="127.0.0.1";
+
+    int port=12345;
+
+    QTcpSocket* socket = new QTcpSocket();
+
+    //取消已有的连接
+    socket->abort();
+    //连接服务器
+    socket->connectToHost(IP, port);
+
+    //等待连接成功
+    if(!socket->waitForConnected(1000))
+    {
+
+        qDebug() << "mainwin Connection failed!";
+        return;
     }
-    while(!file.atEnd()) {
-        QByteArray line = file.readLine();
-        QString str(line);
-        qDebug()<< str;
+    else
+    {
+        qDebug() << "mainwin Connect successfully!";
+        socketC=socket;
 
-        QString IP=str;
+        // 用学号生成json获取个人选课信息
+        QString year = ui->comboBox->currentText();
 
-        int port=12345;
-
-        QTcpSocket* socket = new QTcpSocket();
-
-        //取消已有的连接
-        socket->abort();
-        //连接服务器
-        socket->connectToHost(IP, port);
-
-        //等待连接成功
-        if(!socket->waitForConnected(1000))
+        QString json = "";
+        socketC->write(json.toUtf8());
+        // 读取section_id
+        QByteArray buffer;
+        QString str = "";
+        buffer = socketC->readAll();
+        if(!buffer.isEmpty())
         {
-
-            qDebug() << "mainwin Connection failed!";
-            return;
+            str += tr(buffer);
         }
-        else
-        {
-            qDebug() << "mainwin Connect successfully!";
-            socketC=socket;
+        // ... 这里不知道怎么读取到了section_id
+        // 请求课表即section中，课表名字与时间
+        // for循环读取课表与时间，然后加入课表
+        // addClassToTable(QString name, int x, int y, int len)
+        // name 课程名称 x星期几，y第几节开始，len多少节
 
-            // 用学号生成json获取个人选课信息
-            QString year = ui->comboBox->currentText();
+        socketC->disconnectFromHost();
 
-            QString json = "";
-            socketC->write(json.toUtf8());
-            // 读取section_id
-            QByteArray buffer;
-            QString str = "";
-            buffer = socketC->readAll();
-            if(!buffer.isEmpty())
-            {
-                str += tr(buffer);
-            }
-            // ... 这里不知道怎么读取到了section_id
-            // 请求课表即section中，课表名字与时间
-            // for循环读取课表与时间，然后加入课表
-            // addClassToTable(QString name, int x, int y, int len)
-            // name 课程名称 x星期几，y第几节开始，len多少节
-
-            socketC->disconnectFromHost();
-        }
     }
 }

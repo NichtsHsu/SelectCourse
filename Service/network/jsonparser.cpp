@@ -13,6 +13,7 @@ QString JsonParser::generateDatabaseRecord(SQLiteTable table, const QList<QMap<Q
     rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
 
     doc.AddMember("type", "return", allocator);
+    doc.AddMember("table", rapidjson::Value(rapidjson::StringRef(table.tableName.toUtf8().data()), allocator), allocator);
 
     rapidjson::Value valueArray(rapidjson::kArrayType);
     for(int i = 0; i < values.size(); i++)

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ChooseClassWin_t {
-    QByteArrayData data[11];
-    char stringdata0[169];
+    QByteArrayData data[12];
+    char stringdata0[177];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,14 +41,15 @@ QT_MOC_LITERAL(6, 88, 8), // "itemName"
 QT_MOC_LITERAL(7, 97, 10), // "itemNumber"
 QT_MOC_LITERAL(8, 108, 21), // "on_minimumBtn_clicked"
 QT_MOC_LITERAL(9, 130, 19), // "on_closeBtn_clicked"
-QT_MOC_LITERAL(10, 150, 18) // "on_sendBtn_clicked"
+QT_MOC_LITERAL(10, 150, 18), // "on_sendBtn_clicked"
+QT_MOC_LITERAL(11, 169, 7) // "getdata"
 
     },
     "ChooseClassWin\0backBtnClicked\0\0"
     "courseDetailsClicked\0clickChooseCourse\0"
     "clickCourseDetail\0itemName\0itemNumber\0"
     "on_minimumBtn_clicked\0on_closeBtn_clicked\0"
-    "on_sendBtn_clicked"
+    "on_sendBtn_clicked\0getdata"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +59,7 @@ static const uint qt_meta_data_ChooseClassWin[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,15 +67,16 @@ static const uint qt_meta_data_ChooseClassWin[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   49,    2, 0x06 /* Public */,
-       3,    2,   50,    2, 0x06 /* Public */,
+       1,    0,   54,    2, 0x06 /* Public */,
+       3,    2,   55,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   55,    2, 0x08 /* Private */,
-       5,    2,   56,    2, 0x08 /* Private */,
-       8,    0,   61,    2, 0x08 /* Private */,
-       9,    0,   62,    2, 0x08 /* Private */,
-      10,    0,   63,    2, 0x08 /* Private */,
+       4,    0,   60,    2, 0x08 /* Private */,
+       5,    2,   61,    2, 0x08 /* Private */,
+       8,    0,   66,    2, 0x08 /* Private */,
+       9,    0,   67,    2, 0x08 /* Private */,
+      10,    0,   68,    2, 0x08 /* Private */,
+      11,    0,   69,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -83,6 +85,7 @@ static const uint qt_meta_data_ChooseClassWin[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    6,    7,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -103,6 +106,7 @@ void ChooseClassWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 4: _t->on_minimumBtn_clicked(); break;
         case 5: _t->on_closeBtn_clicked(); break;
         case 6: _t->on_sendBtn_clicked(); break;
+        case 7: _t->getdata(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -153,13 +157,13 @@ int ChooseClassWin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

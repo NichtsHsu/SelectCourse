@@ -16,26 +16,26 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     ui(new Ui::ChooseClassWin)
 {
     ui->setupUi(this);
-//    this->showMaximized();
+    //    this->showMaximized();
 
     this->setWindowFlags(Qt::FramelessWindowHint);
 
 
     this->setAttribute(Qt::WA_TranslucentBackground, true);
-        //设置无边框
-        this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-        //实例阴影shadow
-        QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
-        //设置阴影距离
-        shadow->setOffset(0, 0);
-        //设置阴影颜色
-        shadow->setColor(QColor("#444444"));
-        //设置阴影圆角
-        shadow->setBlurRadius(10);
-        //给嵌套QWidget设置阴影
-        ui->frame->setGraphicsEffect(shadow);
-        //给垂直布局器设置边距(此步很重要, 设置宽度为阴影的宽度)
-        //ui->Login->setMargin(24);
+    //设置无边框
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    //实例阴影shadow
+    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
+    //设置阴影距离
+    shadow->setOffset(0, 0);
+    //设置阴影颜色
+    shadow->setColor(QColor("#444444"));
+    //设置阴影圆角
+    shadow->setBlurRadius(10);
+    //给嵌套QWidget设置阴影
+    ui->frame->setGraphicsEffect(shadow);
+    //给垂直布局器设置边距(此步很重要, 设置宽度为阴影的宽度)
+    //ui->Login->setMargin(24);
 
 
 
@@ -50,7 +50,7 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     ui->chooseCoursesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->chooseCoursesTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-//设置CoursesList
+    //设置CoursesList
     ui->CoursesList->setColumnCount(7); //设置列数
     ui->CoursesList->horizontalHeader()->setSectionsClickable(false); //设置表头不可点击（默认点击后进行排序）
 
@@ -61,9 +61,9 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
 
     //设置表头字体加粗
 
-//    QFont font = ui->CoursesList->horizontalHeader()->font();
-//    font.setBold(true);
-//    ui->CoursesList->horizontalHeader()->setFont(font);
+    //    QFont font = ui->CoursesList->horizontalHeader()->font();
+    //    font.setBold(true);
+    //    ui->CoursesList->horizontalHeader()->setFont(font);
     ui->CoursesList->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->CoursesList->horizontalHeader()->setStretchLastSection(true); //设置充满表宽度
     ui->CoursesList->verticalHeader()->setDefaultSectionSize(50); //设置行高
@@ -80,10 +80,10 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
 
     //设置水平、垂直滚动条样式
     ui->CoursesList->verticalScrollBar()->setStyleSheet("QScrollBar{background:transparent; height:10px;}"
-    "QScrollBar::handle{background:lightgray; border:2px solid transparent; border-radius:5px;}"
-    "QScrollBar::handle:hover{background:gray;}"
-    "QScrollBar::sub-line{background:transparent;}"
-    "QScrollBar::add-line{background:transparent;}");
+                                                        "QScrollBar::handle{background:lightgray; border:2px solid transparent; border-radius:5px;}"
+                                                        "QScrollBar::handle:hover{background:gray;}"
+                                                        "QScrollBar::sub-line{background:transparent;}"
+                                                        "QScrollBar::add-line{background:transparent;}");
 
 
     //设置ChooseList
@@ -116,10 +116,10 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
 
     //设置水平、垂直滚动条样式
     ui->ChooseList->verticalScrollBar()->setStyleSheet("QScrollBar{background:transparent; height:10px;}"
-    "QScrollBar::handle{background:lightgray; border:2px solid transparent; border-radius:5px;}"
-    "QScrollBar::handle:hover{background:gray;}"
-    "QScrollBar::sub-line{background:transparent;}"
-    "QScrollBar::add-line{background:transparent;}");
+                                                       "QScrollBar::handle{background:lightgray; border:2px solid transparent; border-radius:5px;}"
+                                                       "QScrollBar::handle:hover{background:gray;}"
+                                                       "QScrollBar::sub-line{background:transparent;}"
+                                                       "QScrollBar::add-line{background:transparent;}");
 
     connect(ui->backBtn, &QPushButton::clicked, [this](){
         emit backBtnClicked();
@@ -169,20 +169,6 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     addLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
     addChooseLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
     addClassToTable(u8"大学英语", 2, 0, 2);
-
-
-    Section *item1=new Section;
-    item1->course_name=u8"数据库系统";
-    item1->course_id=111111;
-    item1->section_id=111111;
-    item1->teacher_id=121212;
-    item1->teacher=u8"li";
-    item1->credit=2.5;
-    item1->desp="nihao";
-    sectionList.append(item1);
-
-
-
 }
 
 
@@ -195,7 +181,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 {
     ui->CoursesList->setRowCount(ui->CoursesList->rowCount()+1);
     int row=ui->CoursesList->rowCount();
-//1
+    //1
     QWidget *widget_1=new QWidget;
 
     QHBoxLayout *layout_1 = new QHBoxLayout();
@@ -204,7 +190,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
     ui->CoursesList->setCellWidget(row-1,0,widget_1);
 
-//2
+    //2
     QWidget *widget_2=new QWidget;
 
     QHBoxLayout *layout_2 = new QHBoxLayout();
@@ -213,7 +199,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
     ui->CoursesList->setCellWidget(row-1,1,widget_2);
 
-//3
+    //3
     QWidget *widget_3=new QWidget;
 
     QHBoxLayout *layout_3 = new QHBoxLayout();
@@ -222,7 +208,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
     ui->CoursesList->setCellWidget(row-1,2,widget_3);
 
-//4
+    //4
     QWidget *x=new QWidget;
 
     QHBoxLayout *l = new QHBoxLayout();
@@ -235,7 +221,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
     ui->CoursesList->setCellWidget(row-1,3,x);
 
-//5
+    //5
     QWidget *widget_5=new QWidget;
 
     QHBoxLayout *layout_5 = new QHBoxLayout();
@@ -244,7 +230,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
     ui->CoursesList->setCellWidget(row-1,4,widget_5);
 
-//6
+    //6
     QWidget *widget_6=new QWidget;
 
     QHBoxLayout *layout_6 = new QHBoxLayout();
@@ -259,7 +245,7 @@ void ChooseClassWin::addLine(QString itemName, int itemNumber, QString nameOfTea
 
     ui->CoursesList->setCellWidget(row-1,5,widget_6);
 
-//7
+    //7
     QWidget *widget_7=new QWidget;
     QPushButton *ptn=new QPushButton(u8"选课");
     QHBoxLayout *layout_7 = new QHBoxLayout();
@@ -321,7 +307,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 {
     ui->ChooseList->setRowCount(ui->CoursesList->rowCount()+1);
     int row=ui->CoursesList->rowCount();
-//1
+    //1
     QWidget *widget_1=new QWidget;
 
     QHBoxLayout *layout_1 = new QHBoxLayout();
@@ -330,7 +316,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 
     ui->ChooseList->setCellWidget(row-1,0,widget_1);
 
-//2
+    //2
     QWidget *widget_2=new QWidget;
 
     QHBoxLayout *layout_2 = new QHBoxLayout();
@@ -339,7 +325,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 
     ui->ChooseList->setCellWidget(row-1,1,widget_2);
 
-//3
+    //3
     QWidget *widget_3=new QWidget;
 
     QHBoxLayout *layout_3 = new QHBoxLayout();
@@ -349,7 +335,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
     ui->ChooseList->setCellWidget(row-1,2,widget_3);
 
 
-//5
+    //5
     QWidget *widget_5=new QWidget;
 
     QHBoxLayout *layout_5 = new QHBoxLayout();
@@ -358,7 +344,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 
     ui->ChooseList->setCellWidget(row-1,3,widget_5);
 
-//6
+    //6
     QWidget *widget_6=new QWidget;
 
 
@@ -377,7 +363,7 @@ void ChooseClassWin::addChooseLine(QString itemName, int itemNumber, QString nam
 
     ui->ChooseList->setCellWidget(row-1,4,widget_6);
 
-//7
+    //7
     QWidget *widget_7=new QWidget;
     QPushButton *ptn=new QPushButton(u8"退选");
     QHBoxLayout *layout_7 = new QHBoxLayout();
@@ -417,62 +403,53 @@ void ChooseClassWin::mousePressEvent(QMouseEvent *event)
 void ChooseClassWin::mouseReleaseEvent(QMouseEvent *event)
 {
     if( event->button() == Qt::LeftButton ){
-            leftBtnClk = false;
-        }
-        event->ignore();
+        leftBtnClk = false;
+    }
+    event->ignore();
 }
 
 void ChooseClassWin::mouseMoveEvent(QMouseEvent *event)
 {
     if( leftBtnClk ){
-           m_Move = event->globalPos();
-           this->move( this->pos() + m_Move - m_Press );
-           m_Press = m_Move;
-     }
-       event->ignore();
+        m_Move = event->globalPos();
+        this->move( this->pos() + m_Move - m_Press );
+        m_Press = m_Move;
+    }
+    event->ignore();
 
 }
 
 
 void ChooseClassWin::connectServer()
 {
-    QFile file("ip.txt");
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug()<<"Can't open the file!"<<endl;
+    QString IP="127.0.0.1";
+
+    int port=12345;
+
+    QTcpSocket* socket = new QTcpSocket();
+
+    // 取消已有的连接
+    socket->abort();
+    // 连接服务器
+    socket->connectToHost(IP, port);
+
+    // 等待连接成功
+    if(!socket->waitForConnected(1000))
+    {
+
+        qDebug() << "mainwin Connection failed!";
+        return;
     }
-    while(!file.atEnd()) {
-        QByteArray line = file.readLine();
-        QString str(line);
-        qDebug()<< str;
+    else
+    {
+        qDebug() << "mainwin Connect successfully!";
+        socketC=socket;
+        connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
 
-        QString IP=str;
-
-        int port=12345;
-
-        QTcpSocket* socket = new QTcpSocket();
-
-        // 取消已有的连接
-        socket->abort();
-        // 连接服务器
-        socket->connectToHost(IP, port);
-
-        // 等待连接成功
-        if(!socket->waitForConnected(1000))
-        {
-
-            qDebug() << "mainwin Connection failed!";
-            return;
-        }
-        else
-        {
-            qDebug() << "mainwin Connect successfully!";
-            socketC=socket;
-            connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
-
-            // 获取开课信息 header<<tr(u8"课程名称")<<tr(u8"课程代码")<<tr(u8"讲师")<<tr(u8"课程简介")<<tr(u8"学分")<<tr(u8"时间段")<<tr(u8"选课");
-            QString json = "{{\"type\":\"read\",\"database\":\"courses\",\"table\":\"course\",\"primaryKeyValues\":[]}";
-            socketC->write(json.toUtf8());
-        }
+        // 获取开课信息 header<<tr(u8"课程名称")<<tr(u8"课程代码")<<tr(u8"讲师")<<tr(u8"课程简介")<<tr(u8"学分")<<tr(u8"时间段")<<tr(u8"选课");
+        QString json = "{\"type\":\"read\",\"database\":\"courses\",\"table\":\"course\",\"primaryKeyValues\":[]}";
+        socketC->write(json.toUtf8());
+        socketC->flush();
     }
 }
 
@@ -524,8 +501,33 @@ void ChooseClassWin::getdata()
                     courses[course.course_id] = course;
                 }
 
-                QString send = "{{\"type\":\"read\",\"database\":\"courses\",\"table\":\"section\",\"primaryKeyValues\":[]}";
-                socketC->write(send.toUtf8());
+                QString IP="127.0.0.1";
+
+                int port=12345;
+
+                QTcpSocket* socket = new QTcpSocket();
+
+                // 取消已有的连接
+                socket->abort();
+                // 连接服务器
+                socket->connectToHost(IP, port);
+
+                // 等待连接成功
+                if(!socket->waitForConnected(1000))
+                {
+
+                    qDebug() << "mainwin Connection failed!";
+                    return;
+                }
+                else
+                {
+                    qDebug() << "mainwin Connect successfully!";
+                    socketC=socket;
+                    connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
+                    QString send = "{\"type\":\"read\",\"database\":\"courses\",\"table\":\"section\",\"primaryKeyValues\":[]}";
+                    socketC->write(send.toUtf8());
+                    socketC->flush();
+                }
             }
             else if(table == "section")
             {
@@ -546,8 +548,33 @@ void ChooseClassWin::getdata()
                     sections << section;
                 }
 
-                QString send = "{{\"type\":\"read\",\"database\":\"courses\",\"table\":\"instructor\",\"primaryKeyValues\":[]}";
-                socketC->write(send.toUtf8());
+                QString IP="127.0.0.1";
+
+                int port=12345;
+
+                QTcpSocket* socket = new QTcpSocket();
+
+                // 取消已有的连接
+                socket->abort();
+                // 连接服务器
+                socket->connectToHost(IP, port);
+
+                // 等待连接成功
+                if(!socket->waitForConnected(1000))
+                {
+
+                    qDebug() << "mainwin Connection failed!";
+                    return;
+                }
+                else
+                {
+                    qDebug() << "mainwin Connect successfully!";
+                    socketC=socket;
+                    connect(socketC, &QTcpSocket::readyRead, this, &ChooseClassWin::getdata);
+                    QString send = "{\"type\":\"read\",\"database\":\"courses\",\"table\":\"instructor\",\"primaryKeyValues\":[]}";
+                    socketC->write(send.toUtf8());
+                    socketC->flush();
+                }
             }
             else if(table == "instructor")
             {
@@ -559,7 +586,7 @@ void ChooseClassWin::getdata()
                     Instructor instructor;
                     instructor.ID = record["ID"].GetInt64();
                     instructor.name = record["name"].GetString();
-                    instructor.dept_name = record["instructor_id"].GetString();
+                    instructor.dept_name = record["dept_name"].GetString();
                     instructor.description = record["description"].GetString();
                     instructors[instructor.ID] = instructor;
                 }

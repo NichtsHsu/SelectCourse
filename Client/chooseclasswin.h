@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QTcpSocket>
-#include <section.h>
 #include "jsonparser.h"
 
 struct Course
@@ -78,8 +77,6 @@ signals:
     void courseDetailsClicked(QString, int);
 
 private:
-
-    SectionList sectionList;
 
     Ui::ChooseClassWin *ui;
 
