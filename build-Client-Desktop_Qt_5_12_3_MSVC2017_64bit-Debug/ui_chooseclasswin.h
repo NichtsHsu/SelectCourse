@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -28,6 +29,15 @@ class Ui_ChooseClassWin
 {
 public:
     QGridLayout *gridLayout_2;
+    QFrame *frame;
+    QGridLayout *gridLayout_3;
+    QFrame *topBar;
+    QHBoxLayout *horizontalLayout_5;
+    QSpacerItem *horizontalSpacer_7;
+    QPushButton *minimumBtn;
+    QPushButton *closeBtn;
+    QFrame *frame_2;
+    QGridLayout *gridLayout_4;
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_4;
@@ -47,25 +57,113 @@ public:
     QLabel *label_3;
     QSpacerItem *horizontalSpacer_3;
     QTableWidget *ChooseList;
+    QPushButton *sendBtn;
 
     void setupUi(QWidget *ChooseClassWin)
     {
         if (ChooseClassWin->objectName().isEmpty())
             ChooseClassWin->setObjectName(QString::fromUtf8("ChooseClassWin"));
-        ChooseClassWin->resize(400, 300);
+        ChooseClassWin->resize(1500, 900);
         gridLayout_2 = new QGridLayout(ChooseClassWin);
+        gridLayout_2->setSpacing(0);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setContentsMargins(6, 6, 6, 6);
+        frame = new QFrame(ChooseClassWin);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setStyleSheet(QString::fromUtf8("QFrame#frame{\n"
+"border-image: url(:/background/background/background_3.png);\n"
+"}"));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        gridLayout_3 = new QGridLayout(frame);
+        gridLayout_3->setSpacing(0);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setContentsMargins(0, 0, 0, 0);
+        topBar = new QFrame(frame);
+        topBar->setObjectName(QString::fromUtf8("topBar"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(topBar->sizePolicy().hasHeightForWidth());
+        topBar->setSizePolicy(sizePolicy);
+        topBar->setMinimumSize(QSize(0, 40));
+        topBar->setMaximumSize(QSize(16777215, 40));
+        topBar->setFrameShape(QFrame::StyledPanel);
+        topBar->setFrameShadow(QFrame::Raised);
+        horizontalLayout_5 = new QHBoxLayout(topBar);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 6, 0);
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_7);
+
+        minimumBtn = new QPushButton(topBar);
+        minimumBtn->setObjectName(QString::fromUtf8("minimumBtn"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(minimumBtn->sizePolicy().hasHeightForWidth());
+        minimumBtn->setSizePolicy(sizePolicy1);
+        minimumBtn->setMaximumSize(QSize(50, 30));
+        minimumBtn->setStyleSheet(QString::fromUtf8("QPushButton#minimumBtn:pressed {  \n"
+"\n"
+"    /* \346\224\271\345\217\230\350\203\214\346\231\257\350\211\262 */  \n"
+"    background-color: rgb(0, 170, 255,50);\n"
+"\n"
+"    /* \346\224\271\345\217\230\350\276\271\346\241\206\351\243\216\346\240\274 */  \n"
+"    border-style:inset;  \n"
+"}  \n"
+""));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons/icon/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
+        minimumBtn->setIcon(icon);
+        minimumBtn->setIconSize(QSize(25, 25));
+        minimumBtn->setFlat(true);
+
+        horizontalLayout_5->addWidget(minimumBtn);
+
+        closeBtn = new QPushButton(topBar);
+        closeBtn->setObjectName(QString::fromUtf8("closeBtn"));
+        sizePolicy1.setHeightForWidth(closeBtn->sizePolicy().hasHeightForWidth());
+        closeBtn->setSizePolicy(sizePolicy1);
+        closeBtn->setMaximumSize(QSize(50, 30));
+        closeBtn->setStyleSheet(QString::fromUtf8("QPushButton#closeBtn:pressed {  \n"
+"\n"
+"    /* \346\224\271\345\217\230\350\203\214\346\231\257\350\211\262 */  \n"
+"    background-color: rgb(255, 0, 0,50) ;\n"
+"\n"
+"    /* \346\224\271\345\217\230\350\276\271\346\241\206\351\243\216\346\240\274 */  \n"
+"    border-style:inset;  \n"
+"}  \n"
+""));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icons/icon/close.png"), QSize(), QIcon::Normal, QIcon::Off);
+        closeBtn->setIcon(icon1);
+        closeBtn->setIconSize(QSize(20, 20));
+        closeBtn->setFlat(true);
+
+        horizontalLayout_5->addWidget(closeBtn);
+
+
+        gridLayout_3->addWidget(topBar, 0, 0, 1, 1);
+
+        frame_2 = new QFrame(frame);
+        frame_2->setObjectName(QString::fromUtf8("frame_2"));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
+        gridLayout_4 = new QGridLayout(frame_2);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        backBtn = new QPushButton(ChooseClassWin);
+        backBtn = new QPushButton(frame_2);
         backBtn->setObjectName(QString::fromUtf8("backBtn"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icons/icon/bcak.png"), QSize(), QIcon::Normal, QIcon::Off);
-        backBtn->setIcon(icon);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icons/icon/bcak.png"), QSize(), QIcon::Normal, QIcon::Off);
+        backBtn->setIcon(icon2);
         backBtn->setAutoDefault(false);
         backBtn->setFlat(true);
 
@@ -75,7 +173,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_5);
 
-        label_2 = new QLabel(ChooseClassWin);
+        label_2 = new QLabel(frame_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         horizontalLayout_4->addWidget(label_2);
@@ -87,7 +185,7 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_4);
 
-        CoursesList = new QTableWidget(ChooseClassWin);
+        CoursesList = new QTableWidget(frame_2);
         CoursesList->setObjectName(QString::fromUtf8("CoursesList"));
 
         verticalLayout_2->addWidget(CoursesList);
@@ -103,7 +201,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        label = new QLabel(ChooseClassWin);
+        label = new QLabel(frame_2);
         label->setObjectName(QString::fromUtf8("label"));
 
         horizontalLayout->addWidget(label);
@@ -115,7 +213,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        chooseCoursesTable = new QTableWidget(ChooseClassWin);
+        chooseCoursesTable = new QTableWidget(frame_2);
         if (chooseCoursesTable->columnCount() < 7)
             chooseCoursesTable->setColumnCount(7);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
@@ -171,7 +269,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_4);
 
-        label_3 = new QLabel(ChooseClassWin);
+        label_3 = new QLabel(frame_2);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
         horizontalLayout_3->addWidget(label_3);
@@ -183,16 +281,42 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
-        ChooseList = new QTableWidget(ChooseClassWin);
+        ChooseList = new QTableWidget(frame_2);
         ChooseList->setObjectName(QString::fromUtf8("ChooseList"));
 
         verticalLayout->addWidget(ChooseList);
+
+        sendBtn = new QPushButton(frame_2);
+        sendBtn->setObjectName(QString::fromUtf8("sendBtn"));
+        sendBtn->setStyleSheet(QString::fromUtf8("QPushButton#sendBtn{\n"
+"	width:728px;\n"
+"	height:30px;\n"
+"	background-color:rgb(85, 170, 255,200);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton#sendBtn:pressed {  \n"
+"    /* \346\224\271\345\217\230\350\203\214\346\231\257\350\211\262 */  \n"
+"    background-color:  rgb(85, 170, 255,100);\n"
+"    /* \346\224\271\345\217\230\350\276\271\346\241\206\351\243\216\346\240\274 */  \n"
+"    border-style:inset;  \n"
+"\n"
+"}  \n"
+""));
+
+        verticalLayout->addWidget(sendBtn);
 
 
         gridLayout->addLayout(verticalLayout, 0, 4, 1, 1);
 
 
-        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+        gridLayout_4->addLayout(gridLayout, 0, 0, 1, 1);
+
+
+        gridLayout_3->addWidget(frame_2, 1, 0, 1, 1);
+
+
+        gridLayout_2->addWidget(frame, 0, 0, 1, 1);
 
 
         retranslateUi(ChooseClassWin);
@@ -206,6 +330,8 @@ public:
     void retranslateUi(QWidget *ChooseClassWin)
     {
         ChooseClassWin->setWindowTitle(QApplication::translate("ChooseClassWin", "Form", nullptr));
+        minimumBtn->setText(QString());
+        closeBtn->setText(QString());
         backBtn->setText(QString());
         label_2->setText(QApplication::translate("ChooseClassWin", "\351\200\211\350\257\276\345\210\227\350\241\250", nullptr));
         label->setText(QApplication::translate("ChooseClassWin", "\351\242\204\346\265\213\350\257\276\350\241\250", nullptr));
@@ -250,6 +376,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem19 = chooseCoursesTable->verticalHeaderItem(12);
         ___qtablewidgetitem19->setText(QApplication::translate("ChooseClassWin", "13", nullptr));
         label_3->setText(QApplication::translate("ChooseClassWin", "\345\267\262\351\200\211\350\257\276\347\250\213", nullptr));
+        sendBtn->setText(QApplication::translate("ChooseClassWin", "\346\217\220\344\272\244", nullptr));
     } // retranslateUi
 
 };
