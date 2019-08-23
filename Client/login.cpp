@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QTcpSocket>
 #include <iostream>
+#include <QMessageBox>
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -86,9 +87,48 @@ void Login::mouseMoveEvent(QMouseEvent *event)
 
 void Login::loginPush()
 {
-    this->close();
-    mainwin *mWin=new mainwin();
-    mWin->show();
+    // 获取账号密码
+    QString ID = ui->comboBox->text();
+    if(ID.isEmpty())
+    {
+        QMessageBox::critical(nullptr, "error", u8"学号不能为空", QMessageBox::Ok, QMessageBox::Ok);
+        return;
+    }
+
+    QString psw = ui->lineEdit->text();
+    if(psw.isEmpty())
+    {
+        QMessageBox::critical(nullptr, "error", u8"密码不能为空", QMessageBox::Ok, QMessageBox::Ok);
+        return;
+    }
+    // 生成json
+    QString json = "aaa";
+    // 发送登录请求
+    socketC->write(json.toUtf8());
+    socketC->flush();
+    // 获取登录结果
+    QByteArray buffer;
+    QString str = "";
+    buffer = socketC->readAll();
+    if(!buffer.isEmpty())
+    {
+        str += tr(buffer);
+    }
+
+    if(str == "success")
+    {
+        // 关闭连接后打开mainwin
+        socketC->disconnectFromHost();
+        this->close();
+        mainwin *mWin=new mainwin(ID, psw);
+        mWin->show();
+    }
+    else
+    {
+        ui->lineEdit->setText("");
+        QMessageBox::critical(nullptr, "error", u8"学号或密码有误", QMessageBox::Ok, QMessageBox::Ok);
+        return;
+    }
 }
 
 void Login::on_minimumBtn_clicked()

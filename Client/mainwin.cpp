@@ -5,13 +5,14 @@
 #include <QMouseEvent>
 #include <QGraphicsDropShadowEffect>
 
-mainwin::mainwin(QWidget *parent) :
+mainwin::mainwin(QString ID, QString psw, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::mainwin)
 {
 
     this->setWindowFlags(Qt::FramelessWindowHint);
-
+    this->ID = ID;
+    this->psw = psw;
 
     ui->setupUi(this);
 
@@ -57,6 +58,9 @@ mainwin::mainwin(QWidget *parent) :
         cWin->hide();
         this->show();
     });
+
+    connectServer();
+
 
     QString cname=u8"数据库系统";
     QString teacher=u8"li";
@@ -149,4 +153,63 @@ void mainwin::on_minimumBtn_clicked()
 {
     this->showMinimized();
 
+}
+
+
+void mainwin::connectServer()
+{
+    QFile file("ip.txt");
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug()<<"Can't open the file!"<<endl;
+    }
+    while(!file.atEnd()) {
+        QByteArray line = file.readLine();
+        QString str(line);
+        qDebug()<< str;
+
+        QString IP=str;
+
+        int port=12345;
+
+        QTcpSocket* socket = new QTcpSocket();
+
+        //取消已有的连接
+        socket->abort();
+        //连接服务器
+        socket->connectToHost(IP, port);
+
+        //等待连接成功
+        if(!socket->waitForConnected(1000))
+        {
+
+            qDebug() << "mainwin Connection failed!";
+            return;
+        }
+        else
+        {
+            qDebug() << "mainwin Connect successfully!";
+            socketC=socket;
+
+            // 用学号生成json获取个人选课信息
+            QString year = ui->comboBox->currentText();
+
+            QString json = "";
+            socketC->write(json.toUtf8());
+            // 读取section_id
+            QByteArray buffer;
+            QString str = "";
+            buffer = socketC->readAll();
+            if(!buffer.isEmpty())
+            {
+                str += tr(buffer);
+            }
+            // ... 这里不知道怎么读取到了section_id
+            // 请求课表即section中，课表名字与时间
+            // for循环读取课表与时间，然后加入课表
+            // addClassToTable(QString name, int x, int y, int len)
+            // name 课程名称 x星期几，y第几节开始，len多少节
+
+            socketC->disconnectFromHost();
+        }
+    }
 }

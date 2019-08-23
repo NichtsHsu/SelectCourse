@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QTcpSocket>
+
+
 namespace Ui {
 class ChooseClassWin;
 }
@@ -46,6 +49,8 @@ private:
 
     Ui::ChooseClassWin *ui;
 
+    void connectServer();
+    QTcpSocket* socketC;
 
     QPoint m_Press;
     QPoint m_Move;

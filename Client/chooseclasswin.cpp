@@ -8,6 +8,7 @@
 #include <QDialog>
 #include <QPlainTextEdit>
 #include <QVBoxLayout>
+#include "section.h"
 
 #include <QGraphicsDropShadowEffect>
 
@@ -136,6 +137,7 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
 
     connect(this, &ChooseClassWin::courseDetailsClicked, this, &ChooseClassWin::clickCourseDetail);
 
+    connectServer();
 
 
     //调试代码
@@ -421,6 +423,67 @@ void ChooseClassWin::mouseMoveEvent(QMouseEvent *event)
      }
        event->ignore();
 
+}
+
+
+void ChooseClassWin::connectServer()
+{
+    QFile file("ip.txt");
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug()<<"Can't open the file!"<<endl;
+    }
+    while(!file.atEnd()) {
+        QByteArray line = file.readLine();
+        QString str(line);
+        qDebug()<< str;
+
+        QString IP=str;
+
+        int port=12345;
+
+        QTcpSocket* socket = new QTcpSocket();
+
+        // 取消已有的连接
+        socket->abort();
+        // 连接服务器
+        socket->connectToHost(IP, port);
+
+        // 等待连接成功
+        if(!socket->waitForConnected(1000))
+        {
+
+            qDebug() << "mainwin Connection failed!";
+            return;
+        }
+        else
+        {
+            qDebug() << "mainwin Connect successfully!";
+            socketC=socket;
+
+            // 获取开课信息 header<<tr(u8"课程名称")<<tr(u8"课程代码")<<tr(u8"讲师")<<tr(u8"课程简介")<<tr(u8"学分")<<tr(u8"时间段")<<tr(u8"选课");
+            QString json = "";
+            socketC->write(json.toUtf8());
+
+
+
+            // 读取开课信息
+            QByteArray buffer;
+            QString str = "";
+            buffer = socketC->readAll();
+            if(!buffer.isEmpty())
+            {
+                str += tr(buffer);
+            }
+
+            // ... 这里不知道怎么读取到了section_id
+            // 请求课表即section中，课表名字与时间
+            // for循环读取课表与时间，然后加入课表
+            // addClassToTable(QString name, int x, int y, int len)
+            // name 课程名称 x星期几，y第几节开始，len多少节
+
+
+        }
+    }
 }
 
 void ChooseClassWin::on_sendBtn_clicked()
