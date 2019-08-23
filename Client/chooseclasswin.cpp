@@ -177,6 +177,19 @@ ChooseClassWin::ChooseClassWin(QWidget *parent) :
     addChooseLine(cname4, 1654, teacher4, 0, 3.0, dtime4);
     addClassToTable(u8"大学英语", 2, 0, 2);
 
+
+    Section *item1=new Section;
+    item1->course_name=u8"数据库系统";
+    item1->course_id=111111;
+    item1->section_id=111111;
+    item1->teacher_id=121212;
+    item1->teacher=u8"li";
+    item1->credit=2.5;
+    item1->desp="nihao";
+    sectionList.append(item1);
+
+
+
 }
 
 
@@ -273,6 +286,8 @@ void ChooseClassWin::addClassToTable(QString str,int x,int y,int len)
     item->setTextAlignment(Qt::AlignCenter);
     ui->chooseCoursesTable->setItem(y,x,item);
 }
+
+
 
 void ChooseClassWin::clickChooseCourse()
 {
@@ -490,5 +505,6 @@ void ChooseClassWin::on_sendBtn_clicked()
 {
     //获取当前json
     //QString data= ;
+
 
 }

@@ -487,6 +487,15 @@ QPushButton#login_button:pressed {
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>comboBox</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>login_button</tabstop>
+  <tabstop>closeBtn</tabstop>
+  <tabstop>minimumBtn</tabstop>
+  <tabstop>toolButton</tabstop>
+  <tabstop>toolButton_2</tabstop>
+ </tabstops>
  <resources>
   <include location="src.qrc"/>
  </resources>

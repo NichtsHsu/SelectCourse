@@ -301,6 +301,12 @@ public:
 
         gridLayout_2->addWidget(frame, 0, 0, 1, 1);
 
+        QWidget::setTabOrder(comboBox, lineEdit);
+        QWidget::setTabOrder(lineEdit, login_button);
+        QWidget::setTabOrder(login_button, closeBtn);
+        QWidget::setTabOrder(closeBtn, minimumBtn);
+        QWidget::setTabOrder(minimumBtn, toolButton);
+        QWidget::setTabOrder(toolButton, toolButton_2);
 
         retranslateUi(Login);
 

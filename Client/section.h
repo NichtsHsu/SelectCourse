@@ -8,10 +8,10 @@ class Section
 public:
     Section();
 
-    QString section_id;
-    QString course_id;
+    int section_id;
+    int course_id;
     QString course_name;
-    QString teacher_id;
+    int teacher_id;
     QString teacher;
     QString desp;
     double credit;
