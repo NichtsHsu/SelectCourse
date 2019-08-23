@@ -40,7 +40,7 @@ void DatabaseCourses::initialize()
     db_course.columns << QPair<QString, SQLiteDataType>("course_id", SQLiteDataType::INTEGER)
             << QPair<QString, SQLiteDataType>("title", SQLiteDataType::TEXT)
             << QPair<QString, SQLiteDataType>("description", SQLiteDataType::TEXT)
-            << QPair<QString, SQLiteDataType>("credit", SQLiteDataType::REAL)
+            << QPair<QString, SQLiteDataType>("credits", SQLiteDataType::REAL)
             << QPair<QString, SQLiteDataType>("dept_name", SQLiteDataType::TEXT);
 
     db_department.tableName = "department";
